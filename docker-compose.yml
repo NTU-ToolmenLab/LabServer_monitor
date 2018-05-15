@@ -14,11 +14,13 @@ services:
     external_links:
       - node-exporter:nodeexporter
       - grafana:grafana
+      - gpuexporter:gpuexporter
     networks:
       - mynet
     depends_on:
       - node-exporter
       - grafana
+      - gpuexporter
 
   node-exporter:
     image: prom/node-exporter
@@ -26,8 +28,8 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-    command: 
-      - '--path.procfs=/host/proc' 
+    command:
+      - '--path.procfs=/host/proc'
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.ignored-mount-points'
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
@@ -42,10 +44,25 @@ services:
       - ./grafana_data:/var/lib/grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=password
-      - GF_USERS_ALLOW_SIGN_UP=false 
+      - GF_USERS_ALLOW_SIGN_UP=false
     user: '472'
     ports:
       - 3000:3000
+    networks:
+      - mynet
+
+  gpuexporter:
+    image: linnil1/nvidia-smi
+    devices:
+      - /dev/nvidia0
+      - /dev/nvidia1
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia-uvm-tools
+    volumes:
+      - nvidia_driver_375.66:/usr/local/nvidia/:ro
+    ports:
+      - 9102:9102
     networks:
       - mynet
 
@@ -53,3 +70,7 @@ networks:
   mynet:
     external:
       name: dockercompose_mynet
+
+volumes:
+  nvidia_driver_375.66:
+    external: true

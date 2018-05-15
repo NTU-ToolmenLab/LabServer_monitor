@@ -1,6 +1,13 @@
 # Build monitor with docker-compose
 
-Use prometheus, node-exporter, grafana to monitor.
+Use 
+
+* prometheus
+* node-exporter
+* grafana
+* nvidia-smi
+
+to monitor.
 
 ## set up
 ```
@@ -11,6 +18,9 @@ mkdir grafana_data
 chown 472 grafana_data
 mkdir prometheus_data
 chmod o+w prometheus_data 
+cd nvidia_smi_exporter
+docker build -t . linnil1/nvidia-smi
+cd ..
 ```
 
 ## some custom data you need to set
@@ -27,6 +37,10 @@ change it if you use node-exporter on localhost
     static_configs:
          - targets: ['your.ip:9100']
 ```
+
+in `nvidia_smi_exporter/nvidia_smi_exporter.go`
+
+change 9101 to 9102
 
 ## reference
 * `grafana_myserver.json` is modified from  https://grafana.com/dashboards/5573

@@ -13,12 +13,12 @@
       }
     ]
   },
-  "description": "Basic host stats: CPU, Memory Usage, Disk Utilisation,  Filesystem usage and Predicted time to filesystems filling",
+  "description": "LabServer_monitor",
   "editable": true,
   "gnetId": 5573,
   "graphTooltip": 0,
   "id": 9,
-  "iteration": 1526385151030,
+  "iteration": 1526396689606,
   "links": [],
   "panels": [
     {
@@ -82,7 +82,6 @@
       "tableColumn": "",
       "targets": [
         {
-          "$$hashKey": "object:325",
           "expr": "(((count(count(node_cpu_seconds_total{job=\"$job\",instance=\"$instance\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{job=\"$job\",instance=\"$instance\",mode='idle'}[5m])))) * 100) / count(count(node_cpu_seconds_total{job=\"$job\",instance=\"$instance\"}) by (cpu))",
           "format": "time_series",
           "intervalFactor": 1,
@@ -165,7 +164,6 @@
       "tableColumn": "",
       "targets": [
         {
-          "$$hashKey": "object:388",
           "expr": "((node_memory_MemTotal_bytes{job=\"$job\",instance=\"$instance\"} - node_memory_MemFree_bytes{job=\"$job\",instance=\"$instance\"}) / (node_memory_MemTotal_bytes{job=\"$job\",instance=\"$instance\"})) * 100",
           "format": "time_series",
           "intervalFactor": 1,
@@ -173,7 +171,6 @@
           "refId": "A"
         },
         {
-          "$$hashKey": "object:389",
           "expr": "100 - ((node_memory_MemAvailable_bytes * 100) / node_memory_MemTotal_bytes)",
           "format": "time_series",
           "hide": true,
@@ -206,9 +203,9 @@
       "grid": {},
       "gridPos": {
         "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 7
+        "w": 6,
+        "x": 18,
+        "y": 0
       },
       "id": 1,
       "isNew": true,
@@ -235,7 +232,6 @@
       "steppedLine": false,
       "targets": [
         {
-          "$$hashKey": "object:215",
           "expr": "avg without (cpu)(irate(node_cpu_seconds_total{job=\"$job\",instance=\"$instance\",mode!=\"idle\"}[5m]))",
           "format": "time_series",
           "interval": "",
@@ -286,6 +282,266 @@
       }
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 7
+      },
+      "id": 17,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(nvidia_utilization_gpu) / count(nvidia_utilization_gpu)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "50,90",
+      "title": "GPU usage",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "percentunit",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 9,
+        "y": 7
+      },
+      "id": 19,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(nvidia_memory_used) / sum(nvidia_memory_total)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "0.50,0.90",
+      "title": "GPU memory",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 0,
+        "y": 14
+      },
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_load1",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "node_load1",
+          "refId": "A"
+        },
+        {
+          "expr": "node_load5",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "node_load5",
+          "refId": "B"
+        },
+        {
+          "expr": "node_load15",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "node_load15",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "System load",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -298,8 +554,8 @@
       "gridPos": {
         "h": 7,
         "w": 12,
-        "x": 12,
-        "y": 7
+        "x": 11,
+        "y": 14
       },
       "id": 2,
       "isNew": true,
@@ -356,7 +612,7 @@
         {
           "expr": "node_memory_MemFree_bytes{job='$job',instance='$instance'}",
           "format": "time_series",
-          "hide": false,
+          "hide": true,
           "intervalFactor": 2,
           "legendFormat": "Free",
           "refId": "C",
@@ -386,12 +642,96 @@
           "format": "bytes",
           "label": "",
           "logBase": 1,
-          "max": null,
+          "max": "64000000000",
           "min": 0,
           "show": true
         },
         {
           "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 0,
+        "y": 21
+      },
+      "id": 21,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "nvidia_utilization_gpu",
+          "format": "time_series",
+          "intervalFactor": 5,
+          "legendFormat": "{{gpu}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "GPU utilization",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -415,9 +755,113 @@
       "grid": {},
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 12,
+        "x": 11,
+        "y": 21
+      },
+      "id": 23,
+      "isNew": true,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "minSpan": null,
+      "nullPointMode": "connected",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "nvidia_memory_used * 1000000",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "Used {{gpu}}",
+          "refId": "A",
+          "step": 60
+        },
+        {
+          "expr": "nvidia_memory_total * 1000000",
+          "format": "time_series",
+          "hide": true,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Total {{gpu}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "GPU Memory",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": "",
+          "logBase": 1,
+          "max": "11000000000",
+          "min": 0,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 9,
+        "w": 7,
         "x": 0,
-        "y": 14
+        "y": 28
       },
       "id": 3,
       "isNew": true,
@@ -474,7 +918,7 @@
         {
           "format": "percentunit",
           "logBase": 1,
-          "max": 1,
+          "max": null,
           "min": null,
           "show": true
         },
@@ -502,10 +946,10 @@
       "fill": 1,
       "grid": {},
       "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 8,
-        "y": 14
+        "h": 9,
+        "w": 6,
+        "x": 7,
+        "y": 28
       },
       "id": 4,
       "isNew": true,
@@ -581,71 +1025,6 @@
       }
     },
     {
-      "columns": [
-        {
-          "text": "Current",
-          "value": "current"
-        }
-      ],
-      "datasource": "prom",
-      "editable": true,
-      "error": false,
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 16,
-        "y": 14
-      },
-      "hideTimeOverride": true,
-      "id": 5,
-      "isNew": true,
-      "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "s"
-        }
-      ],
-      "targets": [
-        {
-          "expr": "(node_filesystem_size_bytes{job='$job',instance='$instance'} - node_filesystem_free_bytes{job='$job',instance='$instance'}) / deriv(node_filesystem_free_bytes{job='$job',instance='$instance',fstype!='rootfs',mountpoint!~'/(run|var).*',mountpoint!=''}[3d]) > 0",
-          "format": "table",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{mountpoint}}",
-          "refId": "A",
-          "step": 20
-        }
-      ],
-      "timeFrom": "1h",
-      "timeShift": null,
-      "title": "Filesystem Fill Up Time",
-      "transform": "table",
-      "type": "table"
-    },
-    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -654,9 +1033,9 @@
       "fill": 1,
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 21
+        "w": 11,
+        "x": 13,
+        "y": 28
       },
       "id": 7,
       "legend": {
@@ -746,8 +1125,8 @@
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 12,
-        "y": 21
+        "x": 0,
+        "y": 37
       },
       "id": 9,
       "legend": {
@@ -784,6 +1163,90 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Temparature",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "celsius",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prom",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 37
+      },
+      "id": 25,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "nvidia_temperature_gpu",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{gpu}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "GPU Temparature",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -873,7 +1336,7 @@
     ]
   },
   "time": {
-    "from": "now/d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -903,7 +1366,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Host Stats - Prometheus Node Exporter",
+  "title": "LabServer_monitor",
   "uid": "sOwq23kgz",
-  "version": 3
+  "version": 9
 }
