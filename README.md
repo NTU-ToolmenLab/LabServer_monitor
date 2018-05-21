@@ -21,6 +21,9 @@ chmod o+w prometheus_data
 cd nvidia_smi_exporter
 docker build -t . linnil1/nvidia-smi
 cd ..
+cd docker_apcupsd_exporter
+docker build -t . linnil1/apcupsd_exporter
+cd ..
 ```
 
 ## some custom data you need to set
@@ -38,6 +41,14 @@ change it if you use node-exporter on localhost
          - targets: ['your.ip:9100']
 ```
 
+change it
+```
+  - job_name: 'apcupsd'
+    scrape_interval: 5s
+    static_configs:
+         - targets: ['your.ip:9162']
+```
+
 in `nvidia_smi_exporter/nvidia_smi_exporter.go`
 
 change 9101 to 9102
@@ -45,3 +56,10 @@ change 9101 to 9102
 ## reference
 * `grafana_myserver.json` is modified from  https://grafana.com/dashboards/5573
 * `docker-compose.yml` is modified from https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml
+* `docker_apcupsd_exporter/grafana_apc.json` is modified from https://gist.github.com/mdlayher/962aecd2858454a822bb5ad847168cb0
+
+## TODO
+* Make apcupsd_exporter within mynet instead of host network.
+
+# LICENSE
+MIT
