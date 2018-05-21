@@ -2,28 +2,22 @@
 
 Use 
 
+* traefik
+* grafana
 * prometheus
 * node-exporter
-* grafana
 * nvidia-smi
+* apcaccess
 
 to monitor.
 
-## set up
+## Build this project
+clone and run setup
+
 ```
-docker pull prom/node-exporter
-docker pull prom/prometheus
-docker pull grafana/grafana
-mkdir grafana_data
-chown 472 grafana_data
-mkdir prometheus_data
-chmod o+w prometheus_data 
-cd nvidia_smi_exporter
-docker build -t . linnil1/nvidia-smi
-cd ..
-cd docker_apcupsd_exporter
-docker build -t . linnil1/apcupsd_exporter
-cd ..
+git clone --recursive https://github.com/linnil1/LabServer_monitor.git
+cd LabServer_monitor
+bash setup.sh
 ```
 
 ## some custom data you need to set
@@ -49,14 +43,10 @@ change it
          - targets: ['your.ip:9162']
 ```
 
-in `nvidia_smi_exporter/nvidia_smi_exporter.go`
-
-change 9101 to 9102
-
 ## reference
-* `grafana_myserver.json` is modified from  https://grafana.com/dashboards/5573
+* `grafana_myserver.json` is modified from
+   https://grafana.com/dashboards/5573 and https://gist.github.com/mdlayher/962aecd2858454a822bb5ad847168cb0
 * `docker-compose.yml` is modified from https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml
-* `docker_apcupsd_exporter/grafana_apc.json` is modified from https://gist.github.com/mdlayher/962aecd2858454a822bb5ad847168cb0
 
 ## TODO
 * Make apcupsd_exporter within mynet instead of host network.
