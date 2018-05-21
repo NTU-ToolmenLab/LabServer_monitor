@@ -22,3 +22,8 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
          - targets: ['gpuexporter:9102']
+
+  - job_name: 'apcupsd'
+    scrape_interval: 5s
+    static_configs:
+         - targets: ['192.168.0.1:9162']

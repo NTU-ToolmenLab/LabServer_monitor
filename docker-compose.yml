@@ -13,12 +13,14 @@ services:
       - node-exporter:nodeexporter
       - grafana:grafana
       - gpuexporter:gpuexporter
+      - apc:apc
     networks:
       - mynet
     depends_on:
       - node-exporter
       - grafana
       - gpuexporter
+      - apc
 
   node-exporter:
     image: prom/node-exporter
@@ -43,7 +45,7 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
       - GF_PATHS_LOGS=/var/lib/grafana/log
       - GF_PATHS_PROVISIONING=/var/lib/grafana/provis
-      - GF_SERVER_ROOT_URL=https://my.doamin.ntu.edu.tw:443/monitor/
+      - GF_SERVER_ROOT_URL=https://my.domain.ntu.edu.tw:443/monitor/
     user: '472'
     labels:
       - "traefik.frontend.rule=Host:my.domain.ntu.edu.tw;PathPrefixStrip:/monitor/"
@@ -67,6 +69,12 @@ services:
       - nvidia_driver_375.66:/usr/local/nvidia/:ro
     networks:
       - mynet
+
+  apc:
+    image: linnil1/apcupsd_exporter
+    network_mode: "host"
+    # networks:
+    #  - mynet
 
 networks:
   mynet:
