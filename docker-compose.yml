@@ -72,9 +72,9 @@ services:
 
   apc:
     image: linnil1/apcupsd_exporter
-    network_mode: "host"
-    # networks:
-    #  - mynet
+    command: "./main -apcupsd.addr 192.168.1.1:3551"
+    networks:
+     - mynet
 
 networks:
   mynet:
