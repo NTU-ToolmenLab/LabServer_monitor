@@ -8,6 +8,7 @@ Use
 * node-exporter
 * nvidia-smi
 * apcaccess
+* snmp-exporter
 
 to monitor.
 
@@ -28,9 +29,12 @@ in `docker-compose.yml`
 * change traefik setting to what you want
 * change your internal ip of apc 192.168.1.1
 
+
+### nodeexporter on localhost
 in `prometheus.yml`
 
 change it if you use node-exporter on localhost
+
 ```
   - job_name: 'node-exporter'
     scrape_interval: 5s
@@ -38,15 +42,48 @@ change it if you use node-exporter on localhost
          - targets: ['your.internal.ip:9100']
 ```
 
+### nodeexporter on localhost
+in `prometheus.yml`
+
+change you target ip to your nas.
+
+```
+  - job_name: 'snmp_nas'
+    scrape_interval: 15s
+    scrape_timeout: 15s
+    metrics_path: /snmp
+    params:
+      module: [synology]
+      target: [192.168.1.2]
+    static_configs:
+      - targets: ['snmpexporter:9116']
+```
+
+### APC setup
 If you cannot use apc, maybe you did't set 
 
 `NETIP 0.0.0.0` in `/etc/apcupsd/apcupsd.conf`
 
+### snmpexporter
+To monitor Synology,
+
+you should set up SNMP in NAS https://www.synology.com/en-uk/knowledgebase/DSM/help/DSM/AdminCenter/system_snmp
+
+And if you don't want to use [generator](https://github.com/prometheus/snmp_exporter/tree/master/generator),
+
+you should enable `SNMPv2c` service and set Communitunity Name = `public`
+
+### Grafana
+After start grafana,
+import dashboard by json file,
+`grafana_myserver.json` and
+`synology_grafana.json`
 
 ## reference
 * `grafana_myserver.json` is modified from
    https://grafana.com/dashboards/5573 and https://gist.github.com/mdlayher/962aecd2858454a822bb5ad847168cb0
 * `docker-compose.yml` is modified from https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml
+* Reference of `synology-snmp.json` https://global.download.synology.com/download/Document/MIBGuide/Synology_DiskStation_MIB_Guide.pdf
 
 ## TODO
 * Add alert manager

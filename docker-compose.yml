@@ -9,11 +9,13 @@ services:
     command:
       - '--config.file=/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=1y'
     external_links:
       - node-exporter:nodeexporter
       - grafana:grafana
       - gpuexporter:gpuexporter
       - apc:apc
+      - snmpexporter:snmpexporter
     networks:
       - mynet
     depends_on:
@@ -21,6 +23,7 @@ services:
       - grafana
       - gpuexporter
       - apc
+      - snmpexporter
 
   node-exporter:
     image: prom/node-exporter
@@ -75,6 +78,12 @@ services:
     command: "./main -apcupsd.addr 192.168.1.1:3551"
     networks:
      - mynet
+
+  snmpexporter:
+    image: prom/snmp-exporter
+    networks:
+      - mynet
+
 
 networks:
   mynet:

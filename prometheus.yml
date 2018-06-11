@@ -27,3 +27,14 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
          - targets: ['apc:9162']
+
+  - job_name: 'snmp_nas'
+    scrape_interval: 15s
+    scrape_timeout: 15s
+    metrics_path: /snmp
+    params:
+      module: [synology]
+      target: [192.168.1.2]
+    static_configs:
+      - targets: ['snmpexporter:9116']
+
