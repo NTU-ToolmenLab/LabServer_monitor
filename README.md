@@ -9,6 +9,7 @@ Use
 * nvidia-smi
 * apcaccess
 * snmp-exporter
+* Use Granfana Alerting on Telegram
 
 to monitor.
 
@@ -76,17 +77,30 @@ you should enable `SNMPv2c` service and set Communitunity Name = `public`
 ### Grafana
 After start grafana,
 import dashboard by json file,
-`grafana_myserver.json` and
-`synology_grafana.json`
+* `grafana_myserver.json`
+* `grafana_myserver_alert.json` This has Alerting rules and alert on Telegram
 
 ## reference
-* `grafana_myserver.json` is modified from
+* Modified from
    https://grafana.com/dashboards/5573 and https://gist.github.com/mdlayher/962aecd2858454a822bb5ad847168cb0
 * `docker-compose.yml` is modified from https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml
-* Reference of `synology-snmp.json` https://global.download.synology.com/download/Document/MIBGuide/Synology_DiskStation_MIB_Guide.pdf
+* Reference of `snmp_synology` https://global.download.synology.com/download/Document/MIBGuide/Synology_DiskStation_MIB_Guide.pdf
 
-## TODO
-* Add alert manager
+## Alert on Telegram
+goto alerting -> alerting channel
+and create type = telegram
+
+`BOT API Token` is gotten from BotFather
+
+invite bot into your group.
+
+To me, I need to disable private mode (Disable it at BotFather)
+
+`Chat ID` is your bot listen on your group ID.
+You can use tutorial python bot to listen to your group,
+then, you can collect groupID by someone send message after to attach your bot in it.
+
+However, grafana alerting cannot work at template data.
 
 # LICENSE
 MIT

@@ -3,6 +3,7 @@ version: '3'
 services:
   prometheus:
     image: prom/prometheus
+    restart: always
     volumes:
       - ./prometheus.yml:/prometheus.yml
       - ./prometheus_data:/prometheus
@@ -40,6 +41,7 @@ services:
       - mynet
 
   grafana:
+    restart: always
     image: grafana/grafana
     volumes:
       - ./grafana_data:/var/lib/grafana
@@ -61,6 +63,7 @@ services:
       - mynet
 
   gpuexporter:
+    restart: always
     image: linnil1/nvidia-smi
     devices:
       - /dev/nvidia0
@@ -74,12 +77,14 @@ services:
       - mynet
 
   apc:
+    restart: always
     image: linnil1/apcupsd_exporter
     command: "./main -apcupsd.addr 192.168.1.1:3551"
     networks:
      - mynet
 
   snmpexporter:
+    restart: always
     image: prom/snmp-exporter
     networks:
       - mynet
