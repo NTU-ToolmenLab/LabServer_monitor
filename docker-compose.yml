@@ -45,12 +45,7 @@ services:
     image: grafana/grafana
     volumes:
       - ./grafana_data:/var/lib/grafana
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=password
-      - GF_USERS_ALLOW_SIGN_UP=false
-      - GF_PATHS_LOGS=/var/lib/grafana/log
-      - GF_PATHS_PROVISIONING=/var/lib/grafana/provis
-      - GF_SERVER_ROOT_URL=https://my.domain.ntu.edu.tw:443/monitor/
+      - ./grafana.ini:/etc/grafana/grafana.ini
     user: '472'
     labels:
       - "traefik.frontend.rule=Host:my.domain.ntu.edu.tw;PathPrefixStrip:/monitor/"

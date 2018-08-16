@@ -13,6 +13,8 @@ Use
 
 to monitor.
 
+And use OAuth to login
+
 ## Build this project
 clone and run setup
 
@@ -101,6 +103,14 @@ You can use tutorial python bot to listen to your group,
 then, you can collect groupID by someone send message after to attach your bot in it.
 
 However, grafana alerting cannot work at template data.
+
+## Oauth Login
+` vim grafana.ini`
+Replace `my.domain` and `444` to your domain and port
+reference
+* http://docs.grafana.org/installation/configuration/
+
+**It doesn't use secrect POST** for oauth.
 
 # LICENSE
 MIT
