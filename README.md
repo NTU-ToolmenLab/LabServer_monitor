@@ -77,6 +77,10 @@ And if you don't want to use [generator](https://github.com/prometheus/snmp_expo
 you should enable `SNMPv2c` service and set Communitunity Name = `public`
 
 ### Grafana
+You shoud type `mkdir grafana_data` and `sudo chown 472:472 grafana_data` first.
+
+And I set path of log on env of docker beacuse I need to override the env in the image of grafana.
+
 After start grafana,
 import dashboard by json file,
 * `grafana_myserver.json`

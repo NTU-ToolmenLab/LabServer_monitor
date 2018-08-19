@@ -46,12 +46,16 @@ services:
     volumes:
       - ./grafana_data:/var/lib/grafana
       - ./grafana.ini:/etc/grafana/grafana.ini
-    user: '472'
     labels:
       - "traefik.frontend.rule=Host:my.domain.ntu.edu.tw;PathPrefixStrip:/monitor/"
       - "traefik.port=3000"
       - "traefik.enable=true"
       - "traefik.backend=grafana"
+    environment:
+      - GF_PATHS_PROVISIONING=/var/lib/grafana/provis
+      - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+      - GF_PATHS_LOGS=/var/lib/grafana/log
+      - GF_PATHS_DATA=/var/lib/grafana
     external_links:
       - prometheus:prometheus
     networks:
