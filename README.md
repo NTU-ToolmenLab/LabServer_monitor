@@ -116,5 +116,38 @@ reference
 
 **It doesn't use secrect POST** for oauth.
 
+## snmp on router
+see http://jamyy.us.to/blog/2014/11/6863.html
+
+reference 
+* https://fatmin.com/2016/02/11/asus-rt-ac66u-installing-the-ipkg-command/
+* https://fatmin.com/2013/11/13/install-and-configure-snmp-on-the-asus-rt-ac66u-router/
+* http://devopstarter.info/snmp-exporter-generator-tutorial/
+
+It use net-snmp and I generate snmp.yml by https://github.com/prometheus/snmp_exporter/tree/master/generator
+You can collect mibs from [here](https://github.com/hardaker/net-snmp/tree/a7bc508a8930a484c3a666cbea4ab226d2a3aa88/mibs)
+I download these mibs `IF-MIB  INET-ADDRESS-MIB.txt  IP-MIB.txt  RFC1213-MIB.txt  SNMPv2-CONF  SNMPv2-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
+Generating yml file
+``` yaml
+modules:
+  udc:
+    walk:
+      - sysUpTime
+      - interfaces
+      - ifXTable
+      - ucdavis
+      - ipNetToMediaPhysAddress
+
+    lookups:
+      - old_index: ifIndex
+        new_index: ifDescr
+      - old_index: laIndex
+        new_index: laNames
+      - old_index: prIndex
+        new_index: prNames
+```
+The result file is at `snmp/router.yml`
+
+
 # LICENSE
 MIT

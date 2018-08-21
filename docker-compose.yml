@@ -17,6 +17,7 @@ services:
       - gpuexporter:gpuexporter
       - apc:apc
       - snmpexporter:snmpexporter
+      - snmpexporter_router:snmpexporterrouter
     networks:
       - mynet
     depends_on:
@@ -85,6 +86,14 @@ services:
   snmpexporter:
     restart: always
     image: prom/snmp-exporter
+    networks:
+      - mynet
+
+  snmpexporter_router:
+    restart: always
+    image: prom/snmp-exporter
+    volumes:
+      - ./snmp/router.yml:/etc/snmp_exporter/snmp.yml
     networks:
       - mynet
 
