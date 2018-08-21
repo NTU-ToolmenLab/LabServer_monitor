@@ -47,3 +47,13 @@ scrape_configs:
       target: [192.168.1.1]
     static_configs:
       - targets: ['snmpexporterrouter:9116']
+
+  - job_name: 'snmp_switch'
+    scrape_interval: 15s
+    scrape_timeout: 15s
+    metrics_path: /snmp
+    params:
+      module: [ddwrt]
+      target: [192.168.1.2]
+    static_configs:
+      - targets: ['snmpexporter:9116']

@@ -148,6 +148,8 @@ modules:
 ```
 The result file is at `snmp/router.yml`
 
+## snmp on switch
+My switch is ZYXEL GS1900, however mibs on http://www.circitor.fr/Mibs/Mibs.php#letterZ doesn't work at all.
 
 # LICENSE
 MIT
