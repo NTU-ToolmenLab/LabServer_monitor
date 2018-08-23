@@ -11,7 +11,15 @@ Use
 * snmp-exporter
 * Use Granfana Alerting on Telegram
 
-to monitor.
+to monitor
+
+* nas
+* server
+* gpu
+* apc
+* switch
+* router
+* traefik
 
 And use OAuth to login
 
@@ -148,8 +156,23 @@ modules:
 ```
 The result file is at `snmp/router.yml`
 
+grafana board `board/router.json`
+
 ## snmp on switch
 My switch is ZYXEL GS1900, however mibs on http://www.circitor.fr/Mibs/Mibs.php#letterZ doesn't work at all.
+
+grafana board `board_switch.json`
+
+## traefik
+configure traefik https://docs.traefik.io/configuration/metrics/
+
+install piechart https://grafana.com/plugins/grafana-piechart-panel
+
+modify https://grafana.com/dashboards/2240 https://grafana.com/dashboards/4475 https://grafana.com/dashboards/5851
+
+my traefik container name is `traefik`
+
+grafana board `board/traefik.json`
 
 # LICENSE
 MIT

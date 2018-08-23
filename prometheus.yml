@@ -54,6 +54,11 @@ scrape_configs:
     metrics_path: /snmp
     params:
       module: [ddwrt]
-      target: [192.168.1.2]
+      target: [192.168.34.2]
     static_configs:
       - targets: ['snmpexporter:9116']
+
+  - job_name: 'traefik'
+    scrape_interval: 5s
+    static_configs:
+         - targets: ['traefik:8080']

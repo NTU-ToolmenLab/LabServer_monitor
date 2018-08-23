@@ -18,26 +18,13 @@ services:
       - apc:apc
       - snmpexporter:snmpexporter
       - snmpexporter_router:snmpexporterrouter
-    networks:
-      - mynet
+      - traefik
     depends_on:
       - node-exporter
-      - grafana
       - gpuexporter
       - apc
       - snmpexporter
-
-  node-exporter:
-    image: prom/node-exporter
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command:
-      - '--path.procfs=/host/proc'
-      - '--path.sysfs=/host/sys'
-      - '--collector.filesystem.ignored-mount-points'
-      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+      - snmpexporter_router
     networks:
       - mynet
 
@@ -59,6 +46,8 @@ services:
       - GF_PATHS_DATA=/var/lib/grafana
     external_links:
       - prometheus:prometheus
+    depends_on:
+      - prometheus
     networks:
       - mynet
 
