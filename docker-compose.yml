@@ -19,12 +19,14 @@ services:
       - snmpexporter:snmpexporter
       - snmpexporter_router:snmpexporterrouter
       - traefik
+      - blackbox
     depends_on:
       - node-exporter
       - gpuexporter
       - apc
       - snmpexporter
       - snmpexporter_router
+      - blackbox
     networks:
       - mynet
 
@@ -83,6 +85,14 @@ services:
     image: prom/snmp-exporter
     volumes:
       - ./snmp/router.yml:/etc/snmp_exporter/snmp.yml
+    networks:
+      - mynet
+
+  blackbox:
+    restart: always
+    image: prom/blackbox-exporter
+    volumes:
+      - ./blackbox.yml:/etc/blackbox_exporter/config.yml
     networks:
       - mynet
 
