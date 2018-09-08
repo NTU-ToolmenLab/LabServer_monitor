@@ -1,0 +1,2979 @@
+hp:
+  walk:
+  - 1.3.6.1.2.1.2
+  - 1.3.6.1.2.1.31.1.1
+  - 1.3.6.1.4.1.11
+  get:
+  - 1.3.6.1.2.1.1.3.0
+  metrics:
+  - name: sysUpTime
+    oid: 1.3.6.1.2.1.1.3
+    type: gauge
+    help: The time (in hundredths of a second) since the network management portion
+      of the system was last re-initialized. - 1.3.6.1.2.1.1.3
+  - name: ifNumber
+    oid: 1.3.6.1.2.1.2.1
+    type: gauge
+    help: The number of network interfaces (regardless of their current state) present
+      on this system. - 1.3.6.1.2.1.2.1
+  - name: ifIndex
+    oid: 1.3.6.1.2.1.2.2.1.1
+    type: gauge
+    help: A unique value, greater than zero, for each interface - 1.3.6.1.2.1.2.2.1.1
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifDescr
+    oid: 1.3.6.1.2.1.2.2.1.2
+    type: DisplayString
+    help: A textual string containing information about the interface - 1.3.6.1.2.1.2.2.1.2
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifType
+    oid: 1.3.6.1.2.1.2.2.1.3
+    type: gauge
+    help: The type of interface - 1.3.6.1.2.1.2.2.1.3
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifMtu
+    oid: 1.3.6.1.2.1.2.2.1.4
+    type: gauge
+    help: The size of the largest packet which can be sent/received on the interface,
+      specified in octets - 1.3.6.1.2.1.2.2.1.4
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifSpeed
+    oid: 1.3.6.1.2.1.2.2.1.5
+    type: gauge
+    help: An estimate of the interface's current bandwidth in bits per second - 1.3.6.1.2.1.2.2.1.5
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifPhysAddress
+    oid: 1.3.6.1.2.1.2.2.1.6
+    type: PhysAddress48
+    help: The interface's address at its protocol sub-layer - 1.3.6.1.2.1.2.2.1.6
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifAdminStatus
+    oid: 1.3.6.1.2.1.2.2.1.7
+    type: gauge
+    help: The desired state of the interface - 1.3.6.1.2.1.2.2.1.7
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOperStatus
+    oid: 1.3.6.1.2.1.2.2.1.8
+    type: gauge
+    help: The current operational state of the interface - 1.3.6.1.2.1.2.2.1.8
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifLastChange
+    oid: 1.3.6.1.2.1.2.2.1.9
+    type: gauge
+    help: The value of sysUpTime at the time the interface entered its current operational
+      state - 1.3.6.1.2.1.2.2.1.9
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInOctets
+    oid: 1.3.6.1.2.1.2.2.1.10
+    type: counter
+    help: The total number of octets received on the interface, including framing
+      characters - 1.3.6.1.2.1.2.2.1.10
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.11
+    type: counter
+    help: The number of packets, delivered by this sub-layer to a higher (sub-)layer,
+      which were not addressed to a multicast or broadcast address at this sub-layer
+      - 1.3.6.1.2.1.2.2.1.11
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.12
+    type: counter
+    help: The number of packets, delivered by this sub-layer to a higher (sub-)layer,
+      which were addressed to a multicast or broadcast address at this sub-layer -
+      1.3.6.1.2.1.2.2.1.12
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInDiscards
+    oid: 1.3.6.1.2.1.2.2.1.13
+    type: counter
+    help: The number of inbound packets which were chosen to be discarded even though
+      no errors had been detected to prevent their being deliverable to a higher-layer
+      protocol - 1.3.6.1.2.1.2.2.1.13
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInErrors
+    oid: 1.3.6.1.2.1.2.2.1.14
+    type: counter
+    help: For packet-oriented interfaces, the number of inbound packets that contained
+      errors preventing them from being deliverable to a higher-layer protocol - 1.3.6.1.2.1.2.2.1.14
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInUnknownProtos
+    oid: 1.3.6.1.2.1.2.2.1.15
+    type: counter
+    help: For packet-oriented interfaces, the number of packets received via the interface
+      which were discarded because of an unknown or unsupported protocol - 1.3.6.1.2.1.2.2.1.15
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutOctets
+    oid: 1.3.6.1.2.1.2.2.1.16
+    type: counter
+    help: The total number of octets transmitted out of the interface, including framing
+      characters - 1.3.6.1.2.1.2.2.1.16
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.17
+    type: counter
+    help: The total number of packets that higher-level protocols requested be transmitted,
+      and which were not addressed to a multicast or broadcast address at this sub-layer,
+      including those that were discarded or not sent - 1.3.6.1.2.1.2.2.1.17
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.18
+    type: counter
+    help: The total number of packets that higher-level protocols requested be transmitted,
+      and which were addressed to a multicast or broadcast address at this sub-layer,
+      including those that were discarded or not sent - 1.3.6.1.2.1.2.2.1.18
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutDiscards
+    oid: 1.3.6.1.2.1.2.2.1.19
+    type: counter
+    help: The number of outbound packets which were chosen to be discarded even though
+      no errors had been detected to prevent their being transmitted - 1.3.6.1.2.1.2.2.1.19
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutErrors
+    oid: 1.3.6.1.2.1.2.2.1.20
+    type: counter
+    help: For packet-oriented interfaces, the number of outbound packets that could
+      not be transmitted because of errors - 1.3.6.1.2.1.2.2.1.20
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutQLen
+    oid: 1.3.6.1.2.1.2.2.1.21
+    type: gauge
+    help: The length of the output packet queue (in packets). - 1.3.6.1.2.1.2.2.1.21
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifName
+    oid: 1.3.6.1.2.1.31.1.1.1.1
+    type: DisplayString
+    help: The textual name of the interface - 1.3.6.1.2.1.31.1.1.1.1
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.2
+    type: counter
+    help: The number of packets, delivered by this sub-layer to a higher (sub-)layer,
+      which were addressed to a multicast address at this sub-layer - 1.3.6.1.2.1.31.1.1.1.2
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.3
+    type: counter
+    help: The number of packets, delivered by this sub-layer to a higher (sub-)layer,
+      which were addressed to a broadcast address at this sub-layer - 1.3.6.1.2.1.31.1.1.1.3
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.4
+    type: counter
+    help: The total number of packets that higher-level protocols requested be transmitted,
+      and which were addressed to a multicast address at this sub-layer, including
+      those that were discarded or not sent - 1.3.6.1.2.1.31.1.1.1.4
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.5
+    type: counter
+    help: The total number of packets that higher-level protocols requested be transmitted,
+      and which were addressed to a broadcast address at this sub-layer, including
+      those that were discarded or not sent - 1.3.6.1.2.1.31.1.1.1.5
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCInOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.6
+    type: counter
+    help: The total number of octets received on the interface, including framing
+      characters - 1.3.6.1.2.1.31.1.1.1.6
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCInUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.7
+    type: counter
+    help: The number of packets, delivered by this sub-layer to a higher (sub-)layer,
+      which were not addressed to a multicast or broadcast address at this sub-layer
+      - 1.3.6.1.2.1.31.1.1.1.7
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.8
+    type: counter
+    help: The number of packets, delivered by this sub-layer to a higher (sub-)layer,
+      which were addressed to a multicast address at this sub-layer - 1.3.6.1.2.1.31.1.1.1.8
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.9
+    type: counter
+    help: The number of packets, delivered by this sub-layer to a higher (sub-)layer,
+      which were addressed to a broadcast address at this sub-layer - 1.3.6.1.2.1.31.1.1.1.9
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCOutOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.10
+    type: counter
+    help: The total number of octets transmitted out of the interface, including framing
+      characters - 1.3.6.1.2.1.31.1.1.1.10
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCOutUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.11
+    type: counter
+    help: The total number of packets that higher-level protocols requested be transmitted,
+      and which were not addressed to a multicast or broadcast address at this sub-layer,
+      including those that were discarded or not sent - 1.3.6.1.2.1.31.1.1.1.11
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.12
+    type: counter
+    help: The total number of packets that higher-level protocols requested be transmitted,
+      and which were addressed to a multicast address at this sub-layer, including
+      those that were discarded or not sent - 1.3.6.1.2.1.31.1.1.1.12
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHCOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.13
+    type: counter
+    help: The total number of packets that higher-level protocols requested be transmitted,
+      and which were addressed to a broadcast address at this sub-layer, including
+      those that were discarded or not sent - 1.3.6.1.2.1.31.1.1.1.13
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifLinkUpDownTrapEnable
+    oid: 1.3.6.1.2.1.31.1.1.1.14
+    type: gauge
+    help: Indicates whether linkUp/linkDown traps should be generated for this interface
+      - 1.3.6.1.2.1.31.1.1.1.14
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifHighSpeed
+    oid: 1.3.6.1.2.1.31.1.1.1.15
+    type: gauge
+    help: An estimate of the interface's current bandwidth in units of 1,000,000 bits
+      per second - 1.3.6.1.2.1.31.1.1.1.15
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifPromiscuousMode
+    oid: 1.3.6.1.2.1.31.1.1.1.16
+    type: gauge
+    help: This object has a value of false(2) if this interface only accepts packets/frames
+      that are addressed to this station - 1.3.6.1.2.1.31.1.1.1.16
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifConnectorPresent
+    oid: 1.3.6.1.2.1.31.1.1.1.17
+    type: gauge
+    help: This object has the value 'true(1)' if the interface sublayer has a physical
+      connector and the value 'false(2)' otherwise. - 1.3.6.1.2.1.31.1.1.1.17
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifAlias
+    oid: 1.3.6.1.2.1.31.1.1.1.18
+    type: DisplayString
+    help: This object is an 'alias' name for the interface as specified by a network
+      manager, and provides a non-volatile 'handle' for the interface - 1.3.6.1.2.1.31.1.1.1.18
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: ifCounterDiscontinuityTime
+    oid: 1.3.6.1.2.1.31.1.1.1.19
+    type: gauge
+    help: The value of sysUpTime on the most recent occasion at which any one or more
+      of this interface's counters suffered a discontinuity - 1.3.6.1.2.1.31.1.1.1.19
+    indexes:
+    - labelname: ifDescr
+      type: gauge
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+      type: DisplayString
+  - name: trapDestinationNum
+    oid: 1.3.6.1.4.1.11.2.13.1.1
+    type: gauge
+    help: The number of trap destinations. - 1.3.6.1.4.1.11.2.13.1.1
+  - name: trapTest
+    oid: 1.3.6.1.4.1.11.2.13.1.3
+    type: gauge
+    help: Causes agent to send an snmp trap to hosts registered in the trap destination
+      table - 1.3.6.1.4.1.11.2.13.1.3
+  - name: trapSource
+    oid: 1.3.6.1.4.1.11.2.13.1.4
+    type: gauge
+    help: Sets the agent internal source for traps - 1.3.6.1.4.1.11.2.13.1.4
+  - name: trapFilterDelay
+    oid: 1.3.6.1.4.1.11.2.13.1.5
+    type: gauge
+    help: The purpose of the trap filter feature is to prevent multiple traps of the
+      same specificTrapId to be sent within a short period of time - 1.3.6.1.4.1.11.2.13.1.5
+  - name: trapFQDNNum
+    oid: 1.3.6.1.4.1.11.2.13.1.6
+    type: gauge
+    help: Number of trapFQDNTable rows. - 1.3.6.1.4.1.11.2.13.1.6
+  - name: trapIPAddress
+    oid: 1.3.6.1.4.1.11.2.13.1.7.1.1
+    type: IpAddr
+    help: The trap destination IP address. - 1.3.6.1.4.1.11.2.13.1.7.1.1
+  - name: trapFQDN
+    oid: 1.3.6.1.4.1.11.2.13.1.7.1.2
+    type: OctetString
+    help: The trap destination's FQDN - 1.3.6.1.4.1.11.2.13.1.7.1.2
+  - name: setCommunityName
+    oid: 1.3.6.1.4.1.11.2.15.1.1
+    type: OctetString
+    help: This object controls access of snmp read-write requests - 1.3.6.1.4.1.11.2.15.1.1
+  - name: getCommunityName
+    oid: 1.3.6.1.4.1.11.2.15.1.2
+    type: OctetString
+    help: This object controls access of snmp read requests - 1.3.6.1.4.1.11.2.15.1.2
+  - name: device_configure_generic_language_prompt
+    oid: 1.3.6.1.4.1.11.2.3.1.32.10
+    type: gauge
+    help: This object is used to determine whether to prompt the user to enter the
+      appropriate language - 1.3.6.1.4.1.11.2.3.1.32.10
+  - name: device_configure_generic_country_prompt
+    oid: 1.3.6.1.4.1.11.2.3.1.32.11
+    type: gauge
+    help: This object is used to determine whether to prompt the user to enter the
+      appropriate country at boot - 1.3.6.1.4.1.11.2.3.1.32.11
+  - name: device_configure_generic_country
+    oid: 1.3.6.1.4.1.11.2.3.1.32.16
+    type: gauge
+    help: Set the location configuration for the device - 1.3.6.1.4.1.11.2.3.1.32.16
+  - name: copier_token
+    oid: 1.3.6.1.4.1.11.2.3.1.24
+    type: OctetString
+    help: Provides an advisory locking mechanism for hosts to coordinate exclusive
+      access to a copier device - 1.3.6.1.4.1.11.2.3.1.24
+  - name: device_cfg_download
+    oid: 1.3.6.1.4.1.11.2.3.1.11
+    type: gauge
+    help: Handshaking mechanism between host and device to coordinate the download
+      of device specific data - 1.3.6.1.4.1.11.2.3.1.11
+  - name: device_cfg_download_data_type
+    oid: 1.3.6.1.4.1.11.2.3.1.12
+    type: gauge
+    help: Indicates the type of device specific data to be downloaded. - 1.3.6.1.4.1.11.2.3.1.12
+  - name: device_cfg_upload
+    oid: 1.3.6.1.4.1.11.2.3.1.13
+    type: gauge
+    help: Handshaking mechanism between host and device to coordinate the upload of
+      device specific data - 1.3.6.1.4.1.11.2.3.1.13
+  - name: device_cfg_upload_data_type
+    oid: 1.3.6.1.4.1.11.2.3.1.14
+    type: gauge
+    help: Indicates the type of device specific data to be uploaded. - 1.3.6.1.4.1.11.2.3.1.14
+  - name: download_timeout
+    oid: 1.3.6.1.4.1.11.2.3.1.17
+    type: gauge
+    help: Specifies the number of seconds that device will wait for data from the
+      host before the device determines the host is being unresponsive - 1.3.6.1.4.1.11.2.3.1.17
+  - name: upload_timeout
+    oid: 1.3.6.1.4.1.11.2.3.1.18
+    type: gauge
+    help: Specifies the number of seconds that device will wait for response from
+      the host after transmitting a unit of data before the device determines the
+      host is being unresponsive - 1.3.6.1.4.1.11.2.3.1.18
+  - name: date_display
+    oid: 1.3.6.1.4.1.11.2.3.1.22
+    type: gauge
+    help: Controls front-panel date display format - 1.3.6.1.4.1.11.2.3.1.22
+  - name: device_cfg_param_command
+    oid: 1.3.6.1.4.1.11.2.3.1.23
+    type: OctetString
+    help: 'A C structure containing the following fields: typedef struct { u8bit list_id;
+      s8bit auto_incr; u16bit max_index; u16bit rec_size; u16bit index; u8bit data[];
+      } PML_device_cfg_param_cmd_t; where u8bit is an unsigned byte (0..255), s8bit
+      is a signed byte (-128..127), and u16bit is a big endian format unsigned short
+      (0..65535) - 1.3.6.1.4.1.11.2.3.1.23'
+  - name: fax_upload_token
+    oid: 1.3.6.1.4.1.11.2.3.1.26
+    type: OctetString
+    help: Provides an advisory locking mechanism for hosts to coordinate exclusive
+      access to the fax upload features of a device - 1.3.6.1.4.1.11.2.3.1.26
+  - name: fax_download_token
+    oid: 1.3.6.1.4.1.11.2.3.1.27
+    type: OctetString
+    help: Provides an advisory locking mechanism for hosts to coordinate exclusive
+      access to the fax download features of a device - 1.3.6.1.4.1.11.2.3.1.27
+  - name: energy_star
+    oid: 1.3.6.1.4.1.11.2.3.1.1
+    type: gauge
+    help: Returns or changes the Energy Star sleep value - 1.3.6.1.4.1.11.2.3.1.1
+  - name: sleep_mode
+    oid: 1.3.6.1.4.1.11.2.3.1.2
+    type: gauge
+    help: Returns eTrue if the device is in energy saving sleep mode, otherwise returns
+      eFalse - 1.3.6.1.4.1.11.2.3.1.2
+  - name: control_panel_button_press_delay
+    oid: 1.3.6.1.4.1.11.2.3.1.47
+    type: gauge
+    help: This object gives the number of seconds to wait before simulating the button
+      press when CONTROL-PANEL-BUTTON-PRESS is next called - 1.3.6.1.4.1.11.2.3.1.47
+  - name: control_panel_display_contrast
+    oid: 1.3.6.1.4.1.11.2.3.1.73
+    type: gauge
+    help: This object returns or sets the display contrast setting if the control
+      panel has a display and it supports contrast adjustment - 1.3.6.1.4.1.11.2.3.1.73
+  - name: show_address
+    oid: 1.3.6.1.4.1.11.2.3.2.20.1.3
+    type: gauge
+    help: If this object is set to eAuto, and the device has an IP address, the IP
+      address of the device will be shown with the READY message - 1.3.6.1.4.1.11.2.3.2.20.1.3
+  - name: date_and_time
+    oid: 1.3.6.1.4.1.11.2.3.2.17
+    type: OctetString
+    help: 'A C structure containing the following fields: typedef struct { ubyte yr;
+      /* year: 0 to 99 */ ubyte mon; /* month: 1 to 12 */ ubyte day; /* day: 1 to
+      31 */ ubyte wday; /* Day of week: 1 to 07 */ ubyte hr; /* hour: 0 to 23 */ ubyte
+      min; /* minute: 0 to 59 */ ubyte sec; /* second: 0 to 59 */ } date_t; where
+      ubyte is an unsigned byte (0-255). - 1.3.6.1.4.1.11.2.3.2.17'
+  - name: time_display
+    oid: 1.3.6.1.4.1.11.2.3.2.28
+    type: gauge
+    help: Controls front-panel time display format - 1.3.6.1.4.1.11.2.3.2.28
+  - name: device_cfg_download_error
+    oid: 1.3.6.1.4.1.11.2.3.2.43
+    type: gauge
+    help: Error status of the configuration download session - 1.3.6.1.4.1.11.2.3.2.43
+  - name: device_cfg_upload_error
+    oid: 1.3.6.1.4.1.11.2.3.2.45
+    type: gauge
+    help: Error status of the configuration upload session - 1.3.6.1.4.1.11.2.3.2.45
+  - name: on_off_line
+    oid: 1.3.6.1.4.1.11.2.3.2.5
+    type: gauge
+    help: To bring the PDL processing sub-system on or off line - 1.3.6.1.4.1.11.2.3.2.5
+  - name: auto_continue
+    oid: 1.3.6.1.4.1.11.2.3.2.7
+    type: gauge
+    help: Indicates if the device will automatically continue after encountering a
+      continuable error - 1.3.6.1.4.1.11.2.3.2.7
+  - name: install_date
+    oid: 1.3.6.1.4.1.11.2.3.2.8
+    type: OctetString
+    help: Identifies the date that the device was installed - 1.3.6.1.4.1.11.2.3.2.8
+  - name: job_input_auto_continue_timeout
+    oid: 1.3.6.1.4.1.11.2.3.2.35
+    type: gauge
+    help: The number of seconds the device waits after a job related continuable error
+      occurs before automatically continuing - 1.3.6.1.4.1.11.2.3.2.35
+  - name: job_input_auto_continue_mode
+    oid: 1.3.6.1.4.1.11.2.3.2.36
+    type: OctetString
+    help: Returns or sets the device behavior when the desired media is not currently
+      available - 1.3.6.1.4.1.11.2.3.2.36
+  - name: device_mac_address
+    oid: 1.3.6.1.4.1.11.2.3.2.120
+    type: OctetString
+    help: The device's MAC address - 1.3.6.1.4.1.11.2.3.2.120
+  - name: extended_print_modes_modified
+    oid: 1.3.6.1.4.1.11.2.3.2.121
+    type: gauge
+    help: This object allows the user to view whether the extended print modes have
+      been modified from their default settings - 1.3.6.1.4.1.11.2.3.2.121
+  - name: fax_local_phone_num
+    oid: 1.3.6.1.4.1.11.2.3.3.8
+    type: OctetString
+    help: CCITT sender's station id (ex - 1.3.6.1.4.1.11.2.3.3.8
+  - name: fax_station_name
+    oid: 1.3.6.1.4.1.11.2.3.3.9
+    type: OctetString
+    help: name for the fax device (ex - 1.3.6.1.4.1.11.2.3.3.9
+  - name: fax_line_interface_unit_id
+    oid: 1.3.6.1.4.1.11.2.3.3.18
+    type: gauge
+    help: The fax device line interface unit (LIU) identifier - 1.3.6.1.4.1.11.2.3.3.18
+  - name: model_number
+    oid: 1.3.6.1.4.1.11.2.3.3.1
+    type: OctetString
+    help: Identifies the device model number as listed in the HP corporate price list
+      (e.g - 1.3.6.1.4.1.11.2.3.3.1
+  - name: model_name
+    oid: 1.3.6.1.4.1.11.2.3.3.2
+    type: OctetString
+    help: Identifies the device model name (e.g - 1.3.6.1.4.1.11.2.3.3.2
+  - name: serial_number
+    oid: 1.3.6.1.4.1.11.2.3.3.3
+    type: OctetString
+    help: Identifies the serial number for the device - 1.3.6.1.4.1.11.2.3.3.3
+  - name: fw_rom_datecode
+    oid: 1.3.6.1.4.1.11.2.3.3.5
+    type: OctetString
+    help: Identifies the base system firmware date code - 1.3.6.1.4.1.11.2.3.3.5
+  - name: device_name
+    oid: 1.3.6.1.4.1.11.2.3.3.10
+    type: OctetString
+    help: User defined device name - 1.3.6.1.4.1.11.2.3.3.10
+  - name: asset_number
+    oid: 1.3.6.1.4.1.11.2.3.3.12
+    type: OctetString
+    help: User defined asset number - 1.3.6.1.4.1.11.2.3.3.12
+  - name: faxjob_action
+    oid: 1.3.6.1.4.1.11.2.3.6.3.1.1
+    type: gauge
+    help: Permits host to specify an action to be applied with a particular fax. -
+      1.3.6.1.4.1.11.2.3.6.3.1.1
+  - name: faxjob_action_id
+    oid: 1.3.6.1.4.1.11.2.3.6.3.1.2
+    type: gauge
+    help: Contains the fax job identification of the fax to be acted upon by the action
+      specified by the object FAXJOB-ACTION. - 1.3.6.1.4.1.11.2.3.6.3.1.2
+  - name: faxjob_print_duplex_mode_select
+    oid: 1.3.6.1.4.1.11.2.3.6.3.1.5
+    type: gauge
+    help: Allows the host to enable or disable duplex printing on a device for the
+      next fax job - 1.3.6.1.4.1.11.2.3.6.3.1.5
+  - name: faxjob_download_id
+    oid: 1.3.6.1.4.1.11.2.3.6.3.2.1
+    type: gauge
+    help: Contains the device assigned job identification for the current fax downloading
+      job - 1.3.6.1.4.1.11.2.3.6.3.2.1
+  - name: faxjob_rx_id
+    oid: 1.3.6.1.4.1.11.2.3.6.3.2.2
+    type: gauge
+    help: Contains the device assigned job identification for the currently fax reception
+      job - 1.3.6.1.4.1.11.2.3.6.3.2.2
+  - name: faxjob_tx_id
+    oid: 1.3.6.1.4.1.11.2.3.6.3.2.3
+    type: gauge
+    help: Contains the device assigned job identification for the current fax transmission
+      job - 1.3.6.1.4.1.11.2.3.6.3.2.3
+  - name: faxjob_upload_id
+    oid: 1.3.6.1.4.1.11.2.3.6.3.2.4
+    type: gauge
+    help: Contains the device assigned job identification for the current fax upload
+      job - 1.3.6.1.4.1.11.2.3.6.3.2.4
+  - name: faxjob_rx_status_1
+    oid: 1.3.6.1.4.1.11.2.3.6.3.3.1.1
+    type: gauge
+    help: Status of receiving fax session 1. - 1.3.6.1.4.1.11.2.3.6.3.3.1.1
+  - name: faxjob_tx_status_1
+    oid: 1.3.6.1.4.1.11.2.3.6.3.3.3.1
+    type: gauge
+    help: Status of sending fax session 1. - 1.3.6.1.4.1.11.2.3.6.3.3.3.1
+  - name: faxjob_tx_error_1
+    oid: 1.3.6.1.4.1.11.2.3.6.3.3.4.1
+    type: gauge
+    help: Error status of the fax reception session 1 - 1.3.6.1.4.1.11.2.3.6.3.3.4.1
+  - name: faxjob_tx_current_page_1
+    oid: 1.3.6.1.4.1.11.2.3.6.3.3.5.1
+    type: gauge
+    help: The page number of the fax page currently being transmitted via send fax
+      session 1 - 1.3.6.1.4.1.11.2.3.6.3.3.5.1
+  - name: faxjob_rx_current_page_1
+    oid: 1.3.6.1.4.1.11.2.3.6.3.3.6.1
+    type: gauge
+    help: The page number of the fax page currently being received via fax reception
+      session 1 - 1.3.6.1.4.1.11.2.3.6.3.3.6.1
+  - name: faxjob_rx_duration_1
+    oid: 1.3.6.1.4.1.11.2.3.6.3.3.7.1
+    type: gauge
+    help: Represent the number of seconds of phone-connect time for a fax reception
+      session 1. - 1.3.6.1.4.1.11.2.3.6.3.3.7.1
+  - name: faxjob_tx_duration_1
+    oid: 1.3.6.1.4.1.11.2.3.6.3.3.8.1
+    type: gauge
+    help: Represent the number of seconds of phone-connect time for send fax session
+      1. - 1.3.6.1.4.1.11.2.3.6.3.3.8.1
+  - name: fax_log_action
+    oid: 1.3.6.1.4.1.11.2.3.6.4.1.1
+    type: gauge
+    help: Provides applications with the ability to clear or print the fax transaction
+      log - 1.3.6.1.4.1.11.2.3.6.4.1.1
+  - name: fax_log_reporting
+    oid: 1.3.6.1.4.1.11.2.3.6.4.1.2
+    type: gauge
+    help: Specifies when fax transaction logs are to be printed. - 1.3.6.1.4.1.11.2.3.6.4.1.2
+  - name: photo_default_num_copies
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.1
+    type: gauge
+    help: Reads or writes the default number of copies to be printed during photo
+      application print jobs - 1.3.6.1.4.1.11.2.3.6.8.3.1
+  - name: photo_job_num_copies
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.2
+    type: gauge
+    help: Reads or writes the number of copies to be printed during the next photo
+      application print job - 1.3.6.1.4.1.11.2.3.6.8.3.2
+  - name: photo_job_media_size
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.4
+    type: gauge
+    help: Reads or writes the default media size to be used during the next photo
+      application print job - 1.3.6.1.4.1.11.2.3.6.8.3.4
+  - name: photo_job_media_name
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.6
+    type: OctetString
+    help: Reads or writes the media type to be used on the next photo application
+      print job - 1.3.6.1.4.1.11.2.3.6.8.3.6
+  - name: photo_image_size
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.7
+    type: gauge
+    help: Reads or writes the default image size to be used during photo application
+      print jobs - 1.3.6.1.4.1.11.2.3.6.8.3.7
+  - name: photo_job_image_size
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.8
+    type: gauge
+    help: Reads or writes the image size to be used during the next photo application
+      print job - 1.3.6.1.4.1.11.2.3.6.8.3.8
+  - name: photo_select_images
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.9
+    type: OctetString
+    help: Reads or writes the list of images to print during the next photo application
+      print job - 1.3.6.1.4.1.11.2.3.6.8.3.9
+  - name: photo_images_on_card
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.10
+    type: gauge
+    help: Reads the number of printable photo images found on the inserted memory
+      card - 1.3.6.1.4.1.11.2.3.6.8.3.10
+  - name: photo_color_page_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.12
+    type: gauge
+    help: Reads or writes the page count for color pages printed by the photo application
+      - 1.3.6.1.4.1.11.2.3.6.8.3.12
+  - name: photo_mono_page_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.13
+    type: gauge
+    help: Reads or writes the page count for monochrome pages printed by the photo
+      application - 1.3.6.1.4.1.11.2.3.6.8.3.13
+  - name: photo_image_size_set
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.15
+    type: gauge
+    help: This is only writable in service mode - 1.3.6.1.4.1.11.2.3.6.8.3.15
+  - name: photo_compact_flash_insert_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.19
+    type: gauge
+    help: Reads or writes the count for the number of times a compact flash memory
+      card has been inserted in the device - 1.3.6.1.4.1.11.2.3.6.8.3.19
+  - name: photo_memory_stick_insert_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.20
+    type: gauge
+    help: Reads or writes the count for the number of times a memory stick memory
+      card has been inserted in the device - 1.3.6.1.4.1.11.2.3.6.8.3.20
+  - name: photo_memory_stick_pro_insert_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.21
+    type: gauge
+    help: Reads or writes the count for the number of times a memory stick pro memory
+      card has been inserted in the device - 1.3.6.1.4.1.11.2.3.6.8.3.21
+  - name: photo_smart_media_insert_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.22
+    type: gauge
+    help: Reads or writes the count for the number of times a smart media memory card
+      has been inserted in the device - 1.3.6.1.4.1.11.2.3.6.8.3.22
+  - name: photo_secure_digital_insert_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.23
+    type: gauge
+    help: Reads or writes the count for the number of times a secure digital memory
+      card has been inserted in the device - 1.3.6.1.4.1.11.2.3.6.8.3.23
+  - name: photo_mmc_insert_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.24
+    type: gauge
+    help: Reads or writes the count for the number of times a MultiMediaCard memory
+      card has been inserted in the device - 1.3.6.1.4.1.11.2.3.6.8.3.24
+  - name: photo_xd_insert_count
+    oid: 1.3.6.1.4.1.11.2.3.6.8.3.25
+    type: gauge
+    help: Reads or writes the count for the number of times an xD-Picture memory card
+      has been inserted in the device - 1.3.6.1.4.1.11.2.3.6.8.3.25
+  - name: photo_access_card_error
+    oid: 1.3.6.1.4.1.11.2.3.6.8.2
+    type: gauge
+    help: Specifies the error reason for most recent unsucessful photo card access
+      - 1.3.6.1.4.1.11.2.3.6.8.2
+  - name: job_info_change_id
+    oid: 1.3.6.1.4.1.11.2.3.6.1.3
+    type: OctetString
+    help: Returns the current value of an object in the job-info sub-tree whose value
+      has changed - 1.3.6.1.4.1.11.2.3.6.1.3
+  - name: current_job_parsing_id
+    oid: 1.3.6.1.4.1.11.2.3.6.2.1.1
+    type: gauge
+    help: Contains the printer assigned job identification for the job currently being
+      processed by the processing PDL sub-system - 1.3.6.1.4.1.11.2.3.6.2.1.1
+  - name: job_info_io_source
+    oid: 1.3.6.1.4.1.11.2.3.6.5.11
+    type: gauge
+    help: Indicates which I/O source, the print job was received over - 1.3.6.1.4.1.11.2.3.6.5.11
+  - name: job_info_outbins_used
+    oid: 1.3.6.1.4.1.11.2.3.6.5.20
+    type: OctetString
+    help: Indicates which output bins this job has delivered printed pages to - 1.3.6.1.4.1.11.2.3.6.5.20
+  - name: fax_answer_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.2.1.1
+    type: gauge
+    help: Sets the answering-priority when using a shared voice line - 1.3.6.1.4.1.11.2.3.9.2.1.1
+  - name: fax_num_rings_pickup
+    oid: 1.3.6.1.4.1.11.2.3.9.2.1.2
+    type: gauge
+    help: Number of rings before the fax device answers the phone if FAX-ANSWER-MODE
+      is not set to MANUAL-MODE. - 1.3.6.1.4.1.11.2.3.9.2.1.2
+  - name: device_ring_type_pickup
+    oid: 1.3.6.1.4.1.11.2.3.9.2.1.3
+    type: OctetString
+    help: Device to answer the incoming call based on detecting the the specified
+      type of telephone ring. - 1.3.6.1.4.1.11.2.3.9.2.1.3
+  - name: gdStatusLineState
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.1
+    type: gauge
+    help: This describes the line state of the peripheral - 1.3.6.1.4.1.11.2.3.9.1.1.2.1
+  - name: gdStatusPaperState
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.2
+    type: gauge
+    help: This describes the state of the paper on the peripheral - 1.3.6.1.4.1.11.2.3.9.1.1.2.2
+  - name: gdStatusInterventionState
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.3
+    type: gauge
+    help: This describes the intervention state of the peripheral - 1.3.6.1.4.1.11.2.3.9.1.1.2.3
+  - name: gdStatusPeripheralError
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.6
+    type: gauge
+    help: This is the error code from the peripheral. - 1.3.6.1.4.1.11.2.3.9.1.1.2.6
+  - name: gdStatusPaperOut
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.8
+    type: gauge
+    help: This indicates that the peripheral is out of paper - 1.3.6.1.4.1.11.2.3.9.1.1.2.8
+  - name: gdStatusPaperJam
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.9
+    type: gauge
+    help: This indicates that the peripheral has a paper jam - 1.3.6.1.4.1.11.2.3.9.1.1.2.9
+  - name: gdStatusTonerLow
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.10
+    type: gauge
+    help: This indicates that the peripheral has a low toner condition - 1.3.6.1.4.1.11.2.3.9.1.1.2.10
+  - name: gdStatusPagePunt
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.11
+    type: gauge
+    help: This indicates that the peripheral did not receive data fast enough to keep
+      up with the print engine when generating a page - 1.3.6.1.4.1.11.2.3.9.1.1.2.11
+  - name: gdStatusMemoryOut
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.12
+    type: gauge
+    help: This indicates that the peripheral did not have enough memory to render
+      an image on a page - 1.3.6.1.4.1.11.2.3.9.1.1.2.12
+  - name: gdStatusIoActive
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.13
+    type: gauge
+    help: This indicates that the peripheral is processing data from this I/O interface
+      card - 1.3.6.1.4.1.11.2.3.9.1.1.2.13
+  - name: gdStatusBusy
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.14
+    type: gauge
+    help: This indicates that the peripheral is busy processing print/plot data -
+      1.3.6.1.4.1.11.2.3.9.1.1.2.14
+  - name: gdStatusWait
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.15
+    type: gauge
+    help: This indicates that the peripheral is waiting for print/plot data to process
+      - 1.3.6.1.4.1.11.2.3.9.1.1.2.15
+  - name: gdStatusInitialize
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.16
+    type: gauge
+    help: This indicates that the peripheral is initializing or warming up - 1.3.6.1.4.1.11.2.3.9.1.1.2.16
+  - name: gdStatusDoorOpen
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.17
+    type: gauge
+    help: This indicates that the peripheral cover or door is open - 1.3.6.1.4.1.11.2.3.9.1.1.2.17
+  - name: gdStatusPrinting
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.18
+    type: gauge
+    help: This indicates that the peripheral is printing or otherwise marking or moving
+      paper - 1.3.6.1.4.1.11.2.3.9.1.1.2.18
+  - name: gdStatusPaperOutput
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.2.19
+    type: gauge
+    help: This indicates that the peripheral has a paper output problem such as the
+      output storage bin being full - 1.3.6.1.4.1.11.2.3.9.1.1.2.19
+  - name: gdStatusBytes
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.1
+    type: gauge
+    help: The number of valid bytes in the gdStatusEntry array. - 1.3.6.1.4.1.11.2.3.9.1.1.1
+  - name: fax_dial_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.1
+    type: gauge
+    help: Device should use DTMF dialing if eToneDial, pulse dial if ePulseDial. -
+      1.3.6.1.4.1.11.2.3.9.1.1.1
+  - name: gdStatusDisplay
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.3
+    type: DisplayString
+    help: The string diplayed on the peripheral front panel - 1.3.6.1.4.1.11.2.3.9.1.1.3
+  - name: fax_pulse_dial_support
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.3
+    type: gauge
+    help: This object reports whether the current set country supports pulse dial
+      - 1.3.6.1.4.1.11.2.3.9.1.1.3
+  - name: gdStatusId
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.7
+    type: OctetString
+    help: A formatted string of NVT ASCII charactersdescribing this peripheral. -
+      1.3.6.1.4.1.11.2.3.9.1.1.7
+  - name: gdStatusJobTimeout
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.10
+    type: gauge
+    help: ' - 1.3.6.1.4.1.11.2.3.9.1.1.10'
+  - name: gdPasswords
+    oid: 1.3.6.1.4.1.11.2.3.9.1.1.13
+    type: OctetString
+    help: This object is used as a 256 byte NVRAM area for JetAdmin - 1.3.6.1.4.1.11.2.3.9.1.1.13
+  - name: hrStorageIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.1
+    type: gauge
+    help: A unique value for each logical storage area contained by the host - 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.1
+  - name: hrStorageDescr
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.3
+    type: OctetString
+    help: A description of the type and instance of the storage described by this
+      entry - 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.3
+  - name: hrStorageAllocationUnits
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.4
+    type: gauge
+    help: The size, in bytes, of the data objects allocated from this pool - 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.4
+  - name: hrStorageSize
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.5
+    type: gauge
+    help: The size of the storage represented by this entry, in units of hrStorageAllocationUnits
+      - 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.5
+  - name: hrStorageUsed
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.6
+    type: gauge
+    help: The amount of the storage represented by this entry that is allocated, in
+      units of hrStorageAllocationUnits - 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.6
+  - name: hrStorageAllocationFailures
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.7
+    type: gauge
+    help: The number of requests for storage represented by this entry that could
+      not be honored due to not enough storage - 1.3.6.1.4.1.11.2.3.9.4.2.3.2.3.1.7
+  - name: hrMemorySize
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.2.2
+    type: gauge
+    help: The amount of physical main memory contained by the host - 1.3.6.1.4.1.11.2.3.9.4.2.3.2.2
+  - name: hrDeviceIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.1
+    type: gauge
+    help: A unique value for each device contained by the host - 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.1
+  - name: hrDeviceDescr
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.3
+    type: OctetString
+    help: A textual description of this device, including the device's manufacturer
+      and revision, and optionally, its serial number - 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.3
+  - name: hrDeviceStatus
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.5
+    type: gauge
+    help: The current operational state of the device described by this row of the
+      table - 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.5
+  - name: hrDeviceErrors
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.6
+    type: gauge
+    help: The number of errors detected on this device - 1.3.6.1.4.1.11.2.3.9.4.2.3.3.2.1.6
+  - name: hrPrinterStatus
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.3.5.1.1
+    type: gauge
+    help: The current status of this printer device - 1.3.6.1.4.1.11.2.3.9.4.2.3.3.5.1.1
+  - name: hrPrinterDetectedErrorState
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.3.3.5.1.2
+    type: OctetString
+    help: This object represents any error conditions detected by the printer - 1.3.6.1.4.1.11.2.3.9.4.2.3.3.5.1.2
+  - name: copy_scanner_dimensions
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.13
+    type: OctetString
+    help: This object is used to obtain the exact pixel scan dimensions for copy -
+      1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.13
+  - name: not_ready_source_scanner
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.1
+    type: OctetString
+    help: Indicates whether and why the scanner is not ready - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.1
+  - name: scan_calibration_error
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.6
+    type: gauge
+    help: Error status of the most recent calibration session - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.6
+  - name: scanner_lamp_gain_value
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.8
+    type: OctetString
+    help: Provides PWM and analog gain for the color channels - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.8
+  - name: scanner_light_monitor_window
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.9
+    type: OctetString
+    help: Provides the pixel at which the LMW starts, as the ratio of the average
+      LMW value to the six pixel average value - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.9
+  - name: scanner_reference_position
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.10
+    type: OctetString
+    help: Provides 3 pairs of x,y coordinates within a specified range of the calibrate
+      reference position - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.10
+  - name: scanner_sensor_manufacturer
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.11
+    type: OctetString
+    help: Reports the scan sensor manufacturer - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.2.11
+  - name: scan_calibration_target
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.32.18
+    type: gauge
+    help: This object is used by the host to check which type of calibration this
+      scan device supports - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.32.18
+  - name: scanner_jam_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.43
+    type: gauge
+    help: Indicates a count of the total pages jammed in the scanner'slifetime. -
+      1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.43
+  - name: scanner_adf_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.44
+    type: gauge
+    help: Indicates a count of the total pages scanned through the ADF on the device
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.44
+  - name: scan_adf_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.45
+    type: gauge
+    help: Indicates the total pages scanned through the ADF to the host from the device
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.45
+  - name: scanner_scanline_statistics
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.51
+    type: OctetString
+    help: This object is used to obtain statistics about the scan line that was previously
+      obtained using the SCANNER-RETRIEVE-SCANLINE object - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.51
+  - name: scan_control_descriptor
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.52
+    type: OctetString
+    help: Describes the control language and formats supported for this scanner -
+      1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.52
+  - name: scan_flatbed_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.73
+    type: gauge
+    help: This object tracks the page count for the pages scanned from the flatbed.
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.73
+  - name: scanner_flatbed_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.74
+    type: gauge
+    help: This object tracks the page count for the pages scanned for all jobs from
+      the flatbed - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.74
+  - name: scanner_modular_hardware
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.75
+    type: OctetString
+    help: Used to specify whether optional hardware is installed or not - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.75
+  - name: scanner_clock_edge_modifiers
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.84
+    type: OctetString
+    help: This object accesses a table used by firmware to modify clock edge values
+      for CCD scanner modules - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.84
+  - name: scan_clock_edges
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.85
+    type: OctetString
+    help: Returns a table of clock edges used by the scanner - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.85
+  - name: scan_emulate_copy
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.86
+    type: gauge
+    help: Setting this object to eYes will cause firmware to run the next scan job
+      as if it were a copy job, using copy values for scanner h/w and image processing,
+      and then return the data to the host as if it were a scan job - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.2.1.86
+  - name: fax_receive_stamping_enable
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.3.1.1
+    type: gauge
+    help: Controls whether or not incoming pages of a fax will be stamped upon receipt
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.3.1.1
+  - name: not_ready_fax_receive
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.3.2.1
+    type: OctetString
+    help: Indicates if the receiving fax sub-system in the device is not ready - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.3.2.1
+  - name: io_timeout
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.1.1.1
+    type: gauge
+    help: The amount of time, in seconds, to wait for more print job data to be received
+      before an I/O timeout occurs - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.1.1.1
+  - name: io_switch
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.2.1.1.2
+    type: gauge
+    help: Indicates if the device will switch between I/O channels when a job boundary
+      is encountered and print job data is available on another I/O channel. - 1.3.6.1.4.1.11.2.3.9.4.2.1.2.1.1.2
+  - name: copier_contrast
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.2
+    type: gauge
+    help: Behaves as SCL's 'Set Scanner Contrast Level' command which is used for
+      setting the copier contrast level - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.2
+  - name: copier_reduction
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.4
+    type: gauge
+    help: Percentage reduction desired for the copier - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.4
+  - name: copier_num_copies
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.6
+    type: gauge
+    help: Returns or changes the number of copies to be printed in the next Host requested
+      copy operation - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.6
+  - name: copier_collation
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.7
+    type: gauge
+    help: Enables the device with local copier capability that also supports outputting
+      multiple copies of a multi-paged source document to print in a collated fashion
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.7
+  - name: copier_enlargement_maximum
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.11
+    type: gauge
+    help: Maximum value that the host may set COPIER-REDUCTION to - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.11
+  - name: copier_reduction_maximum
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.12
+    type: gauge
+    help: Minimum value that the host may set COPIER-REDUCTION to - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.12
+  - name: copier_quality
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.13
+    type: gauge
+    help: Returns or sets the copier quality - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.13
+  - name: copier_adf_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.19
+    type: gauge
+    help: This object tracks the page count for the pages scanned for copying through
+      the ADF - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.19
+  - name: copier_print_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.20
+    type: gauge
+    help: This object tracks the page count for the pages sent to the print engine,
+      for copy jobs - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.20
+  - name: copier_job_media_size
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.21
+    type: gauge
+    help: The user can set a copy job setting for paper size using the COPIER-JOB-MEDIA-SIZE
+      object, which is independent of other functions in the device - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.21
+  - name: copier_job_quality
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.22
+    type: gauge
+    help: Returns or sets the copier quality - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.22
+  - name: copier_job_collation
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.23
+    type: gauge
+    help: Enables the device with local copier capability that also supports outputting
+      multiple copies of a multi-paged source document to print in a collated fashion
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.23
+  - name: copier_job_num_copies
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.24
+    type: gauge
+    help: Returns or changes the number of copies to be printed in the next Host requested
+      copy operation. - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.24
+  - name: copier_job_reduction
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.25
+    type: gauge
+    help: Percentage reduction desired for the copier - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.25
+  - name: copier_job_contrast
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.26
+    type: gauge
+    help: Used to set the copier contrast level - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.26
+  - name: copier_job
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.27
+    type: gauge
+    help: Controls initiating and canceling a copy job - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.27
+  - name: default_copy_duplex_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.28
+    type: gauge
+    help: Returns or sets the duplex copying mode - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.28
+  - name: copier_flatbed_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.44
+    type: gauge
+    help: This object tracks the page count for the pages scanned for copying from
+      the flatbed - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.44
+  - name: copier_pages_per_sheet
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.45
+    type: gauge
+    help: Returns or sets the copier number of input pages per output sheet - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.45
+  - name: copier_job_pages_per_sheet
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.46
+    type: gauge
+    help: Returns or sets the copy value for how many input pages per output sheet
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.46
+  - name: copier_fit_to_page
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.47
+    type: gauge
+    help: Returns or sets the copy setting for fit to page - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.47
+  - name: copier_job_fit_to_page
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.48
+    type: gauge
+    help: Returns or sets the copy value for fit to page - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.48
+  - name: copier_pages_per_sheet_maximum
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.49
+    type: gauge
+    help: Maximum pages per sheet value supported by the COPIER- PAGES-PER-SHEET and
+      COPIER-JOB-PAGES-PER-SHEET objects - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.49
+  - name: copier_adf_test_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.65
+    type: gauge
+    help: This is only writable in service mode - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.65
+  - name: copier_adf_test_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.66
+    type: gauge
+    help: Reads the number of pages printed during the last ADF copy test - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.66
+  - name: copier_job_draft_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.86
+    type: gauge
+    help: Enables the device with local copier capability to turn on a draft printing
+      mode - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.86
+  - name: copier_draft_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.87
+    type: gauge
+    help: Enables the device with local copier capability to turn on a draft printing
+      mode - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.87
+  - name: copier_job_multipage
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.88
+    type: gauge
+    help: Enables the device with local copier capability to turn on multi page copying
+      from the flatbed - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.88
+  - name: copier_multipage
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.89
+    type: gauge
+    help: Enables the device with local copier capability to turn on multi page copying
+      from the flatbed - 1.3.6.1.4.1.11.2.3.9.4.2.1.5.1.89
+  - name: fax_rxscale
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.1
+    type: gauge
+    help: Received faxes are to be printed at a reduced scale percentage - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.1
+  - name: fax_noise_volume
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.3
+    type: gauge
+    help: Range is 0..100, where 0 = quietest possible, and 100 = loudest possible
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.3
+  - name: fax_download
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.6
+    type: gauge
+    help: 'Note: Changed enumeration values in a non-backwards manner in version 4.7
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.6'
+  - name: fax_silent_detection
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.7
+    type: gauge
+    help: When enabled, this object causes the FAX machine to assume that the caller
+      is a FAX even though the line has remained silent for a time (i.e., no CNG detected)
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.7
+  - name: fax_ring_enable
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.8
+    type: gauge
+    help: When the phone line rings, this object determines whether an audible ring
+      shall be emitted. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.8
+  - name: fax_country
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.9
+    type: gauge
+    help: 'Note: Non-backwards compatible change make in version 4.7 - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.9'
+  - name: fax_redial_time
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.14
+    type: gauge
+    help: Number of seconds one must wait between the current redial (set by FAX-WHICH-REDIAL)
+      and any prior dialing. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.14
+  - name: fax_pstn_access_code
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.18
+    type: OctetString
+    help: The code used within a PBX to get access to an outside PSTN line - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.18
+  - name: fax_rx_disposition
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.19
+    type: gauge
+    help: Indicates what is to be done with the incoming fax call - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.19
+  - name: fax_error_correction_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.21
+    type: gauge
+    help: Indicates whether the device is configured to send and receive faxes in
+      error correction mode (ECM) - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.21
+  - name: fax_report_transmission
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.22
+    type: gauge
+    help: Provides a host application with the ability to print a fax transmission
+      report - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.22
+  - name: fax_report_activity_log
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.23
+    type: gauge
+    help: Specifies when a report of fax transactions is to be printed - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.23
+  - name: fax_dial_tone_detection
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.24
+    type: gauge
+    help: Determines whether the fax machine waits for a dial tone before dialing
+      a fax number - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.24
+  - name: fax_alarm_volume
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.25
+    type: gauge
+    help: Range is 0..100, where 0 = quietest possible, and 100 = loudest possible
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.25
+  - name: fax_beep_volume
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.26
+    type: gauge
+    help: Range is 0..100, where 0 = quietest possible, and 100 = loudest possible
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.26
+  - name: fax_ring_volume
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.27
+    type: gauge
+    help: Range is 0..100, where 0 = quietest possible, and 100 = loudest possible
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.27
+  - name: fax_master_host
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.28
+    type: OctetString
+    help: Identifies the hostname of the master host to which the device is connected.
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.28
+  - name: fax_thumbnail_enable
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.29
+    type: gauge
+    help: Controls whether or not a thumbnail reprint of the first page of a fax shall
+      be included on the fax call report - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.29
+  - name: fax_phone_pickup_enable
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.30
+    type: gauge
+    help: This object is included to handle the situation where a fax machine and
+      a telephone share the same phone line - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.30
+  - name: fax_adf_scan_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.31
+    type: gauge
+    help: This object tracks the page count for the pages scanned for faxing from
+      the ADF - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.31
+  - name: fax_print_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.32
+    type: gauge
+    help: This object tracks the page count for the pages sent to the print engine
+      for fax jobs - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.32
+  - name: fax_download_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.33
+    type: gauge
+    help: This object tracks the page count for the pages downloaded to the peripheral
+      for fax jobs - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.33
+  - name: fax_upload_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.34
+    type: gauge
+    help: This object tracks the page count for the pages uploaded from the peripheral
+      for fax jobs - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.34
+  - name: fax_flatbed_scan_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.36
+    type: gauge
+    help: This object tracks the page count for the pages scanned for faxing from
+      the flatbed - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.36
+  - name: default_fax_glass_size
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.37
+    type: gauge
+    help: Indicates the default fax glass size - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.37
+  - name: fax_cold_reset_fax_glass_size
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.38
+    type: gauge
+    help: Returns or sets the fax glass size that is used as the DEFAULT-FAX-GLASS-SIZE
+      when a cold reset occurs - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.1.38
+  - name: fax_upload
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.1
+    type: gauge
+    help: 'Note: The enumeration values for this object where changed in a non-backwards
+      compatible manner in version 4.7 - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.1'
+  - name: fax_min_rings_pickup
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.2
+    type: gauge
+    help: Indicates the minimum legal rings before pickup. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.2
+  - name: fax_max_rings_pickup
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.3
+    type: gauge
+    help: Indicates the maximum legal rings before pickup. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.3
+  - name: fax_max_redials
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.4
+    type: gauge
+    help: Maximum number of allowed redials. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.4
+  - name: fax_additional_wait
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.5
+    type: gauge
+    help: Number of additional seconds to wait before beginning a FAX-DOWNLOAD. -
+      1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.5
+  - name: fax_download_error
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.6
+    type: gauge
+    help: Error status of the fax download session. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.6
+  - name: fax_upload_error
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.7
+    type: gauge
+    help: Error status of the fax upload session. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.7
+  - name: fax_firmware_revision
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.8
+    type: OctetString
+    help: This object identifies the fax firmware ROM revision code - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.2.8
+  - name: fax_forwarding_phone_num
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.3.3
+    type: OctetString
+    help: Phone number digits of the remote fax station where arrived faxes are to
+      be forwarded. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.7.3.3
+  - name: default_copies
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.4
+    type: gauge
+    help: Returns or changes default copies - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.4
+  - name: default_vertical_black_resolution
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.8
+    type: gauge
+    help: Returns or changes the value of the default vertical black resolution -
+      1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.8
+  - name: default_horizontal_black_resolution
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.9
+    type: gauge
+    help: Returns or changes the value of the default horizontal black resolution
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.9
+  - name: default_lines_per_page
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.11
+    type: gauge
+    help: Returns or changes the default number of lines per page - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.11
+  - name: default_vmi
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.12
+    type: gauge
+    help: Returns or changes the default vertical motion index - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.12
+  - name: default_media_size
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.13
+    type: gauge
+    help: This indicates the default media size - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.13
+  - name: cold_reset_media_size
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.19
+    type: gauge
+    help: Returns or sets the media size that is used as the DEFAULT-MEDIA-SIZE when
+      a cold reset occurs. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.19
+  - name: default_media_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.22
+    type: OctetString
+    help: Returns or sets the media name that is used until the media name is changed
+      by a print job command - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.22
+  - name: reprint
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.36
+    type: gauge
+    help: Returns or changes the reprint (jam recovery) setting - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.36
+  - name: wide_a4
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.37
+    type: gauge
+    help: Returns or changes the wide A4 logical page size setting - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.37
+  - name: dark_courier
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.38
+    type: gauge
+    help: Returns or changes the dark Courier setting - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.38
+  - name: default_bits_per_pixel
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.39
+    type: gauge
+    help: Controls the number of levels used (per pixel) when printing grayscale or
+      color images. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.1.39
+  - name: pcl_total_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.5
+    type: gauge
+    help: Total number of PCL pages printed by the device. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.5
+  - name: pcl_default_font_height
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.13
+    type: gauge
+    help: Returns or changes the default PCL height - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.13
+  - name: pcl_default_font_source
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.14
+    type: gauge
+    help: Returns or changes the value of the default font source variable in NVRAM.
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.14
+  - name: pcl_default_font_number
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.15
+    type: gauge
+    help: Returns or changes the value of the default font number variable in NVRAM
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.15
+  - name: pcl_default_font_width
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.16
+    type: gauge
+    help: Returns or changes the default PCL font width - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.3.16
+  - name: postscript_total_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.4.5
+    type: gauge
+    help: Total number of PostScript pages printed by the device. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.4.5
+  - name: postscript_print_errors
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.4.11
+    type: gauge
+    help: Returns or changes the value of the print PostScript errors setting - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.4.11
+  - name: pclxl_total_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.16.1
+    type: gauge
+    help: Total number of PCLXL pages printed by the device. - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.3.16.1
+  - name: pjl_password
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.3.5.1
+    type: gauge
+    help: Returns PJL password, if the password is not set (zero) - 1.3.6.1.4.1.11.2.3.9.4.2.1.3.5.1
+  - name: fax_resolution
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.1.1
+    type: OctetString
+    help: struct { unsigned_32bit x_res; /* 1st four bytes; big endian */ unsigned_32bit
+      y_res; /* 2nd four bytes; big endian */ } Sets the send fax resolution - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.1.1
+  - name: fax_contrast
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.1.2
+    type: gauge
+    help: Behaves as SCL's 'Set Scanner Contrast Level' command which is used for
+      setting the sending fax contrast level - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.1.2
+  - name: fax_pixel_data_type
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.1.3
+    type: gauge
+    help: Sets the scanning method used when sending a fax - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.1.3
+  - name: not_ready_fax_send
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.2.1
+    type: OctetString
+    help: Indicates if the sending fax sub-system in the device is not ready - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.2.1
+  - name: fax_allow_redials
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.5.3
+    type: gauge
+    help: When eTrue, the FAX machine can redial a phone number if the prior call
+      failed for some reason - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.2.5.3
+  - name: pe_test_scanner_adf_voltage_start
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.2
+    type: gauge
+    help: Set any attributes related to the ADF scanner voltage - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.2
+  - name: pe_test_scanner_adf_voltage_run
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.3
+    type: gauge
+    help: Set any attributes related to the ADF scanner voltage - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.3
+  - name: pe_test_scanner_flatbed_voltage_start
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.4
+    type: gauge
+    help: Set any attributes related to the flatbed scanner voltage - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.4
+  - name: pe_test_scanner_flatbed_voltage_run
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.5
+    type: gauge
+    help: Set any attributes related to the flatbed scanner voltage - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.5
+  - name: pe_test_scanner_test_config
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.6
+    type: gauge
+    help: Configures the device for scanner test mode - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.58.6
+  - name: pe_test_photocard_manufacturing_errors
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.90
+    type: gauge
+    help: Error status of the photocard manufacturing test - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.9.90
+  - name: default_duplex_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.4
+    type: gauge
+    help: Returns or sets the duplex printing mode - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.4
+  - name: print_density
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.5
+    type: gauge
+    help: Returns or sets the print density setting - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.5
+  - name: invalid_personality_reports_enabled
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.18
+    type: gauge
+    help: Read or configure wether invalid personality reports are enabled or disabled
+      for a product. - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.18
+  - name: supplies_replace_action_at_setting
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.25
+    type: gauge
+    help: This object can be used to change the setting of menu item REPLACE SUPPLIES
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.25
+  - name: supplies_at_very_low_setting
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.38
+    type: gauge
+    help: This object can be used to change the setting of menu item AT VERY LOW -
+      1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.1.38
+  - name: total_engine_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.5
+    type: gauge
+    help: Total number of pages printed by the device - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.5
+  - name: print_engine_jam_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.34
+    type: gauge
+    help: Total number of pages jammed in the print engine's life time - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.34
+  - name: print_engine_mispick_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.35
+    type: gauge
+    help: Total number of pages mispicked in the print engine's life time - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.35
+  - name: supply_out_device_state
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.49
+    type: gauge
+    help: This PML object indicates the current behavior of the device if one or more
+      supplies have reached out - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.49
+  - name: duplex_page_count
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.22
+    type: gauge
+    help: Total number of sheets of media that have been duplex printed - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.22
+  - name: print_engine_revision
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.26
+    type: OctetString
+    help: Print engine revision string - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.2.26
+  - name: custom_paper_dim_unit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.1.7
+    type: gauge
+    help: The units of measure used to specify the width and height of the printer's
+      custom paper - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.1.7
+  - name: custom_paper_feed_dim
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.1.8
+    type: gauge
+    help: Sets the printer's custom paper dimension in the feed direction (direction
+      parallel to the direction of paper feeding) - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.1.8
+  - name: custom_paper_xfeed_dim
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.1.9
+    type: gauge
+    help: Sets the printer's custom paper dimension in the cross-feed direction (direction
+      ninety degrees relative to the direction of paper feeding) - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.1.9
+  - name: tray1_media_size_loaded
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.3.1.1
+    type: gauge
+    help: 'Returns the media size that is currently configuredconfigured in tray #1
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.3.1.1'
+  - name: tray2_media_size_loaded
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.3.2.1
+    type: gauge
+    help: 'Returns the media size that is currently configured in tray #2 - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.3.2.1'
+  - name: tray3_media_size_loaded
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.3.3.1
+    type: gauge
+    help: 'Returns the media size that is currently configured in tray #3 - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.3.3.3.1'
+  - name: default_ret
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.6.5
+    type: gauge
+    help: Returns or changes the Resolution Enhancement Technology setting - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.6.5
+  - name: default_print_quality
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.6.7
+    type: gauge
+    help: Returns or sets the default print quality - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.6.7
+  - name: media_names_available
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.1.1
+    type: OctetString
+    help: The value of this object controls which of the MEDIAx-NAME objects are supported
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.1.1
+  - name: media1_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.1.1
+    type: OctetString
+    help: Media 1 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.1.1
+  - name: media1_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.1.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.1.4
+  - name: media2_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.2.1
+    type: OctetString
+    help: Media 2 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.2.1
+  - name: media2_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.2.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.2.4
+  - name: media3_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.3.1
+    type: OctetString
+    help: Media 3 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.3.1
+  - name: media3_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.3.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.3.4
+  - name: media4_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.4.1
+    type: OctetString
+    help: Media 4 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.4.1
+  - name: media4_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.4.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.4.4
+  - name: media5_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.5.1
+    type: OctetString
+    help: Media 5 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.5.1
+  - name: media5_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.5.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.5.4
+  - name: media6_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.6.1
+    type: OctetString
+    help: Media 6 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.6.1
+  - name: media6_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.6.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.6.4
+  - name: media8_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.8.1
+    type: OctetString
+    help: Media 8 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.8.1
+  - name: media8_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.8.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.8.4
+  - name: media9_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.9.1
+    type: OctetString
+    help: Media 9 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.9.1
+  - name: media9_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.9.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.9.4
+  - name: media10_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.10.1
+    type: OctetString
+    help: Media 10 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.10.1
+  - name: media10_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.10.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.10.4
+  - name: media12_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.12.1
+    type: OctetString
+    help: Media 12 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.12.1
+  - name: media12_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.12.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.12.4
+  - name: media13_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.13.1
+    type: OctetString
+    help: Media 13 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.13.1
+  - name: media13_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.13.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.13.4
+  - name: media14_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.14.1
+    type: OctetString
+    help: Media 14 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.14.1
+  - name: media14_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.14.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.14.4
+  - name: media15_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.15.1
+    type: OctetString
+    help: Media 15 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.15.1
+  - name: media15_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.15.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.15.4
+  - name: media16_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.16.1
+    type: OctetString
+    help: Media 16 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.16.1
+  - name: media16_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.16.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.16.4
+  - name: media17_name
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.17.1
+    type: OctetString
+    help: Media 17 name - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.17.1
+  - name: media17_engine_media_mode
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.17.4
+    type: gauge
+    help: The engine processing characteristics that are to be applied to this media
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.3.17.4
+  - name: engine_media_modes_supported1
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.4.1
+    type: OctetString
+    help: The list of engine media modes supported by the device - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.8.4.1
+  - name: consumable_status_serial_number
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.1.1.3
+    type: OctetString
+    help: This object is used to report the serial number for this consumable. - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.1.1.3
+  - name: consumable_status_partnumber
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.1.1.56
+    type: OctetString
+    help: This object will have one sub-array for the consumable and will will hold
+      the consumable's part number - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.1.1.56
+  - name: consumable_life_usage_units_remaining
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.5.1.1
+    type: gauge
+    help: This object reports the current estimate of the number of usage units that
+      remain before this supply is depleted - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.5.1.1
+  - name: consumable_life_low_threshold
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.5.1.3
+    type: gauge
+    help: This object is used to report and modify a threshold value indicating the
+      point in the life of a consumable or supply at which a transition to a LOW state
+      will occur. - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.5.1.3
+  - name: consumable_pages_printed_with_supply
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.11
+    type: gauge
+    help: This PML object returns the number of pages printed with a cartridge consumable
+      - 1.3.6.1.4.1.11.2.3.9.4.2.1.4.1.10.11
+  - name: prtGeneralConfigChanges
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.1
+    type: gauge
+    help: Counts configuration changes that change the capabilities of a printer,
+      such as the addition/deletion of input/output bins, the addition/deletion of
+      interpreters, or changes in media size - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.1
+  - name: prtGeneralCurrentLocalization
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.2
+    type: gauge
+    help: The value of the prtLocalizationIndex corresponding to the current language,
+      country, and character set to be used for localized string values that are identified
+      as being dependent on the value of this object - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.2
+  - name: prtGeneralReset
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.3
+    type: gauge
+    help: Setting this value to `powerCycleReset', `resetToNVRAM', or `resetToFactoryDefaults'
+      will result in the resetting of the printer - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.3
+  - name: prtGeneralCurrentOperator
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.4
+    type: OctetString
+    help: The name of the person who is responsible for operating this printer - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.4
+  - name: prtGeneralServicePerson
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.5
+    type: OctetString
+    help: The name of the person responsible for servicing this printer - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.5
+  - name: prtInputDefaultIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.6
+    type: gauge
+    help: 'The value of prtInputIndex corresponding to the default input sub-unit:
+      that is, this object selects the default source of input media - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.6'
+  - name: prtOutputDefaultIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.7
+    type: gauge
+    help: The value of prtOutputIndex corresponding to the default output sub-unit;
+      that is, this object selects the default output destination - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.7
+  - name: prtMarkerDefaultIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.8
+    type: gauge
+    help: The value of prtMarkerIndex corresponding to the default marker sub-unit;
+      that is, this object selects the default marker - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.8
+  - name: prtMediaPathDefaultIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.9
+    type: gauge
+    help: The value of prtMediaPathIndex corresponding to the default media path;
+      that is, the selection of the default media path - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.9
+  - name: prtConsoleLocalization
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.10
+    type: gauge
+    help: The value of the prtLocalizationIndex corresponding to the language, country,
+      and character set to be used for the console - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.10
+  - name: prtConsoleNumberOfDisplayLines
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.11
+    type: gauge
+    help: The number of lines on the printer's physical display - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.11
+  - name: prtConsoleNumberOfDisplayChars
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.12
+    type: gauge
+    help: The number of characters per line displayed on the physical display - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.12
+  - name: prtConsoleDisable
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.13
+    type: gauge
+    help: If the object prtConsoleDisable has value 'operatorConsoleDisabled' then
+      input is not accepted from the operator console - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.13
+  - name: prtGeneralPrinterName
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.16
+    type: OctetString
+    help: An administrator-specified name for this printer - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.16
+  - name: prtGeneralSerialNumber
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.17
+    type: OctetString
+    help: A recorded serial number for this device that indexes some type device catalog
+      or inventory - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.17
+  - name: prtAlertCriticalEvents
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.18
+    type: gauge
+    help: A running counter of the number of critical alert events that have been
+      recorded in the alert table - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.18
+  - name: prtAlertAllEvents
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.19
+    type: gauge
+    help: 'A running counter of the total number of alert event entries (critical
+      and non-critical) that have been recorded in the alert table Additional information:
+      This object is set to zero every time the printer is turned on - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.1.1.19'
+  - name: prtStorageRefIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.2.1.2
+    type: gauge
+    help: The value of the hrDeviceIndex of the printer device that this storageEntry
+      is associated with. - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.2.1.2
+  - name: prtDeviceRefIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.5.3.1.2
+    type: gauge
+    help: The value of the hrDeviceIndex of the printer device that this deviceEntry
+      is associated with. - 1.3.6.1.4.1.11.2.3.9.4.2.2.5.3.1.2
+  - name: prtCoverDescription
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.6.1.1.2
+    type: OctetString
+    help: The manufacturer provided cover sub-mechanism name in the localization specified
+      by prtGeneralCurrentLocalization. - 1.3.6.1.4.1.11.2.3.9.4.2.2.6.1.1.2
+  - name: prtCoverStatus
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.6.1.1.3
+    type: gauge
+    help: The status of this cover sub-unit. - 1.3.6.1.4.1.11.2.3.9.4.2.2.6.1.1.3
+  - name: prtLocalizationLanguage
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.7.1.1.2
+    type: OctetString
+    help: A two character language code from ISO 639 - 1.3.6.1.4.1.11.2.3.9.4.2.2.7.1.1.2
+  - name: prtLocalizationCountry
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.7.1.1.3
+    type: OctetString
+    help: A two character country code from ISO 3166, a blank string (two space characters)
+      shall indicate that the country is not defined - 1.3.6.1.4.1.11.2.3.9.4.2.2.7.1.1.3
+  - name: prtLocalizationCharacterSet
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.7.1.1.4
+    type: gauge
+    help: The coded character set used for this localization. - 1.3.6.1.4.1.11.2.3.9.4.2.2.7.1.1.4
+  - name: prtInputType
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.2
+    type: gauge
+    help: The type of technology (discriminated primarily according to feeder mechanism
+      type) employed by the input sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.2
+  - name: prtInputDimUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.3
+    type: gauge
+    help: The unit of measurement for use calculating and relaying dimensional values
+      for this input sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.3
+  - name: prtInputMediaDimFeedDirDeclared
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.4
+    type: gauge
+    help: This object provides the value of the declared dimension, in the feed direction,
+      of the media that is (or, if empty, was or will be) in this input sub-unit -
+      1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.4
+  - name: prtInputMediaDimXFeedDirDeclared
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.5
+    type: gauge
+    help: This object provides the value of the declared dimension, in the cross feed
+      direction, of the media that is (or, if empty, was or will be) in this input
+      sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.5
+  - name: prtInputMediaDimFeedDirChosen
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.6
+    type: gauge
+    help: The printer will act as if media of the chosen dimension (in the feed direction)
+      is present in this input source - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.6
+  - name: prtInputMediaDimXFeedDirChosen
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.7
+    type: gauge
+    help: The printer will act as if media of the chosen dimension (in the cross feed
+      direction) is present in this input source - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.7
+  - name: prtInputCapacityUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.8
+    type: gauge
+    help: The unit of measurement for use in calculating and relaying capacity values
+      for this input sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.8
+  - name: prtInputMaxCapacity
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.9
+    type: gauge
+    help: The maximum capacity of the input sub-unit in input sub-unit capacity units
+      (PrtCapacityUnitTC) - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.9
+  - name: prtInputCurrentLevel
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.10
+    type: gauge
+    help: The current capacity of the input sub-unit in input sub-unit capacity units
+      (PrtCapacityUnitTC) - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.10
+  - name: prtInputStatus
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.11
+    type: gauge
+    help: The current status of this input sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.11
+  - name: prtInputMediaName
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.12
+    type: OctetString
+    help: A description of the media contained in this input sub-unit; This description
+      is intended for display to a human operator - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.12
+  - name: prtInputName
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.13
+    type: OctetString
+    help: The name assigned to this input sub-unit. - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.13
+  - name: prtInputVendorName
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.14
+    type: OctetString
+    help: The vendor name of this input sub-unit. - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.14
+  - name: prtInputModel
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.15
+    type: OctetString
+    help: The model name of this input sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.15
+  - name: prtInputVersion
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.16
+    type: OctetString
+    help: The version of this input sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.16
+  - name: prtInputSerialNumber
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.17
+    type: OctetString
+    help: The serial number assigned to this input sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.17
+  - name: prtInputDescription
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.18
+    type: OctetString
+    help: A free-form text description of this input sub-unit in the localization
+      specified by prtGeneralCurrentLocalization. - 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.18
+  - name: prtInputSecurity
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.19
+    type: gauge
+    help: Indicates if this input sub-unit has some security associated with it -
+      1.3.6.1.4.1.11.2.3.9.4.2.2.8.2.1.19
+  - name: prtOutputType
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.2
+    type: gauge
+    help: The type of technology supported by this output sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.2
+  - name: prtOutputCapacityUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.3
+    type: gauge
+    help: The unit of measurement for use in calculating and relaying capacity values
+      for this output sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.3
+  - name: prtOutputMaxCapacity
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.4
+    type: gauge
+    help: The maximum capacity of this output sub-unit in output sub-unit capacity
+      units (PrtCapacityUnitTC) - 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.4
+  - name: prtOutputRemainingCapacity
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.5
+    type: gauge
+    help: The remaining capacity of the possible output sub-unit capacity in output
+      sub-unit capacity units (PrtCapacityUnitTC) of this output sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.5
+  - name: prtOutputStatus
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.6
+    type: gauge
+    help: The current status of this output sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.9.2.1.6
+  - name: prtMarkerMarkTech
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.2
+    type: gauge
+    help: The type of marking technology used for this marking sub-unit. - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.2
+  - name: prtMarkerCounterUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.3
+    type: gauge
+    help: The unit that will be used by the printer when reporting counter values
+      for this marking sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.3
+  - name: prtMarkerLifeCount
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.4
+    type: gauge
+    help: The count of the number of units of measure counted during the life of printer
+      using units of measure as specified by prtMarkerCounterUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.4
+  - name: prtMarkerPowerOnCount
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.5
+    type: gauge
+    help: The count of the number of units of measure counted since the equipment
+      was most recently powered on using units of measure as specified by prtMarkerCounterUnit.
+      - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.5
+  - name: prtMarkerProcessColorants
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.6
+    type: gauge
+    help: The number of process colors supported by this marker - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.6
+  - name: prtMarkerSpotColorants
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.7
+    type: gauge
+    help: The number of spot colors supported by this marker - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.7
+  - name: prtMarkerAddressabilityUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.8
+    type: gauge
+    help: The unit of measure of distances, as applied to the marker's resolution
+      - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.8
+  - name: prtMarkerAddressabilityFeedDir
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.9
+    type: gauge
+    help: The maximum number of addressable marking positions in the feed direction
+      per 10000 units of measure specified by prtMarkerAddressabilityUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.9
+  - name: prtMarkerAddressabilityXFeedDir
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.10
+    type: gauge
+    help: The maximum number of addressable marking positions in the cross feed direction
+      in 10000 units of measure specified by prtMarkerAddressabilityUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.10
+  - name: prtMarkerNorthMargin
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.11
+    type: gauge
+    help: The margin, in units identified by prtMarkerAddressabilityUnit, from the
+      leading edge of the medium as the medium flows through the marking engine with
+      the side to be imaged facing the observer - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.11
+  - name: prtMarkerSouthMargin
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.12
+    type: gauge
+    help: The margin from the South edge (see prtMarkerNorthMargin) of the medium
+      in units identified by prtMarkerAddressabilityUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.12
+  - name: prtMarkerWestMargin
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.13
+    type: gauge
+    help: The margin from the West edge (see prtMarkerNorthMargin) of the medium in
+      units identified by prtMarkerAddressabilityUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.13
+  - name: prtMarkerEastMargin
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.14
+    type: gauge
+    help: The margin from the East edge (see prtMarkerNorthMargin) of the medium in
+      units identified by prtMarkerAddressabilityUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.14
+  - name: prtMarkerStatus
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.15
+    type: gauge
+    help: The current status of this marker sub-unit - 1.3.6.1.4.1.11.2.3.9.4.2.2.10.2.1.15
+  - name: prtMarkerSuppliesMarkerIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.2
+    type: gauge
+    help: The value of prtMarkerIndex corresponding to the marking sub-unit with which
+      this marker supply sub-unit is associated. - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.2
+  - name: prtMarkerSuppliesColorantIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.3
+    type: gauge
+    help: The value of prtMarkerColorantIndex corresponding to the colorant with which
+      this marker supply sub-unit is associated - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.3
+  - name: prtMarkerSuppliesClass
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.4
+    type: gauge
+    help: Indicates whether this supply entity represents a supply that is consumed
+      or a receptacle that is filled. - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.4
+  - name: prtMarkerSuppliesType
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.5
+    type: gauge
+    help: The type of this supply. - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.5
+  - name: prtMarkerSuppliesDescription
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.6
+    type: OctetString
+    help: The description of this supply container/receptacle in the localization
+      specified by prtGeneralCurrentLocalization - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.6
+  - name: prtMarkerSuppliesSupplyUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.7
+    type: gauge
+    help: Unit of measure of this marker supply container/receptacle. - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.7
+  - name: prtMarkerSuppliesMaxCapacity
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.8
+    type: gauge
+    help: The maximum capacity of this supply container/receptacle expressed in prtMarkerSuppliesSupplyUnit
+      - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.8
+  - name: prtMarkerSuppliesLevel
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.9
+    type: gauge
+    help: The current level if this supply is a container; the remaining space if
+      this supply is a receptacle - 1.3.6.1.4.1.11.2.3.9.4.2.2.11.1.1.9
+  - name: prtMarkerColorantMarkerIndex
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.2
+    type: gauge
+    help: The value of prtMarkerIndex corresponding to the marker sub-unit with which
+      this colorant entry is associated. - 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.2
+  - name: prtMarkerColorantRole
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.3
+    type: gauge
+    help: The role played by this colorant. - 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.3
+  - name: prtMarkerColorantValue
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.4
+    type: OctetString
+    help: 'The name of the color of this colorant using standardized string names
+      from ISO 10175 (DPA) and ISO 10180 (SPDL) which are: other unknown white red
+      green blue cyan magenta yellow black Implementors may add additional string
+      values - 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.4'
+  - name: prtMarkerColorantTonality
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.5
+    type: gauge
+    help: The distinct levels of tonality realizable by a marking sub-unit when using
+      this colorant - 1.3.6.1.4.1.11.2.3.9.4.2.2.12.1.1.5
+  - name: prtMediaPathMaxSpeedPrintUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.2
+    type: gauge
+    help: The unit of measure used in specifying the speed of all media paths in the
+      printer - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.2
+  - name: prtMediaPathMediaSizeUnit
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.3
+    type: gauge
+    help: The units of measure of media size for use in calculating and relaying dimensional
+      values for all media paths in the printer. - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.3
+  - name: prtMediaPathMaxSpeed
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.4
+    type: gauge
+    help: The maximum printing speed of this media path expressed in prtMediaPathMaxSpeedUnit's
+      - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.4
+  - name: prtMediaPathMaxMediaFeedDir
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.5
+    type: gauge
+    help: The maximum physical media size in the feed direction of this media path
+      expressed in units of measure specified by PrtMediaPathMediaSizeUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.5
+  - name: prtMediaPathMaxMediaXFeedDir
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.6
+    type: gauge
+    help: The maximum physical media size across the feed direction of this media
+      path expressed in units of measure specified by prtMediaPathMediaSizeUnit -
+      1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.6
+  - name: prtMediaPathMinMediaFeedDir
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.7
+    type: gauge
+    help: The minimum physical media size in the feed direction of this media path
+      expressed in units of measure specified by prtMediaPathMediaSizeUnit - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.7
+  - name: prtMediaPathMinMediaXFeedDir
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.8
+    type: gauge
+    help: The minimum physical media size across the feed direction of this media
+      path expressed in units of measure specified by prtMediaPathMediaSizeUnit -
+      1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.8
+  - name: prtMediaPathType
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.9
+    type: gauge
+    help: The type of the media path for this media path - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.9
+  - name: prtMediaPathDescription
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.10
+    type: OctetString
+    help: The manufacturer-provided description of this media path in the localization
+      specified by prtGeneralCurrentLocalization. - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.10
+  - name: prtMediaPathStatus
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.11
+    type: gauge
+    help: The current status of this media path - 1.3.6.1.4.1.11.2.3.9.4.2.2.13.4.1.11
+  - name: prtInterpreterLangFamily
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.2
+    type: gauge
+    help: The family name of a Page Description Language (PDL) or control language
+      which this interpreter in the printer can interpret or emulate - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.2
+  - name: prtInterpreterLangLevel
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.3
+    type: OctetString
+    help: The level of the language which this interpreter is interpreting or emulating
+      - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.3
+  - name: prtInterpreterLangVersion
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.4
+    type: OctetString
+    help: The date code or version of the language which this interpreter is interpreting
+      or emulating - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.4
+  - name: prtInterpreterDescription
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.5
+    type: OctetString
+    help: A string to identify this interpreter in the localization specified by prtGeneralCurrentLocalization
+      as opposed to the language which is being interpreted - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.5
+  - name: prtInterpreterVersion
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.6
+    type: OctetString
+    help: The date code, version number, or other product specific information tied
+      to this interpreter - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.6
+  - name: prtInterpreterDefaultOrientation
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.7
+    type: gauge
+    help: The current orientation default for this interpreter - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.7
+  - name: prtInterpreterFeedAddressability
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.8
+    type: gauge
+    help: The maximum interpreter addressability in the feed direction in 10000 prtMarkerAddressabilityUnits
+      (see prtMarkerAddressabilityFeedDir ) for this interpreter - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.8
+  - name: prtInterpreterXFeedAddressability
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.9
+    type: gauge
+    help: The maximum interpreter addressability in the cross feed direction in 10000
+      prtMarkerAddressabilityUnits (see prtMarkerAddressabilityXFeedDir) for this
+      interpreter - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.9
+  - name: prtInterpreterDefaultCharSetIn
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.10
+    type: gauge
+    help: The default coded character set for input octets encountered outside a context
+      in which the Page Description Language established the interpretation of the
+      octets - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.10
+  - name: prtInterpreterDefaultCharSetOut
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.11
+    type: gauge
+    help: The default character set for data coming from this interpreter through
+      the printer's output channel (i.e - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.11
+  - name: prtInterpreterTwoWay
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.12
+    type: gauge
+    help: Indicates whether or not this interpreter returns information back to the
+      host. - 1.3.6.1.4.1.11.2.3.9.4.2.2.15.1.1.12
+  - name: prtConsoleDisplayBufferText
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.16.5.1.2
+    type: OctetString
+    help: The content of a line in the logical display buffer of the operator's console
+      of the printer - 1.3.6.1.4.1.11.2.3.9.4.2.2.16.5.1.2
+  - name: prtConsoleOnTime
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.2
+    type: gauge
+    help: This object, in conjunction with prtConsoleOffTime, defines the current
+      status of the light - 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.2
+  - name: prtConsoleOffTime
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.3
+    type: gauge
+    help: This object, in conjunction with prtConsoleOnTime, defines the current status
+      of the light - 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.3
+  - name: prtConsoleColor
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.4
+    type: gauge
+    help: The color of this light. - 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.4
+  - name: prtConsoleDescription
+    oid: 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.5
+    type: OctetString
+    help: The vendor description or label of this light in the localization specified
+      by prtConsoleLocalization. - 1.3.6.1.4.1.11.2.3.9.4.2.2.17.6.1.5
+  - name: inetTrapDestinationNum
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.1
+    type: gauge
+    help: Total number of ACTIVE rows in the inetTrapDestination table. - 1.3.6.1.4.1.11.2.3.4.3.22.1.1
+  - name: inetTrapRowIndex
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.1
+    type: gauge
+    help: Row Index of the inetTrapDestination table - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.1
+  - name: inetTrapRowStatus
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.2
+    type: gauge
+    help: Individual Row Status 1 - Row is Active - Row is activated and ready - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.2
+  - name: inetTrapAddressType
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.3
+    type: gauge
+    help: Protocol family for trap - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.3
+  - name: inetTrapAddress
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.4
+    type: OctetString
+    help: IPv4/IPv6/FQDN address of trap destination node. - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.4
+  - name: inetTrapPort
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.5
+    type: gauge
+    help: Port number of the inetTrap Destination to which the trap is sent. - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.5
+  - name: inetTrapCommunityName
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.6
+    type: OctetString
+    help: Trap community name specified in the trap packet. - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.6
+  - name: inetTrapVersion
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.7
+    type: gauge
+    help: Trap version, one of the following 0 = snmpV1 1 = snmpV2 3 = Inform Default
+      is 1 = snmpV2 - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.7
+  - name: inetTrapStyle
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.8
+    type: gauge
+    help: This OID is read-write - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.8
+  - name: inetTrapPMLOids
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.9
+    type: OctetString
+    help: This OID is a read-write - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.9
+  - name: inetTrapErrorValue
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.10
+    type: gauge
+    help: Gives the error value in case if the server is not able to send the traps
+      to the configured trapDestination entry - 1.3.6.1.4.1.11.2.3.4.3.22.1.2.1.10
+  - name: inetTrapFilterDelay
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.4
+    type: gauge
+    help: The purpose of the trap filter feature is to prevent multiple traps of the
+      same specificTrapId to be sent within a short period of time - 1.3.6.1.4.1.11.2.3.4.3.22.1.4
+  - name: inetTrapBaseTimeout
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.5
+    type: gauge
+    help: Applicable only if trapVersion is set to Inform - 1.3.6.1.4.1.11.2.3.4.3.22.1.5
+  - name: inetTrapRetryNum
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.6
+    type: gauge
+    help: Applicable only if trapVersion is set to Inform - 1.3.6.1.4.1.11.2.3.4.3.22.1.6
+  - name: inetTrapFQDNResolution
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.7
+    type: gauge
+    help: The purpose of this field is to configure various options for resolving
+      FQDN - 1.3.6.1.4.1.11.2.3.4.3.22.1.7
+  - name: inetTrapFQDNMultipleAddressBehavior
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.8
+    type: gauge
+    help: 1 - Send traps to the first resolved address 2 - Send traps to all resolved
+      address. - 1.3.6.1.4.1.11.2.3.4.3.22.1.8
+  - name: inetTrapUseDNSCache
+    oid: 1.3.6.1.4.1.11.2.3.4.3.22.1.9
+    type: gauge
+    help: Depending upon the value of this field resolution of FQDN will happen everytime
+      when a trap is sent. - 1.3.6.1.4.1.11.2.3.4.3.22.1.9
+  - name: npSysStatusMessage
+    oid: 1.3.6.1.4.1.11.2.3.4.3.1.2
+    type: DisplayString
+    help: A status string reflecting the current state of the card and peripheral.
+      - 1.3.6.1.4.1.11.2.3.4.3.1.2
+  - name: npSysModelNumber
+    oid: 1.3.6.1.4.1.11.2.3.4.3.1.10
+    type: OctetString
+    help: The HP model number of the device. - 1.3.6.1.4.1.11.2.3.4.3.1.10
+  - name: npSysNetworkConnectors
+    oid: 1.3.6.1.4.1.11.2.3.4.3.1.11
+    type: gauge
+    help: This object describes the network connectors supported by the device - 1.3.6.1.4.1.11.2.3.4.3.1.11
+  - name: npSysCardServices1
+    oid: 1.3.6.1.4.1.11.2.3.4.3.1.16
+    type: gauge
+    help: This object is a bitmap showing what services are available on the card
+      - 1.3.6.1.4.1.11.2.3.4.3.1.16
+  - name: npSysCardServices2
+    oid: 1.3.6.1.4.1.11.2.3.4.3.1.17
+    type: gauge
+    help: This object is a bitmap showing what services are available on the card
+      - 1.3.6.1.4.1.11.2.3.4.3.1.17
+  - name: npSysCardServices3
+    oid: 1.3.6.1.4.1.11.2.3.4.3.1.22
+    type: gauge
+    help: This object is a bitmap showing what services are available on the card
+      - 1.3.6.1.4.1.11.2.3.4.3.1.22
+  - name: npConnsIP
+    oid: 1.3.6.1.4.1.11.2.3.4.3.4.11
+    type: IpAddr
+    help: Remote IP address of the node currently connected to the card - 1.3.6.1.4.1.11.2.3.4.3.4.11
+  - name: npCfgSource
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.1
+    type: gauge
+    help: This object indicates how the device obtained its IP configuration. - 1.3.6.1.4.1.11.2.3.4.3.5.1
+  - name: npCfgYiaddr
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.2
+    type: IpAddr
+    help: The IP address assigned to the card from the BOOTP reply yiaddr field. -
+      1.3.6.1.4.1.11.2.3.4.3.5.2
+  - name: npCfgSiaddr
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.3
+    type: IpAddr
+    help: The IP address of the TFTP server from the BOOTP reply siaddr field. - 1.3.6.1.4.1.11.2.3.4.3.5.3
+  - name: npCfgLogServer
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.5
+    type: IpAddr
+    help: The IP address of the Syslog Server - 1.3.6.1.4.1.11.2.3.4.3.5.5
+  - name: npCfgSyslogFacility
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.6
+    type: gauge
+    help: This specifies the facility identifier used in syslog messages generated
+      by the card. - 1.3.6.1.4.1.11.2.3.4.3.5.6
+  - name: npCfgAccessState
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.7
+    type: gauge
+    help: An indication of whether or not the requesting host is allowed to connect
+      to the card as dictated by the access list. - 1.3.6.1.4.1.11.2.3.4.3.5.7
+  - name: npCfgAccessListNum
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.8
+    type: gauge
+    help: The number of access list entries. - 1.3.6.1.4.1.11.2.3.4.3.5.8
+  - name: npCfgAccessListIndex
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.9.1.1
+    type: gauge
+    help: Index to the configuration access list table. - 1.3.6.1.4.1.11.2.3.4.3.5.9.1.1
+  - name: npCfgAccessListAddress
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.9.1.2
+    type: IpAddr
+    help: The Access List Address contains the list of hosts or network of hosts that
+      are allowed to connect to the print server over ip - 1.3.6.1.4.1.11.2.3.4.3.5.9.1.2
+  - name: npCfgAccessListAddrMask
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.9.1.3
+    type: IpAddr
+    help: Address mask used to help determine whether or not a given IP address is
+      allowed access to the print server - 1.3.6.1.4.1.11.2.3.4.3.5.9.1.3
+  - name: npCfgSubnetMask
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.12
+    type: IpAddr
+    help: The subnet mask associated with the IP address of this card. - 1.3.6.1.4.1.11.2.3.4.3.5.12
+  - name: npCfgDefaultGateway
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.13
+    type: IpAddr
+    help: This variable contains the IP address of the default router for this card.
+      - 1.3.6.1.4.1.11.2.3.4.3.5.13
+  - name: npCfgDomainName
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.16
+    type: OctetString
+    help: The print server domain name. - 1.3.6.1.4.1.11.2.3.4.3.5.16
+  - name: npCfgIPP
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.18
+    type: gauge
+    help: Below are the different values accepted by this OID - 1.3.6.1.4.1.11.2.3.4.3.5.18
+  - name: npCfgWINSNameServerIdPri
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.22
+    type: IpAddr
+    help: Primary name server for NetBIOS over TCP/IP. - 1.3.6.1.4.1.11.2.3.4.3.5.22
+  - name: npCfgPasswd1Verify
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.28
+    type: OctetString
+    help: Compares string value to passwd1 and returns OK if match, GENERAL ERROR
+      if doesn't match. - 1.3.6.1.4.1.11.2.3.4.3.5.28
+  - name: npCfgPasswd1
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.29
+    type: DisplayString
+    help: Password for root or administrator - 1.3.6.1.4.1.11.2.3.4.3.5.29
+  - name: npCfgBanner
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.31
+    type: gauge
+    help: Line Printer Daemon Protocol (LPD) banner page per I/O port - 1.3.6.1.4.1.11.2.3.4.3.5.31
+  - name: npCfgLinkType
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.35
+    type: gauge
+    help: Network link speed and communication mode. - 1.3.6.1.4.1.11.2.3.4.3.5.35
+  - name: npCfgSnmpDefaultReadCmnty
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.40
+    type: gauge
+    help: Controls Default Read Community Name access - 1.3.6.1.4.1.11.2.3.4.3.5.40
+  - name: npCfgBonjourServiceName
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.44
+    type: OctetString
+    help: The name by which all the Jetdirect services will be advertised by Multicast
+      Domain Name System (Bonjour) - 1.3.6.1.4.1.11.2.3.4.3.5.44
+  - name: npCfgBonjourDomainName
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.46
+    type: OctetString
+    help: The name used as the 'target name' in the DNS SRV records by Multicast Domain
+      Name System (Bonjour). - 1.3.6.1.4.1.11.2.3.4.3.5.46
+  - name: npCfgIPv6DomainName
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.49
+    type: OctetString
+    help: IPv6 Domain Name. - 1.3.6.1.4.1.11.2.3.4.3.5.49
+  - name: npCfgIPv6ConfigState
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.50
+    type: gauge
+    help: IPv6 stack status event; IPv6 enabled/disabled. - 1.3.6.1.4.1.11.2.3.4.3.5.50
+  - name: npCfgIPConfigPrecedence
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.59
+    type: OctetString
+    help: Allows to set uniform rules for parameter overwrite by different configuration
+      methods - 1.3.6.1.4.1.11.2.3.4.3.5.59
+  - name: npCfgPortConfig
+    oid: 1.3.6.1.4.1.11.2.3.4.3.5.65
+    type: gauge
+    help: Network link speed and communication mode. - 1.3.6.1.4.1.11.2.3.4.3.5.65
+  - name: npTcpTFTPFileName
+    oid: 1.3.6.1.4.1.11.2.3.4.3.6.9
+    type: OctetString
+    help: The TFTP configuration file name. - 1.3.6.1.4.1.11.2.3.4.3.6.9
+  - name: npTcpTFTPServerId
+    oid: 1.3.6.1.4.1.11.2.3.4.3.6.10
+    type: IpAddr
+    help: TFTP server from which configuration information is obtained. - 1.3.6.1.4.1.11.2.3.4.3.6.10
+  - name: npTcpSyslogMax
+    oid: 1.3.6.1.4.1.11.2.3.4.3.6.11
+    type: gauge
+    help: Maximum number of syslog packets to be sent per minute - 1.3.6.1.4.1.11.2.3.4.3.6.11
+  - name: npTcpAppSyslogPriority
+    oid: 1.3.6.1.4.1.11.2.3.4.3.6.12
+    type: gauge
+    help: Priority below which the syslog messages will not be sent - 1.3.6.1.4.1.11.2.3.4.3.6.12
+  - name: npCtlReconfig
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.8
+    type: gauge
+    help: Writing any value to this variable causes the card to reconfigure itself
+      by doing the BOOTP/TFTP configuration activity. - 1.3.6.1.4.1.11.2.3.4.3.7.8
+  - name: npCtlProtocolSet
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.9
+    type: gauge
+    help: This is a 4 byte integer value - 1.3.6.1.4.1.11.2.3.4.3.7.9
+  - name: npCtlSNMPEnableDisable
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.14
+    type: gauge
+    help: 0 = SNMP disabled 1 = SNMP enabled If SNMP is enabled, setting this object
+      to 0 will disable SNMP on the print server - 1.3.6.1.4.1.11.2.3.4.3.7.14
+  - name: npCtlTelnet
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.19
+    type: gauge
+    help: Configure Telnet service - 1.3.6.1.4.1.11.2.3.4.3.7.19
+  - name: npCtlFTP
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.20
+    type: gauge
+    help: Configure File Transfer Protocol (FTP) service - 1.3.6.1.4.1.11.2.3.4.3.7.20
+  - name: npCtlSLP
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.21
+    type: gauge
+    help: Configure Service Location Protocol (SLP) service - 1.3.6.1.4.1.11.2.3.4.3.7.21
+  - name: npCtlLPD
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.22
+    type: gauge
+    help: Configure Line Printer Daemon Protocol (LPD) service - 1.3.6.1.4.1.11.2.3.4.3.7.22
+  - name: npCtl9100
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.24
+    type: gauge
+    help: Configure TCP port 9100 printing - 1.3.6.1.4.1.11.2.3.4.3.7.24
+  - name: npCtlSysLog
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.26
+    type: gauge
+    help: Configure Syslog service - 1.3.6.1.4.1.11.2.3.4.3.7.26
+  - name: npCtlSnmpVersionAccess
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.27
+    type: gauge
+    help: Manages an SNMP version's read and write access to the MIB. - 1.3.6.1.4.1.11.2.3.4.3.7.27
+  - name: npCtlSnmpV3InitAccount
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.28
+    type: gauge
+    help: Used to create initial SNMPv3 account - 1.3.6.1.4.1.11.2.3.4.3.7.28
+  - name: npCtlBonjour
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.29
+    type: gauge
+    help: Configure Multicast Domain Name Service - 1.3.6.1.4.1.11.2.3.4.3.7.29
+  - name: npCtlNetworkConnectionMode
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.32
+    type: gauge
+    help: This object controls the selection of the active network interface used
+      for communication - 1.3.6.1.4.1.11.2.3.4.3.7.32
+  - name: npCtlIPSecurityPolicy
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.34
+    type: gauge
+    help: Disable IP Security (IPSec) or Firewall - 1.3.6.1.4.1.11.2.3.4.3.7.34
+  - name: npCtlWSDiscovery
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.36
+    type: gauge
+    help: Web Services Discovery enable/disable. - 1.3.6.1.4.1.11.2.3.4.3.7.36
+  - name: npCtlWSPrint
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.37
+    type: gauge
+    help: Web Services Print enable/disable. - 1.3.6.1.4.1.11.2.3.4.3.7.37
+  - name: npCtlLLMNR
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.38
+    type: gauge
+    help: Link-Local Multicast Name Resolution( LLMNR ) enable/disable. - 1.3.6.1.4.1.11.2.3.4.3.7.38
+  - name: npCtlFpDot11WirelessState
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.47
+    type: gauge
+    help: Use for enabling and disabling Wireless Radio - 1.3.6.1.4.1.11.2.3.4.3.7.47
+  - name: npCtlAirPrintStatus
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.68
+    type: gauge
+    help: Use to Enabled/Disabled AirPrint functionality - 1.3.6.1.4.1.11.2.3.4.3.7.68
+  - name: npCtlAllowRFC5746TLS_SSLCompatibilityMode
+    oid: 1.3.6.1.4.1.11.2.3.4.3.7.70
+    type: gauge
+    help: Added to support RFC-5746 - 1.3.6.1.4.1.11.2.3.4.3.7.70
+  - name: npPortNumPorts
+    oid: 1.3.6.1.4.1.11.2.3.4.3.13.1
+    type: gauge
+    help: The number of peripheral interfaces supported by this device. - 1.3.6.1.4.1.11.2.3.4.3.13.1
+  - name: npDHCPserver
+    oid: 1.3.6.1.4.1.11.2.3.4.3.16.2
+    type: IpAddr
+    help: IP address of DHCP server that provided this unit with an IP address via
+      the DHCP protocol. - 1.3.6.1.4.1.11.2.3.4.3.16.2
+  - name: npDhcpFQDNBehavior
+    oid: 1.3.6.1.4.1.11.2.3.4.3.16.4
+    type: gauge
+    help: This object defines the FQDN behavior in Jetdirect - 1.3.6.1.4.1.11.2.3.4.3.16.4
+  - name: npWebCheckACLforHTTP
+    oid: 1.3.6.1.4.1.11.2.3.4.3.18.17
+    type: gauge
+    help: Configure checking of HTTP web connections against Access Control List -
+      1.3.6.1.4.1.11.2.3.4.3.18.17
+  - name: npSecurityDot11ServerAuthentication
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.1
+    type: gauge
+    help: 'Server-Based Authentication with the following bitwise values: None(0),
+      EAP-MD5(1), EAP-TLS(2), LEAP(4), PEAP(8), TTLS(16) - 1.3.6.1.4.1.11.2.3.4.3.20.1'
+  - name: npSecurityDot1xEapMd5Identity
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.2
+    type: OctetString
+    help: Radius MD5 authentication User Name. - 1.3.6.1.4.1.11.2.3.4.3.20.2
+  - name: npSecurityDot1xTLSAuthServerId
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.3
+    type: OctetString
+    help: TLS authentication Server ID. - 1.3.6.1.4.1.11.2.3.4.3.20.3
+  - name: npSecurityPublicKey
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.4
+    type: OctetString
+    help: The public key of a public/private key pair to be used by applications to
+      set encrypted values. - 1.3.6.1.4.1.11.2.3.4.3.20.4
+  - name: npSecurityDot11SignalStrength
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.8
+    type: gauge
+    help: A weighted average over time of the signal strength between the access point
+      and the print server in infrastructure mode - 1.3.6.1.4.1.11.2.3.4.3.20.8
+  - name: npSecurityDot11SSID
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.9.1.2
+    type: OctetString
+    help: A discovered SSID value. - 1.3.6.1.4.1.11.2.3.4.3.20.9.1.2
+  - name: npSecurityDot11SSIDTableNumEntries
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.10
+    type: gauge
+    help: Displays the number of discovered SSIDs in the SSID Table. - 1.3.6.1.4.1.11.2.3.4.3.20.10
+  - name: npSecurityDot11BSSID
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.16
+    type: OctetString
+    help: The BSSID value (hardware address of the access point). - 1.3.6.1.4.1.11.2.3.4.3.20.16
+  - name: npSecurityDot11ExactMatchServerId
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.19
+    type: gauge
+    help: Indicates if an exact match is required on the EAP Server ID. - 1.3.6.1.4.1.11.2.3.4.3.20.19
+  - name: npSecurityDot11EncryptionStrength
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.20
+    type: gauge
+    help: Indicates the EAP encrytpion strength. - 1.3.6.1.4.1.11.2.3.4.3.20.20
+  - name: npSecuritySslRedirection
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.23
+    type: gauge
+    help: Setting this object causes the SSL redirection connection to be enabled
+      or disabled. - 1.3.6.1.4.1.11.2.3.4.3.20.23
+  - name: npSecurityServicesSupported
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.27
+    type: gauge
+    help: BITWISE indication of the 802.11 security services this device supports
+      - 1.3.6.1.4.1.11.2.3.4.3.20.27
+  - name: npSecurityDot11Encryption
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.28
+    type: gauge
+    help: 802.11 encryption method currently enabled - 1.3.6.1.4.1.11.2.3.4.3.20.28
+  - name: npSecurityDot11MulticastCipher
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.29
+    type: gauge
+    help: BITWISE indication of the multicast cipher method currently enabled - 1.3.6.1.4.1.11.2.3.4.3.20.29
+  - name: npSecurityDot11BeaconTableNumEntries
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.34
+    type: gauge
+    help: Displays the number of discovered SSIDs in the DOT11 Beacon Table. - 1.3.6.1.4.1.11.2.3.4.3.20.34
+  - name: npSecurityDot11DynamicEncryption
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.42
+    type: gauge
+    help: WPA mode - 1.3.6.1.4.1.11.2.3.4.3.20.42
+  - name: npSecurityDot11LinkAuthentication
+    oid: 1.3.6.1.4.1.11.2.3.4.3.20.43
+    type: gauge
+    help: DOT11 Link Authentication modes - 1.3.6.1.4.1.11.2.3.4.3.20.43
+  - name: npNpiPaeClass
+    oid: 1.3.6.1.4.1.11.2.3.4.3.8.3.2
+    type: gauge
+    help: The class assigned to the peripheral onto which this card is plugged. -
+      1.3.6.1.4.1.11.2.3.4.3.8.3.2
+  - name: npNpiPaeIdentification
+    oid: 1.3.6.1.4.1.11.2.3.4.3.8.3.3
+    type: gauge
+    help: The Identification number of the peripheral - 1.3.6.1.4.1.11.2.3.4.3.8.3.3
+  - name: npNpiCaeClass
+    oid: 1.3.6.1.4.1.11.2.3.4.3.8.4.2
+    type: gauge
+    help: The class of this network peripheral card. - 1.3.6.1.4.1.11.2.3.4.3.8.4.2
+  - name: npCRCIndex
+    oid: 1.3.6.1.4.1.11.2.3.4.3.15.1.1
+    type: gauge
+    help: ' - 1.3.6.1.4.1.11.2.3.4.3.15.1.1'
+  - name: npCRCText
+    oid: 1.3.6.1.4.1.11.2.3.4.3.15.1.2
+    type: OctetString
+    help: ' - 1.3.6.1.4.1.11.2.3.4.3.15.1.2'
+  - name: npCRCChannel
+    oid: 1.3.6.1.4.1.11.2.3.4.3.15.1.3
+    type: gauge
+    help: ' - 1.3.6.1.4.1.11.2.3.4.3.15.1.3'
+  - name: simm1_type
+    oid: 1.3.6.1.4.1.11.2.3.4.1.1.4
+    type: gauge
+    help: Returns an indication of the type of option installed in SIMM slot 1 - 1.3.6.1.4.1.11.2.3.4.1.1.4
+  - name: simm1_capacity
+    oid: 1.3.6.1.4.1.11.2.3.4.1.1.5
+    type: gauge
+    help: Returns an indication of the capacity of the SIMM installed in SIMM slot
+      1 - 1.3.6.1.4.1.11.2.3.4.1.1.5
+  - name: self_test
+    oid: 1.3.6.1.4.1.11.2.3.5.1
+    type: gauge
+    help: Writing this object allows a device self test to be started - 1.3.6.1.4.1.11.2.3.5.1
+  - name: print_internal_page
+    oid: 1.3.6.1.4.1.11.2.3.5.2
+    type: gauge
+    help: Writing this object to a value other than eNotPrintingAnInternalPage causes
+      the device to attempt to print an internally generated page - 1.3.6.1.4.1.11.2.3.5.2
+  - name: error1_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.1.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 1 occurred - 1.3.6.1.4.1.11.2.3.11.1.1
+  - name: error1_code
+    oid: 1.3.6.1.4.1.11.2.3.11.1.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.1.2
+  - name: error2_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.2.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 2 occurred - 1.3.6.1.4.1.11.2.3.11.2.1
+  - name: error2_code
+    oid: 1.3.6.1.4.1.11.2.3.11.2.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.2.2
+  - name: error3_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.3.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 3 occurred - 1.3.6.1.4.1.11.2.3.11.3.1
+  - name: error3_code
+    oid: 1.3.6.1.4.1.11.2.3.11.3.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.3.2
+  - name: error4_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.4.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 4 occurred - 1.3.6.1.4.1.11.2.3.11.4.1
+  - name: error4_code
+    oid: 1.3.6.1.4.1.11.2.3.11.4.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.4.2
+  - name: error5_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.5.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 5 occurred - 1.3.6.1.4.1.11.2.3.11.5.1
+  - name: error5_code
+    oid: 1.3.6.1.4.1.11.2.3.11.5.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.5.2
+  - name: error6_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.6.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 6 occurred - 1.3.6.1.4.1.11.2.3.11.6.1
+  - name: error6_code
+    oid: 1.3.6.1.4.1.11.2.3.11.6.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.6.2
+  - name: error7_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.7.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 7 occurred - 1.3.6.1.4.1.11.2.3.11.7.1
+  - name: error7_code
+    oid: 1.3.6.1.4.1.11.2.3.11.7.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.7.2
+  - name: error8_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.8.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 8 occurred - 1.3.6.1.4.1.11.2.3.11.8.1
+  - name: error8_code
+    oid: 1.3.6.1.4.1.11.2.3.11.8.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.8.2
+  - name: error9_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.9.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 9 occurred - 1.3.6.1.4.1.11.2.3.11.9.1
+  - name: error9_code
+    oid: 1.3.6.1.4.1.11.2.3.11.9.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.9.2
+  - name: error10_time_stamp
+    oid: 1.3.6.1.4.1.11.2.3.11.10.1
+    type: gauge
+    help: Contains some sort of time stamp indicating when error 10 occurred - 1.3.6.1.4.1.11.2.3.11.10.1
+  - name: error10_code
+    oid: 1.3.6.1.4.1.11.2.3.11.10.2
+    type: gauge
+    help: Contains a device specific error code - 1.3.6.1.4.1.11.2.3.11.10.2
+  - name: firmware_download_version
+    oid: 1.3.6.1.4.1.11.2.3.18.7
+    type: OctetString
+    help: This object will return a string value representing the current revision
+      of firmware that the printer is operating with - 1.3.6.1.4.1.11.2.3.18.7

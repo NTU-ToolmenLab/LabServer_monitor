@@ -20,6 +20,7 @@ services:
       - snmpexporter_router:snmpexporterrouter
       - traefik
       - blackbox
+      - snmpexporter_hp:snmpexporterhp
     depends_on:
       - node-exporter
       - gpuexporter
@@ -27,6 +28,7 @@ services:
       - snmpexporter
       - snmpexporter_router
       - blackbox
+      - snmpexporter_hp
     networks:
       - mynet
 
@@ -96,6 +98,13 @@ services:
     networks:
       - mynet
 
+  snmpexporter_hp:
+    restart: always
+    image: prom/snmp-exporter
+    volumes:
+      - ./snmp/hp_snmp.yml:/etc/snmp_exporter/snmp.yml
+    networks:
+      - mynet
 
 networks:
   mynet:

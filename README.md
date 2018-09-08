@@ -176,5 +176,22 @@ my traefik container name is `traefik`
 
 grafana board `board/traefik.json`
 
+## HP printer
+cd `snmp_exporter/generator`
+
+go to https://spp.itcs.hp.com/spp://spp.itcs.hp.com/spp/
+
+and click `SDC > public > LaserJet and Digital Sender > Printer Management > MIBS > Phoenix Device MIBs > lj425` and click donwload
+
+and download some dependency `IF-MIB RFC1155-SMI.txt  RFC1158-MIB  RFC-1212-MIB.txt  RFC1213-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
+
+put them into `mibs`
+
+then execute `docker run -it -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ prom/snmp-generator`
+
+remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml file).
+
+then test it `docker run -it --rm -p 9116:9116 -v $PWD/snmp.yml:/etc/snmp_exporter/snmp.yml prom/snmp-exporter`
+
 # LICENSE
 MIT

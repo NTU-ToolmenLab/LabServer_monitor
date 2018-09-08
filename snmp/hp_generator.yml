@@ -1,0 +1,10 @@
+modules:
+  hp:
+    walk:
+      - sysUpTime
+      - interfaces
+      - ifXTable
+      - hpPrintServer
+    lookups:
+      - old_index: ifIndex
+        new_index: ifDescr
