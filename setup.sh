@@ -2,6 +2,7 @@ docker pull prom/node-exporter
 docker pull prom/prometheus
 docker pull grafana/grafana
 docker pull prom/snmp-exporter
+docker pull prom/blackbox-exporter
 mkdir grafana_data
 chown 472:472 grafana_data
 mkdir prometheus_data

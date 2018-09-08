@@ -3,42 +3,42 @@ global:
   evaluation_interval: 5s # By default, scrape targets every 15 seconds.
 
 scrape_configs:
-  - job_name: 'prometheus'
+  - job_name: prometheus
     scrape_interval: 5s
     static_configs:
-         - targets: ['localhost:9090']
+      - targets: [localhost:9090]
 
-  - job_name: 'node-exporter'
+  - job_name: node-exporter
     scrape_interval: 5s
     static_configs:
-         - targets: ['nodeexporter:9100']
+      - targets: [nodeexporter:9100]
 
-  - job_name: 'grafana'
+  - job_name: grafana
     scrape_interval: 5s
     static_configs:
-         - targets: ['grafana:3000']
+      - targets: [grafana:3000]
 
-  - job_name: 'gpuexporter'
+  - job_name: gpuexporter
     scrape_interval: 5s
     static_configs:
-         - targets: ['gpuexporter:9101']
+      - targets: [gpuexporter:9101]
 
-  - job_name: 'apcupsd'
+  - job_name: apcupsd
     scrape_interval: 5s
     static_configs:
-         - targets: ['apc:9162']
+      - targets: [apc:9162]
 
-  - job_name: 'snmp_nas'
+  - job_name: snmp_nas
     scrape_interval: 15s
     scrape_timeout: 15s
     metrics_path: /snmp
     params:
       module: [synology]
-      target: [192.168.1.2]
+      target: [192.168.1.4]
     static_configs:
-      - targets: ['snmpexporter:9116']
+      - targets: [snmpexporter:9116]
 
-  - job_name: 'snmp_router'
+  - job_name: snmp_router
     scrape_interval: 15s
     scrape_timeout: 15s
     metrics_path: /snmp
@@ -46,9 +46,9 @@ scrape_configs:
       module: [udc]
       target: [192.168.1.1]
     static_configs:
-      - targets: ['snmpexporterrouter:9116']
+      - targets: [snmpexporterrouter:9116]
 
-  - job_name: 'snmp_switch'
+  - job_name: snmp_switch
     scrape_interval: 15s
     scrape_timeout: 15s
     metrics_path: /snmp
@@ -56,14 +56,14 @@ scrape_configs:
       module: [ddwrt]
       target: [192.168.34.2]
     static_configs:
-      - targets: ['snmpexporter:9116']
+      - targets: [snmpexporter:9116]
 
-  - job_name: 'traefik'
+  - job_name: traefik
     scrape_interval: 5s
     static_configs:
-      - targets: ['traefik:8080']
+      - targets: [traefik:8080]
 
-  - job_name: 'blackbox'
+  - job_name: blackbox
     scrape_interval: 5s
     metrics_path: /probe
     params:

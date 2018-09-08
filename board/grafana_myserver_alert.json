@@ -9,10 +9,45 @@
       "pluginName": "Prometheus"
     },
     {
+      "name": "VAR_SERVER_JOB",
+      "type": "constant",
+      "label": "server_job",
+      "value": "node-exporter",
+      "description": ""
+    },
+    {
+      "name": "VAR_GPU_JOB",
+      "type": "constant",
+      "label": "gpu_job",
+      "value": "gpuexporter",
+      "description": ""
+    },
+    {
+      "name": "VAR_UPS_JOB",
+      "type": "constant",
+      "label": "ups_job",
+      "value": "apcupsd",
+      "description": ""
+    },
+    {
+      "name": "VAR_ROUTER_JOB",
+      "type": "constant",
+      "label": "router_job",
+      "value": "snmp_router",
+      "description": ""
+    },
+    {
       "name": "VAR_SWITCH_JOB",
       "type": "constant",
       "label": "switch_job",
       "value": "snmp_switch",
+      "description": ""
+    },
+    {
+      "name": "VAR_TRAEFIK_JOB",
+      "type": "constant",
+      "label": "traefik_job",
+      "value": "traefik",
       "description": ""
     }
   ],
@@ -71,7 +106,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1536398182938,
+  "iteration": 1536407639831,
   "links": [],
   "panels": [
     {
@@ -1664,7 +1699,7 @@
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 3
+            "y": 63
           },
           "id": 33,
           "isNew": true,
@@ -1770,7 +1805,7 @@
             "h": 7,
             "w": 8,
             "x": 8,
-            "y": 3
+            "y": 63
           },
           "id": 35,
           "isNew": true,
@@ -1908,7 +1943,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 3
+            "y": 63
           },
           "id": 37,
           "isNew": true,
@@ -2014,7 +2049,7 @@
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 10
+            "y": 70
           },
           "id": 39,
           "isNew": true,
@@ -2102,7 +2137,7 @@
             "h": 7,
             "w": 8,
             "x": 8,
-            "y": 10
+            "y": 70
           },
           "id": 41,
           "legend": {
@@ -2200,7 +2235,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 10
+            "y": 70
           },
           "id": 43,
           "isNew": true,
@@ -2310,7 +2345,7 @@
             "h": 4,
             "w": 4,
             "x": 0,
-            "y": 17
+            "y": 77
           },
           "id": 45,
           "interval": null,
@@ -2396,7 +2431,7 @@
             "h": 4,
             "w": 4,
             "x": 4,
-            "y": 17
+            "y": 77
           },
           "id": 47,
           "interval": null,
@@ -2480,7 +2515,7 @@
             "h": 4,
             "w": 8,
             "x": 8,
-            "y": 17
+            "y": 77
           },
           "id": 49,
           "interval": null,
@@ -2577,7 +2612,7 @@
             "h": 3,
             "w": 4,
             "x": 0,
-            "y": 38
+            "y": 64
           },
           "id": 105,
           "interval": null,
@@ -2670,7 +2705,7 @@
             "h": 3,
             "w": 4,
             "x": 4,
-            "y": 38
+            "y": 64
           },
           "id": 106,
           "interval": null,
@@ -2762,7 +2797,7 @@
             "h": 3,
             "w": 4,
             "x": 8,
-            "y": 38
+            "y": 64
           },
           "id": 107,
           "interval": null,
@@ -2854,7 +2889,7 @@
             "h": 3,
             "w": 4,
             "x": 12,
-            "y": 38
+            "y": 64
           },
           "id": 108,
           "interval": null,
@@ -2932,7 +2967,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 38
+            "y": 64
           },
           "id": 121,
           "links": [],
@@ -3103,7 +3138,7 @@
             "h": 11,
             "w": 16,
             "x": 0,
-            "y": 41
+            "y": 67
           },
           "id": 101,
           "legend": {
@@ -3210,7 +3245,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 45
+            "y": 71
           },
           "id": 122,
           "links": [],
@@ -3406,7 +3441,7 @@
             "h": 5,
             "w": 4,
             "x": 0,
-            "y": 52
+            "y": 78
           },
           "id": 133,
           "interval": null,
@@ -3493,7 +3528,7 @@
             "h": 5,
             "w": 4,
             "x": 4,
-            "y": 52
+            "y": 78
           },
           "id": 132,
           "interval": null,
@@ -3580,7 +3615,7 @@
             "h": 5,
             "w": 4,
             "x": 8,
-            "y": 52
+            "y": 78
           },
           "id": 131,
           "interval": null,
@@ -3667,7 +3702,7 @@
             "h": 5,
             "w": 4,
             "x": 12,
-            "y": 52
+            "y": 78
           },
           "id": 137,
           "interval": null,
@@ -3754,7 +3789,7 @@
             "h": 5,
             "w": 4,
             "x": 16,
-            "y": 52
+            "y": 78
           },
           "id": 136,
           "interval": null,
@@ -3841,7 +3876,7 @@
             "h": 5,
             "w": 4,
             "x": 20,
-            "y": 52
+            "y": 78
           },
           "id": 103,
           "interval": null,
@@ -3917,7 +3952,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 57
+            "y": 83
           },
           "id": 111,
           "legend": {
@@ -4070,7 +4105,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 57
+            "y": 83
           },
           "id": 124,
           "legend": {
@@ -4192,7 +4227,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 65
+            "y": 91
           },
           "id": 125,
           "legend": {
@@ -4295,7 +4330,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 65
+            "y": 91
           },
           "id": 128,
           "legend": {
@@ -4386,7 +4421,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 73
+            "y": 99
           },
           "id": 129,
           "legend": {
@@ -4511,7 +4546,7 @@
             "h": 5,
             "w": 8,
             "x": 12,
-            "y": 73
+            "y": 99
           },
           "id": 119,
           "links": [],
@@ -4722,7 +4757,7 @@
             "h": 5,
             "w": 4,
             "x": 0,
-            "y": 40
+            "y": 66
           },
           "id": 163,
           "interval": null,
@@ -4802,7 +4837,7 @@
             "h": 5,
             "w": 4,
             "x": 4,
-            "y": 40
+            "y": 66
           },
           "id": 165,
           "interval": null,
@@ -4883,7 +4918,7 @@
             "h": 5,
             "w": 4,
             "x": 8,
-            "y": 40
+            "y": 66
           },
           "id": 167,
           "interval": null,
@@ -4953,7 +4988,7 @@
             "h": 5,
             "w": 12,
             "x": 12,
-            "y": 40
+            "y": 66
           },
           "id": 173,
           "legend": {
@@ -5041,7 +5076,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 45
+            "y": 71
           },
           "id": 171,
           "legend": {
@@ -5144,7 +5179,7 @@
             "h": 5,
             "w": 12,
             "x": 12,
-            "y": 45
+            "y": 71
           },
           "id": 169,
           "legend": {
@@ -5253,7 +5288,7 @@
             "h": 9,
             "w": 5,
             "x": 12,
-            "y": 50
+            "y": 76
           },
           "id": 177,
           "links": [],
@@ -5353,7 +5388,7 @@
             "h": 9,
             "w": 7,
             "x": 17,
-            "y": 50
+            "y": 76
           },
           "id": 179,
           "links": [],
@@ -5416,7 +5451,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 52
+            "y": 78
           },
           "id": 175,
           "legend": {
@@ -5536,7 +5571,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 41
+            "y": 67
           },
           "id": 203,
           "legend": {
@@ -5570,7 +5605,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(ifInOctets{job='$switch_job', ifDescr!~\"LAG.*\"}[5m])",
+              "expr": "irate(ifInOctets{job='$switch_job', ifDescr!~'LAG.*'}[5m])",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -5579,7 +5614,7 @@
               "step": 60
             },
             {
-              "expr": "irate(ifOutOctets{job='$switch_job', ifDescr!~\"LAG.*\"}[5m])",
+              "expr": "irate(ifOutOctets{job='$switch_job', ifDescr!~'LAG.*'}[5m])",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 2,
@@ -5644,7 +5679,7 @@
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 41
+            "y": 67
           },
           "id": 205,
           "legend": {
@@ -5678,7 +5713,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(ifInOctets{job='$switch_job', ifDescr=~\"LAG.*\"}[5m])",
+              "expr": "irate(ifInOctets{job='$switch_job', ifDescr=~'LAG.*'}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "In {{ifDescr}}",
@@ -5686,7 +5721,7 @@
               "step": 60
             },
             {
-              "expr": "irate(ifOutOctets{job='$switch_job', ifDescr=~\"LAG.*\"}[5m])",
+              "expr": "irate(ifOutOctets{job='$switch_job', ifDescr=~'LAG.*'}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Out {{ifDescr}}",
@@ -5750,7 +5785,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 48
+            "y": 74
           },
           "id": 204,
           "legend": {
@@ -5784,7 +5819,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(ifInUcastPkts{job='$switch_job', ifDescr!~\"LAG.*\"}[5m])",
+              "expr": "irate(ifInUcastPkts{job='$switch_job', ifDescr!~'LAG.*'}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "In {{ifDescr}}",
@@ -5792,7 +5827,7 @@
               "step": 60
             },
             {
-              "expr": "irate(ifOutUcastPkts{job='$switch_job', ifDescr!~\"LAG.*\"}[5m])",
+              "expr": "irate(ifOutUcastPkts{job='$switch_job', ifDescr!~'LAG.*'}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Out {{ifDescr}}",
@@ -5856,7 +5891,7 @@
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 48
+            "y": 74
           },
           "id": 206,
           "legend": {
@@ -5890,7 +5925,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "irate(ifInUcastPkts{job='$switch_job', ifDescr=~\"LAG.*\"}[5m])",
+              "expr": "irate(ifInUcastPkts{job='$switch_job', ifDescr=~'LAG.*'}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "In {{ifDescr}}",
@@ -5898,7 +5933,7 @@
               "step": 60
             },
             {
-              "expr": "irate(ifOutUcastPkts{job='$switch_job', ifDescr=~\"LAG.*\"}[5m])",
+              "expr": "irate(ifOutUcastPkts{job='$switch_job', ifDescr=~'LAG.*'}[5m])",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "Out {{ifDescr}}",
@@ -5962,7 +5997,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 55
+            "y": 81
           },
           "id": 228,
           "legend": {
@@ -6070,7 +6105,7 @@
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 55
+            "y": 81
           },
           "id": 250,
           "legend": {
@@ -6179,7 +6214,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 62
+            "y": 88
           },
           "id": 255,
           "legend": {
@@ -6287,7 +6322,7 @@
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 62
+            "y": 88
           },
           "id": 256,
           "legend": {
@@ -6395,7 +6430,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 69
+            "y": 95
           },
           "id": 258,
           "legend": {
@@ -6503,7 +6538,7 @@
             "h": 6,
             "w": 6,
             "x": 12,
-            "y": 69
+            "y": 95
           },
           "id": 257,
           "legend": {
@@ -6611,7 +6646,7 @@
             "h": 6,
             "w": 6,
             "x": 18,
-            "y": 69
+            "y": 95
           },
           "id": 253,
           "legend": {
@@ -6712,7 +6747,7 @@
             "h": 6,
             "w": 6,
             "x": 12,
-            "y": 75
+            "y": 101
           },
           "id": 229,
           "links": [],
@@ -6793,7 +6828,7 @@
           ],
           "targets": [
             {
-              "expr": "ifAlias{job='$switch_job', ifAlias=~\".+\"}",
+              "expr": "ifAlias{job='$switch_job', ifAlias=~'.+'}",
               "format": "table",
               "instant": true,
               "intervalFactor": 1,
@@ -6819,7 +6854,7 @@
             "h": 6,
             "w": 6,
             "x": 18,
-            "y": 75
+            "y": 101
           },
           "id": 254,
           "legend": {
@@ -6935,7 +6970,7 @@
             "h": 5,
             "w": 4,
             "x": 0,
-            "y": 76
+            "y": 102
           },
           "id": 202,
           "interval": null,
@@ -7002,7 +7037,7 @@
             "h": 5,
             "w": 8,
             "x": 4,
-            "y": 76
+            "y": 102
           },
           "id": 227,
           "links": [],
@@ -7169,7 +7204,7 @@
           "tableColumn": "",
           "targets": [
             {
-              "expr": "time() - process_start_time_seconds{job=\"$traefik_job\"}",
+              "expr": "time() - process_start_time_seconds{job='$traefik_job'}",
               "format": "time_series",
               "intervalFactor": 2,
               "refId": "A"
@@ -7226,7 +7261,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(traefik_backend_requests_total{job='$traefik_job', code=\"200\"}[5m])) by (backend)",
+              "expr": "sum(rate(traefik_backend_requests_total{job='$traefik_job', code='200'}[5m])) by (backend)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "{{backend}}",
@@ -7312,7 +7347,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(traefik_backend_requests_total{job='$traefik_job', code!=\"200\",code!=\"302\"}[5m])) by (backend)",
+              "expr": "sum(rate(traefik_backend_requests_total{job='$traefik_job', code!='200',code!='302'}[5m])) by (backend)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -7572,7 +7607,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(traefik_backend_requests_total{job='$traefik_job', code!=\"200\"}[5m])) by (backend, code)",
+              "expr": "sum(rate(traefik_backend_requests_total{job='$traefik_job', code!='200'}[5m])) by (backend, code)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -7753,7 +7788,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(traefik_backend_request_duration_seconds_bucket{job='$traefik_job', le=\"0.1\", code=\"200\"}[5m])) / sum(rate(traefik_backend_request_duration_seconds_count{job='$traefik_job', code=\"200\"}[5m]))",
+              "expr": "sum(rate(traefik_backend_request_duration_seconds_bucket{job='$traefik_job', le='0.1', code='200'}[5m])) / sum(rate(traefik_backend_request_duration_seconds_count{job='$traefik_job', code='200'}[5m]))",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "Code 200",
@@ -8194,7 +8229,7 @@
           "strokeWidth": 1,
           "targets": [
             {
-              "expr": "sum(traefik_backend_requests_total{job='$traefik_job', code!=\"200\"}) by (backend, code)",
+              "expr": "sum(traefik_backend_requests_total{job='$traefik_job', code!='200'}) by (backend, code)",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{backend}} {{code}}",
@@ -8230,7 +8265,7 @@
             "h": 9,
             "w": 8,
             "x": 0,
-            "y": 1
+            "y": 69
           },
           "id": 377,
           "legend": {
@@ -8316,7 +8351,7 @@
             "h": 9,
             "w": 8,
             "x": 8,
-            "y": 1
+            "y": 69
           },
           "id": 378,
           "legend": {
@@ -8401,7 +8436,7 @@
             "h": 9,
             "w": 8,
             "x": 16,
-            "y": 1
+            "y": 69
           },
           "id": 447,
           "legend": {
@@ -8489,7 +8524,7 @@
             "h": 8,
             "w": 8,
             "x": 0,
-            "y": 10
+            "y": 78
           },
           "id": 425,
           "interval": null,
@@ -8541,9 +8576,9 @@
             "h": 8,
             "w": 8,
             "x": 8,
-            "y": 10
+            "y": 78
           },
-          "id": 448,
+          "id": 470,
           "interval": null,
           "legend": {
             "show": true,
@@ -8556,7 +8591,7 @@
           "pieType": "pie",
           "repeat": null,
           "repeatDirection": "h",
-          "repeatIteration": 1536398182937,
+          "repeatIteration": 1536404749264,
           "repeatPanelId": 425,
           "scopedVars": {
             "blackbox_target": {
@@ -8595,9 +8630,9 @@
             "h": 8,
             "w": 8,
             "x": 16,
-            "y": 10
+            "y": 78
           },
-          "id": 449,
+          "id": 471,
           "interval": null,
           "legend": {
             "show": true,
@@ -8610,7 +8645,7 @@
           "pieType": "pie",
           "repeat": null,
           "repeatDirection": "h",
-          "repeatIteration": 1536398182937,
+          "repeatIteration": 1536404749264,
           "repeatPanelId": 425,
           "scopedVars": {
             "blackbox_target": {
@@ -8645,7 +8680,7 @@
             "h": 8,
             "w": 16,
             "x": 0,
-            "y": 18
+            "y": 86
           },
           "id": 379,
           "legend": {
@@ -8732,44 +8767,38 @@
   "templating": {
     "list": [
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROM}",
+        "current": {
+          "value": "${VAR_SERVER_JOB}",
+          "text": "${VAR_SERVER_JOB}"
+        },
         "hide": 0,
-        "includeAll": false,
         "label": null,
-        "multi": false,
         "name": "server_job",
-        "options": [],
-        "query": "up{job='node-exporter'}",
-        "refresh": 1,
-        "regex": ".*job=\"(.*?)\".*",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "options": [
+          {
+            "value": "${VAR_SERVER_JOB}",
+            "text": "${VAR_SERVER_JOB}"
+          }
+        ],
+        "query": "${VAR_SERVER_JOB}",
+        "type": "constant"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROM}",
+        "current": {
+          "value": "${VAR_GPU_JOB}",
+          "text": "${VAR_GPU_JOB}"
+        },
         "hide": 0,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
+        "label": "",
         "name": "gpu_job",
-        "options": [],
-        "query": "nvidia_utilization_gpu{job='gpuexporter'}",
-        "refresh": 1,
-        "regex": ".*job=\"(.*?)\".*",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "options": [
+          {
+            "value": "${VAR_GPU_JOB}",
+            "text": "${VAR_GPU_JOB}"
+          }
+        ],
+        "query": "${VAR_GPU_JOB}",
+        "type": "constant"
       },
       {
         "allValue": null,
@@ -8781,9 +8810,9 @@
         "multi": false,
         "name": "gpus",
         "options": [],
-        "query": "nvidia_utilization_gpu{job='$gpu_job'}",
+        "query": "label_values(nvidia_utilization_gpu, gpu)",
         "refresh": 1,
-        "regex": ".*?gpu\\=\\\"(.*?)\\\".*",
+        "regex": "",
         "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
@@ -8792,24 +8821,21 @@
         "useTags": false
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROM}",
+        "current": {
+          "value": "${VAR_UPS_JOB}",
+          "text": "${VAR_UPS_JOB}"
+        },
         "hide": 0,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
+        "label": "",
         "name": "ups_job",
-        "options": [],
-        "query": "apcupsd_battery_time_left_seconds{job='apcupsd'}",
-        "refresh": 1,
-        "regex": ".*job=\"(.*?)\".*",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "options": [
+          {
+            "value": "${VAR_UPS_JOB}",
+            "text": "${VAR_UPS_JOB}"
+          }
+        ],
+        "query": "${VAR_UPS_JOB}",
+        "type": "constant"
       },
       {
         "allValue": null,
@@ -8821,9 +8847,9 @@
         "multi": false,
         "name": "nas_job",
         "options": [],
-        "query": "hrStorageUsed",
+        "query": "label_values(hrStorageUsed, job)",
         "refresh": 1,
-        "regex": ".*job=\"(.*?)\".*",
+        "regex": "",
         "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
@@ -8832,24 +8858,21 @@
         "useTags": false
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROM}",
+        "current": {
+          "value": "${VAR_ROUTER_JOB}",
+          "text": "${VAR_ROUTER_JOB}"
+        },
         "hide": 0,
-        "includeAll": false,
         "label": null,
-        "multi": false,
         "name": "router_job",
-        "options": [],
-        "query": "ipNetToMediaPhysAddress",
-        "refresh": 1,
-        "regex": ".*job=\"(.*?)\".*",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "options": [
+          {
+            "value": "${VAR_ROUTER_JOB}",
+            "text": "${VAR_ROUTER_JOB}"
+          }
+        ],
+        "query": "${VAR_ROUTER_JOB}",
+        "type": "constant"
       },
       {
         "current": {
@@ -8869,24 +8892,21 @@
         "type": "constant"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROM}",
+        "current": {
+          "value": "${VAR_TRAEFIK_JOB}",
+          "text": "${VAR_TRAEFIK_JOB}"
+        },
         "hide": 0,
-        "includeAll": false,
         "label": null,
-        "multi": false,
         "name": "traefik_job",
-        "options": [],
-        "query": "traefik_config_reloads_total",
-        "refresh": 1,
-        "regex": ".*job=\"(.*)\".*",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "options": [
+          {
+            "value": "${VAR_TRAEFIK_JOB}",
+            "text": "${VAR_TRAEFIK_JOB}"
+          }
+        ],
+        "query": "${VAR_TRAEFIK_JOB}",
+        "type": "constant"
       },
       {
         "allValue": null,
@@ -8931,7 +8951,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -8962,5 +8982,5 @@
   "timezone": "",
   "title": "Toolmen DashBoard",
   "uid": "LMSCVlFik",
-  "version": 15
+  "version": 1
 }

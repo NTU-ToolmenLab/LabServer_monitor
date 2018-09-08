@@ -10,6 +10,7 @@ Use
 * apcaccess
 * snmp-exporter
 * Use Granfana Alerting on Telegram
+* blackbox-exporter
 
 to monitor
 
@@ -20,6 +21,7 @@ to monitor
 * switch
 * router
 * traefik
+* ping
 
 And use OAuth to login
 

@@ -8,9 +8,9 @@ services:
       - ./prometheus.yml:/prometheus.yml
       - ./prometheus_data:/prometheus
     command:
-      - '--config.file=/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention=1y'
+      - --config.file=/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention=1y
     external_links:
       - node-exporter:nodeexporter
       - grafana:grafana
@@ -37,10 +37,10 @@ services:
       - ./grafana_data:/var/lib/grafana
       - ./grafana.ini:/etc/grafana/grafana.ini
     labels:
-      - "traefik.frontend.rule=Host:my.domain.ntu.edu.tw;PathPrefixStrip:/monitor/"
-      - "traefik.port=3000"
-      - "traefik.enable=true"
-      - "traefik.backend=grafana"
+      - traefik.frontend.rule=Host:my.domain.ntu.edu.tw;PathPrefixStrip:/monitor/
+      - traefik.port=3000
+      - traefik.enable=true
+      - traefik.backend=grafana
     environment:
       - GF_PATHS_PROVISIONING=/var/lib/grafana/provis
       - GF_PATHS_PLUGINS=/var/lib/grafana/plugins
@@ -70,7 +70,7 @@ services:
   apc:
     restart: always
     image: linnil1/apcupsd_exporter
-    command: "./main -apcupsd.addr 192.168.1.1:3551"
+    command: ./main -apcupsd.addr 192.168.1.3:3551
     networks:
      - mynet
 
