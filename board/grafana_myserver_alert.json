@@ -49,6 +49,13 @@
       "label": "traefik_job",
       "value": "traefik",
       "description": ""
+    },
+    {
+      "name": "VAR_HP_JOB",
+      "type": "constant",
+      "label": "hp_job",
+      "value": "snmp_hp",
+      "description": ""
     }
   ],
   "__requires": [
@@ -106,7 +113,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1536407639831,
+  "iteration": 1536475095094,
   "links": [],
   "panels": [
     {
@@ -1699,7 +1706,7 @@
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 63
+            "y": 4
           },
           "id": 33,
           "isNew": true,
@@ -1805,7 +1812,7 @@
             "h": 7,
             "w": 8,
             "x": 8,
-            "y": 63
+            "y": 4
           },
           "id": 35,
           "isNew": true,
@@ -1943,7 +1950,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 63
+            "y": 4
           },
           "id": 37,
           "isNew": true,
@@ -2049,7 +2056,7 @@
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 70
+            "y": 11
           },
           "id": 39,
           "isNew": true,
@@ -2137,7 +2144,7 @@
             "h": 7,
             "w": 8,
             "x": 8,
-            "y": 70
+            "y": 11
           },
           "id": 41,
           "legend": {
@@ -2235,7 +2242,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 70
+            "y": 11
           },
           "id": 43,
           "isNew": true,
@@ -2345,7 +2352,7 @@
             "h": 4,
             "w": 4,
             "x": 0,
-            "y": 77
+            "y": 18
           },
           "id": 45,
           "interval": null,
@@ -2431,7 +2438,7 @@
             "h": 4,
             "w": 4,
             "x": 4,
-            "y": 77
+            "y": 18
           },
           "id": 47,
           "interval": null,
@@ -2515,7 +2522,7 @@
             "h": 4,
             "w": 8,
             "x": 8,
-            "y": 77
+            "y": 18
           },
           "id": 49,
           "interval": null,
@@ -2612,7 +2619,7 @@
             "h": 3,
             "w": 4,
             "x": 0,
-            "y": 64
+            "y": 5
           },
           "id": 105,
           "interval": null,
@@ -2705,7 +2712,7 @@
             "h": 3,
             "w": 4,
             "x": 4,
-            "y": 64
+            "y": 5
           },
           "id": 106,
           "interval": null,
@@ -2797,7 +2804,7 @@
             "h": 3,
             "w": 4,
             "x": 8,
-            "y": 64
+            "y": 5
           },
           "id": 107,
           "interval": null,
@@ -2889,7 +2896,7 @@
             "h": 3,
             "w": 4,
             "x": 12,
-            "y": 64
+            "y": 5
           },
           "id": 108,
           "interval": null,
@@ -2967,7 +2974,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 64
+            "y": 5
           },
           "id": 121,
           "links": [],
@@ -3138,7 +3145,7 @@
             "h": 11,
             "w": 16,
             "x": 0,
-            "y": 67
+            "y": 8
           },
           "id": 101,
           "legend": {
@@ -3245,7 +3252,7 @@
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 71
+            "y": 12
           },
           "id": 122,
           "links": [],
@@ -3441,7 +3448,7 @@
             "h": 5,
             "w": 4,
             "x": 0,
-            "y": 78
+            "y": 19
           },
           "id": 133,
           "interval": null,
@@ -3528,7 +3535,7 @@
             "h": 5,
             "w": 4,
             "x": 4,
-            "y": 78
+            "y": 19
           },
           "id": 132,
           "interval": null,
@@ -3615,7 +3622,7 @@
             "h": 5,
             "w": 4,
             "x": 8,
-            "y": 78
+            "y": 19
           },
           "id": 131,
           "interval": null,
@@ -3702,7 +3709,7 @@
             "h": 5,
             "w": 4,
             "x": 12,
-            "y": 78
+            "y": 19
           },
           "id": 137,
           "interval": null,
@@ -3789,7 +3796,7 @@
             "h": 5,
             "w": 4,
             "x": 16,
-            "y": 78
+            "y": 19
           },
           "id": 136,
           "interval": null,
@@ -3876,7 +3883,7 @@
             "h": 5,
             "w": 4,
             "x": 20,
-            "y": 78
+            "y": 19
           },
           "id": 103,
           "interval": null,
@@ -3952,7 +3959,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 83
+            "y": 24
           },
           "id": 111,
           "legend": {
@@ -4105,7 +4112,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 83
+            "y": 24
           },
           "id": 124,
           "legend": {
@@ -4227,7 +4234,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 91
+            "y": 32
           },
           "id": 125,
           "legend": {
@@ -4330,7 +4337,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 91
+            "y": 32
           },
           "id": 128,
           "legend": {
@@ -4421,7 +4428,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 99
+            "y": 40
           },
           "id": 129,
           "legend": {
@@ -4546,7 +4553,7 @@
             "h": 5,
             "w": 8,
             "x": 12,
-            "y": 99
+            "y": 40
           },
           "id": 119,
           "links": [],
@@ -4757,7 +4764,7 @@
             "h": 5,
             "w": 4,
             "x": 0,
-            "y": 66
+            "y": 74
           },
           "id": 163,
           "interval": null,
@@ -4837,7 +4844,7 @@
             "h": 5,
             "w": 4,
             "x": 4,
-            "y": 66
+            "y": 74
           },
           "id": 165,
           "interval": null,
@@ -4918,7 +4925,7 @@
             "h": 5,
             "w": 4,
             "x": 8,
-            "y": 66
+            "y": 74
           },
           "id": 167,
           "interval": null,
@@ -4988,7 +4995,7 @@
             "h": 5,
             "w": 12,
             "x": 12,
-            "y": 66
+            "y": 74
           },
           "id": 173,
           "legend": {
@@ -5076,7 +5083,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 71
+            "y": 79
           },
           "id": 171,
           "legend": {
@@ -5179,7 +5186,7 @@
             "h": 5,
             "w": 12,
             "x": 12,
-            "y": 71
+            "y": 79
           },
           "id": 169,
           "legend": {
@@ -5288,7 +5295,7 @@
             "h": 9,
             "w": 5,
             "x": 12,
-            "y": 76
+            "y": 84
           },
           "id": 177,
           "links": [],
@@ -5388,7 +5395,7 @@
             "h": 9,
             "w": 7,
             "x": 17,
-            "y": 76
+            "y": 84
           },
           "id": 179,
           "links": [],
@@ -5451,7 +5458,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 78
+            "y": 86
           },
           "id": 175,
           "legend": {
@@ -8265,7 +8272,7 @@
             "h": 9,
             "w": 8,
             "x": 0,
-            "y": 69
+            "y": 10
           },
           "id": 377,
           "legend": {
@@ -8351,7 +8358,7 @@
             "h": 9,
             "w": 8,
             "x": 8,
-            "y": 69
+            "y": 10
           },
           "id": 378,
           "legend": {
@@ -8436,7 +8443,7 @@
             "h": 9,
             "w": 8,
             "x": 16,
-            "y": 69
+            "y": 10
           },
           "id": 447,
           "legend": {
@@ -8524,7 +8531,7 @@
             "h": 8,
             "w": 8,
             "x": 0,
-            "y": 78
+            "y": 19
           },
           "id": 425,
           "interval": null,
@@ -8576,9 +8583,9 @@
             "h": 8,
             "w": 8,
             "x": 8,
-            "y": 78
+            "y": 19
           },
-          "id": 470,
+          "id": 525,
           "interval": null,
           "legend": {
             "show": true,
@@ -8591,7 +8598,7 @@
           "pieType": "pie",
           "repeat": null,
           "repeatDirection": "h",
-          "repeatIteration": 1536404749264,
+          "repeatIteration": 1536463177737,
           "repeatPanelId": 425,
           "scopedVars": {
             "blackbox_target": {
@@ -8630,9 +8637,9 @@
             "h": 8,
             "w": 8,
             "x": 16,
-            "y": 78
+            "y": 19
           },
-          "id": 471,
+          "id": 526,
           "interval": null,
           "legend": {
             "show": true,
@@ -8645,7 +8652,7 @@
           "pieType": "pie",
           "repeat": null,
           "repeatDirection": "h",
-          "repeatIteration": 1536404749264,
+          "repeatIteration": 1536463177737,
           "repeatPanelId": 425,
           "scopedVars": {
             "blackbox_target": {
@@ -8680,7 +8687,7 @@
             "h": 8,
             "w": 16,
             "x": 0,
-            "y": 86
+            "y": 27
           },
           "id": 379,
           "legend": {
@@ -8757,6 +8764,793 @@
         }
       ],
       "title": "Connection test",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 68
+      },
+      "id": 504,
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#d44a3a",
+            "rgba(237, 129, 40, 0.89)",
+            "#299c46"
+          ],
+          "datasource": "${DS_PROM}",
+          "decimals": 1,
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 0,
+            "y": 70
+          },
+          "id": 498,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "Day",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "sysUpTime{job='$hp_job'} / 86400 / 100",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "7,14",
+          "title": "UpTime",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#d44a3a",
+            "rgba(237, 129, 40, 0.89)",
+            "#299c46"
+          ],
+          "datasource": "${DS_PROM}",
+          "decimals": 1,
+          "format": "percentunit",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 3,
+            "y": 70
+          },
+          "id": 500,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "consumable_life_usage_units_remaining{job='$hp_job'} / (consumable_life_usage_units_remaining{job='$hp_job'} + consumable_pages_printed_with_supply{job='$hp_job'})",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0.1,0.15",
+          "title": "Supply Usage",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#d44a3a",
+            "rgba(237, 129, 40, 0.89)",
+            "#299c46"
+          ],
+          "datasource": "${DS_PROM}",
+          "decimals": 1,
+          "format": "percentunit",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 2,
+            "x": 6,
+            "y": 70
+          },
+          "id": 548,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [
+            {
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [
+            {
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [
+            {
+              "expr": "duplex_page_count{job='$hp_job'} * 2 / total_engine_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": "0.4,0.61",
+          "title": "Duplex",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROM}",
+          "fill": 1,
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 70
+          },
+          "id": 495,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "total_engine_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Total",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Total Page Print",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 0,
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROM}",
+          "fill": 1,
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 70
+          },
+          "id": 501,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "scanner_flatbed_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "flatbed",
+              "refId": "A"
+            },
+            {
+              "expr": "scanner_adf_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "adf",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Total Page Scanned",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 0,
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "breakPoint": "50%",
+          "cacheTimeout": null,
+          "combine": {
+            "label": "Others",
+            "threshold": 0
+          },
+          "datasource": "${DS_PROM}",
+          "decimals": 0,
+          "fontSize": "80%",
+          "format": "short",
+          "gridPos": {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 74
+          },
+          "id": 550,
+          "interval": null,
+          "legend": {
+            "percentage": true,
+            "percentageDecimals": null,
+            "show": true,
+            "sideWidth": null,
+            "values": true
+          },
+          "legendType": "Right side",
+          "links": [],
+          "maxDataPoints": 3,
+          "nullPointMode": "connected",
+          "pieType": "pie",
+          "strokeWidth": 1,
+          "targets": [
+            {
+              "expr": "total_engine_page_count{job='$hp_job'} - copier_print_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Total",
+              "refId": "A"
+            },
+            {
+              "expr": "copier_print_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "copier",
+              "refId": "B"
+            }
+          ],
+          "title": "Print From",
+          "type": "grafana-piechart-panel",
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {
+            "Out": "#C15C17"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROM}",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 78
+          },
+          "id": 499,
+          "legend": {
+            "alignAsTable": false,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatDirection": "h",
+          "seriesOverrides": [
+            {
+              "alias": "Out",
+              "transform": "negative-Y"
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "irate(ifInOctets{job='$hp_job'}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "In {{ifDescr}}",
+              "refId": "A",
+              "step": 60
+            },
+            {
+              "expr": "irate(ifOutOctets{job='$hp_job'}[5m])",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "Out {{ifDescr}}",
+              "refId": "B",
+              "step": 60
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Trafick",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "Bps",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROM}",
+          "fill": 1,
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 78
+          },
+          "id": 496,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "consumable_pages_printed_with_supply{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Printed",
+              "refId": "A"
+            },
+            {
+              "expr": "consumable_life_usage_units_remaining{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Estimated",
+              "refId": "B"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Page Printed with Supply",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 0,
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "${DS_PROM}",
+          "fill": 1,
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 78
+          },
+          "id": 551,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "postscript_total_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Postscript",
+              "refId": "A"
+            },
+            {
+              "expr": "duplex_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Duplex",
+              "refId": "B"
+            },
+            {
+              "expr": "copier_print_page_count{job='$hp_job'}",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "Copyier",
+              "refId": "C"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Other history",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": 0,
+              "format": "none",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "HP",
       "type": "row"
     }
   ],
@@ -8947,6 +9741,23 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "value": "${VAR_HP_JOB}",
+          "text": "${VAR_HP_JOB}"
+        },
+        "hide": 0,
+        "label": "",
+        "name": "hp_job",
+        "options": [
+          {
+            "value": "${VAR_HP_JOB}",
+            "text": "${VAR_HP_JOB}"
+          }
+        ],
+        "query": "${VAR_HP_JOB}",
+        "type": "constant"
       }
     ]
   },
@@ -8982,5 +9793,5 @@
   "timezone": "",
   "title": "Toolmen DashBoard",
   "uid": "LMSCVlFik",
-  "version": 1
+  "version": 3
 }
