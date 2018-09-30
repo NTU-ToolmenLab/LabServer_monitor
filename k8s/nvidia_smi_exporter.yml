@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: nvidia-smi-exporter
+  namespace: monitor
 spec:
   selector:
     matchLabels:

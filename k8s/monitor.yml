@@ -24,7 +24,7 @@ serverFiles:
           module: [synology]
           target: [$IP_NAS]
         static_configs:
-          - targets: ['snmp-default.default.svc.cluster.local:9116']
+          - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
       - job_name: snmp_router
         scrape_interval: 1m
@@ -34,7 +34,7 @@ serverFiles:
           module: [ddwrt]
           target: [$IP_ROUTER]
         static_configs:
-          - targets: ['snmp-default.default.svc.cluster.local:9116']
+          - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
       - job_name: snmp_switch
         scrape_interval: 1m
@@ -44,7 +44,7 @@ serverFiles:
           module: [ddwrt]
           target: [$IP_SWITCH]
         static_configs:
-          - targets: ['snmp-default.default.svc.cluster.local:9116']
+          - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
       - job_name: snmp_hp
         scrape_interval: 1m
@@ -54,7 +54,7 @@ serverFiles:
           module: [hp]
           target: [$IP_HP_PRINTER]
         static_configs:
-          - targets: ['snmp-hp.default.svc.cluster.local:9116']
+          - targets: ['snmp-hp.monitor.svc.cluster.local:9116']
 
       - job_name: blackbox
         scrape_interval: 10s
@@ -73,7 +73,7 @@ serverFiles:
           - source_labels: [__param_target]
             target_label: instance
           - target_label: __address__
-            replacement: 'blackbox.default.svc.cluster.local:9115'
+            replacement: 'blackbox.monitor.svc.cluster.local:9115'
 
       - job_name: apcupsd_exporter
         scrape_interval: 1m

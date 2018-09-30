@@ -1,7 +1,9 @@
-# Build monitor with docker-compose
+# Build monitor for Lab
 
 Use 
 
+* docker-compose
+* kubernetes
 * traefik
 * grafana
 * prometheus
@@ -31,7 +33,15 @@ clone and run setup
 ```
 git clone --recursive https://github.com/linnil1/LabServer_monitor.git
 cd LabServer_monitor
+```
+### with docker-compose
+```
 bash setup.sh
+```
+
+### with kubernetes
+```
+bash k8s/setup.sh
 ```
 
 ## some custom data you need to set
@@ -179,6 +189,8 @@ then execute `docker run -it --rm -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ pr
 remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml file).
 
 then test it `docker run -it --rm -p 9116:9116 -v $PWD/snmp.yml:/etc/snmp_exporter/snmp.yml prom/snmp-exporter`
+
+## Kubernete
 
 # LICENSE
 MIT
