@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snmp-router
+spec:
+  selector:
+    name: snmp-router
+  ports:
+  - port: 9116
+    targetPort: 9116
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snmp-router
+spec:
+  selector:
+    matchLabels:
+      name: snmp-router
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: snmp-router
+    spec:
+      containers:
+      - name: snmp-router
+        image: prom/snmp-exporter
+        ports:
+        - containerPort: 9116
+          protocol: TCP
+        volumeMounts:
+        - name: snmp-yml
+          mountPath: /etc/snmp_exporter/snmp.yml
+      volumes:
+      - name: snmp-yml
+        hostPath: 
+          path: /home/server/test/LabServer_monitor/snmp/router.yml
+      nodeSelector:
+        kubernetes.io/hostname: lab304-server2

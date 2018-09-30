@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snmp-hp
+spec:
+  selector:
+    name: snmp-hp
+  ports:
+  - port: 9116
+    targetPort: 9116
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snmp-hp
+spec:
+  selector:
+    matchLabels:
+      name: snmp-hp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: snmp-hp
+    spec:
+      containers:
+      - name: snmp-hp
+        image: prom/snmp-exporter
+        ports:
+        - containerPort: 9116
+          protocol: TCP
+        volumeMounts:
+        - name: snmp-yml
+          mountPath: /etc/snmp_exporter/snmp.yml
+      volumes:
+      - name: snmp-yml
+        hostPath: 
+          path: ~/snmp/hp_snmp.yml

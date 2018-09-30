@@ -1,0 +1,4 @@
+helm del my-test --purge
+helm install --name my-test stable/prometheus --values=monitor.yml
+kubectl delete -f pv.yml
+kubectl create -f pv.yml

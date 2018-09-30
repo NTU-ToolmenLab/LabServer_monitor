@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nvidia-smi-exporter
+spec:
+  selector:
+    matchLabels:
+      name: nvidia-smi-exporter
+  template:
+    metadata:
+      labels:
+        name: nvidia-smi-exporter
+    spec:
+      containers:
+      - name: nvidia-smi-exporter
+        image: registry-svc.default.svc.cluster.local:5002/linnil1/nvidia_smi_exporter
+        ports:
+        - containerPort: 9101
+          protocol: TCP
