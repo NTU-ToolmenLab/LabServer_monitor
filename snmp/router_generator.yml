@@ -1,0 +1,16 @@
+modules:
+  udc:
+    walk:
+      - sysUpTime
+      - interfaces
+      - ifXTable
+      - ucdavis
+      - ipNetToMediaPhysAddress
+
+    lookups:
+      - old_index: ifIndex
+        new_index: ifDescr
+      - old_index: laIndex
+        new_index: laNames
+      - old_index: prIndex
+        new_index: prNames

@@ -134,29 +134,16 @@ reference
 * https://fatmin.com/2013/11/13/install-and-configure-snmp-on-the-asus-rt-ac66u-router/
 * http://devopstarter.info/snmp-exporter-generator-tutorial/
 
+`ipkg install openssl -force-reinstall` to solve some error.
+
 It use net-snmp and I generate snmp.yml by https://github.com/prometheus/snmp_exporter/tree/master/generator
 You can collect mibs from [here](https://github.com/hardaker/net-snmp/tree/a7bc508a8930a484c3a666cbea4ab226d2a3aa88/mibs)
-I download these mibs `IF-MIB  INET-ADDRESS-MIB.txt  IP-MIB.txt  RFC1213-MIB.txt  SNMPv2-CONF  SNMPv2-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
-Generating yml file
-``` yaml
-modules:
-  udc:
-    walk:
-      - sysUpTime
-      - interfaces
-      - ifXTable
-      - ucdavis
-      - ipNetToMediaPhysAddress
 
-    lookups:
-      - old_index: ifIndex
-        new_index: ifDescr
-      - old_index: laIndex
-        new_index: laNames
-      - old_index: prIndex
-        new_index: prNames
-```
-The result file is at `snmp/router.yml`
+I download these mibs: `IF-MIB  INET-ADDRESS-MIB.txt  IP-MIB.txt  RFC1213-MIB.txt  SNMPv2-CONF  SNMPv2-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
+
+Generating yml file is `snmp/router_generator.yml`.
+
+The result file is `snmp/router.yml`
 
 grafana board `board/router.json`
 
@@ -187,7 +174,7 @@ and download some dependency `IF-MIB RFC1155-SMI.txt  RFC1158-MIB  RFC-1212-MIB.
 
 put them into `mibs`
 
-then execute `docker run -it -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ prom/snmp-generator`
+then execute `docker run -it --rm -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ prom/snmp-generator`
 
 remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml file).
 
