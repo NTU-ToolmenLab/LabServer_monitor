@@ -8,7 +8,7 @@ pushgateway:
 server:
   persistentVolume:
     enabled: true
-    storageClass: nfs-monitor
+    storageClass: nfs-monitor-prometheus
     accessModes: [ReadWriteMany]
     mountPath: /prometheus_data
     subPath: prom

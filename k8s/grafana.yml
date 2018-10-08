@@ -1,0 +1,32 @@
+ingress:
+  enabled: true
+  annotations: 
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+  hosts:
+    - my.domain.ntu.edu.tw
+  path: /monitor/
+image:
+  tag: latest
+persistence:
+  enabled: true
+  existingClaim: nfs-monitor-grafana
+env:
+  GF_PATHS_PROVISIONING: /var/lib/grafana/provis
+  GF_PATHS_PLUGINS: /var/lib/grafana/plugins
+  GF_PATHS_LOGS: /var/lib/grafana/log
+  GF_PATHS_DATA: /var/lib/grafana
+
+grafana.ini:
+  default:
+    instance_name: Lab304 - Grafana
+  log:
+    mode: console file
+  users:
+    allow_sign_up: false
+  analytics:
+    check_for_updates: true
+  server:
+    root_url: https://my.domain.ntu.edu.tw:443/monitor/
+# [auth]
+# disable_login_form = true

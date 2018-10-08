@@ -37,5 +37,3 @@ spec:
       - name: snmp-yml
         hostPath: 
           path: /home/server/test/LabServer_monitor/snmp/router.yml
-      nodeSelector:
-        kubernetes.io/hostname: lab304-server2

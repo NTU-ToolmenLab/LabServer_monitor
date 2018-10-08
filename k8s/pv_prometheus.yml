@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-monitor
+  name: nfs-monitor-prometheus
 spec:
-  storageClassName: nfs-monitor
+  storageClassName: nfs-monitor-prometheus
   persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 10Gi
@@ -11,4 +11,4 @@ spec:
   - ReadWriteMany
   nfs:
     server: $IP_NAS
-    path: $NAS_MONITOR_PATH
+    path: $NAS_MONITOR_PATH/prometheus_data
