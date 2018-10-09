@@ -35,7 +35,8 @@ spec:
         volumeMounts:
         - name: snmp-yml
           mountPath: /etc/snmp_exporter/snmp.yml
+          subPath: snmp/hp_snmp.yml
       volumes:
       - name: snmp-yml
-        hostPath: 
-          path: ~/snmp/hp_snmp.yml
+        persistentVolumeClaim:
+          claimName: nfs-monitor

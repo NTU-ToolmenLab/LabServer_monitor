@@ -33,7 +33,8 @@ spec:
         volumeMounts:
         - name: snmp-yml
           mountPath: /etc/snmp_exporter/snmp.yml
+          subPath: snmp/router.yml
       volumes:
       - name: snmp-yml
-        hostPath: 
-          path: /home/server/test/LabServer_monitor/snmp/router.yml
+        persistentVolumeClaim:
+          claimName: nfs-monitor

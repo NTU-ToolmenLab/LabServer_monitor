@@ -35,7 +35,8 @@ spec:
         volumeMounts:
         - name: blackbox-config
           mountPath: /etc/blackbox_exporter/config.yml
+          subPath: blackbox.yml
       volumes:
       - name: blackbox-config
-        hostPath: 
-        path: ~/blackbox.yml
+        persistentVolumeClaim:
+          claimName: nfs-monitor

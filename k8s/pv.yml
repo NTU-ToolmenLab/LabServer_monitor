@@ -1,27 +1,28 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-monitor-grafana
+  name: nfs-monitor
 spec:
-  storageClassName: nfs-monitor-grafana
+  storageClassName: nfs-monitor
   persistentVolumeReclaimPolicy: Delete
   accessModes:
   - ReadWriteMany
   capacity:
-    storage: 10Gi
+    storage: 100Gi
   nfs:
     server: $IP_NAS
     path: $NAS_MONITOR_PATH/grafana_data
+
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: nfs-monitor-grafana
+  name: nfs-monitor
   namespace: monitor
 spec:
-  storageClassName: nfs-monitor-grafana
+  storageClassName: nfs-monitor
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi
+      storage: 100Gi

@@ -8,10 +8,9 @@ pushgateway:
 server:
   persistentVolume:
     enabled: true
-    storageClass: nfs-monitor-prometheus
-    accessModes: [ReadWriteMany]
+    existingClaim: nfs-monitor
     mountPath: /prometheus_data
-    subPath: prom
+    subPath: prometheus_data
 
 serverFiles:
   prometheus.yml:
@@ -67,6 +66,7 @@ serverFiles:
           - targets:
             - https://google.com
             - https://www.ntu.edu.tw
+            - https://my.domain.ntu.edu.tw
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target

@@ -10,7 +10,8 @@ image:
   tag: latest
 persistence:
   enabled: true
-  existingClaim: nfs-monitor-grafana
+  existingClaim: nfs-monitor
+  subPath: grafana_data
 env:
   GF_PATHS_PROVISIONING: /var/lib/grafana/provis
   GF_PATHS_PLUGINS: /var/lib/grafana/plugins
