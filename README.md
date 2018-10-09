@@ -2,28 +2,39 @@
 
 Use 
 
-* docker-compose
-* kubernetes
-* traefik
-* grafana
+* Grafana (Alerting on Telegram)
 * prometheus
 * node-exporter
 * nvidia-smi
-* apcaccess
+* apcupsd
 * snmp-exporter
 * Use Granfana Alerting on Telegram
 * blackbox-exporter
+* kubernetes-node (k8s)
+* kubernetes-metrics (k8s)
+* kubernetes-services (k8s)
+
+
+work with
+
+* docker-compose
+* kubernetes
+* traefik
+
+see https://github.com/linnil1/LabServer
+
 
 to monitor
 
-* nas
 * server
+* traefik
 * gpu
 * apc
+* nas
 * switch
 * router
-* traefik
-* ping
+* hp printer
+* ping dns
 
 And use OAuth to login
 
@@ -41,7 +52,8 @@ bash setup.sh
 
 ### with kubernetes
 ```
-bash k8s/setup.sh
+cd k8s
+bash setup.sh
 ```
 
 ## some custom data you need to set
@@ -191,6 +203,13 @@ remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml f
 then test it `docker run -it --rm -p 9116:9116 -v $PWD/snmp.yml:/etc/snmp_exporter/snmp.yml prom/snmp-exporter`
 
 ## Kubernete
+use helm to install `promethus` and `grafana`
+* https://github.com/helm/charts/tree/master/stable/prometheus
+* https://github.com/helm/charts/tree/master/stable/grafana
+
+Other things like `blackbox` `snmp_exporter` are same thing as docker-composed.
+
+`gpu` `apcupsd` are used Daemon Set across all nodes.
 
 # LICENSE
 MIT
