@@ -11,13 +11,18 @@ server:
     existingClaim: nfs-monitor
     mountPath: /prometheus_data
     subPath: prometheus_data
+  global:
+    scrape_interval:     30s
+    scrape_timeout:      15s
 
 serverFiles:
   prometheus.yml:
     scrape_configs:
+      - job_name: grafana
+        static_configs:
+          - targets: ['lab-traefik-dashboard.default.svc.cluster.local']
+
       - job_name: snmp_nas
-        scrape_interval: 1m
-        scrape_timeout: 15s
         metrics_path: /snmp
         params:
           module: [synology]
@@ -26,8 +31,6 @@ serverFiles:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
       - job_name: snmp_router
-        scrape_interval: 1m
-        scrape_timeout: 15s
         metrics_path: /snmp
         params:
           module: [ddwrt]
@@ -36,8 +39,6 @@ serverFiles:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
       - job_name: snmp_switch
-        scrape_interval: 1m
-        scrape_timeout: 15s
         metrics_path: /snmp
         params:
           module: [ddwrt]
@@ -46,8 +47,6 @@ serverFiles:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
       - job_name: snmp_hp
-        scrape_interval: 1m
-        scrape_timeout: 15s
         metrics_path: /snmp
         params:
           module: [hp]
@@ -56,8 +55,6 @@ serverFiles:
           - targets: ['snmp-hp.monitor.svc.cluster.local:9116']
 
       - job_name: blackbox
-        scrape_interval: 10s
-        scrape_timeout: 10s
         metrics_path: /probe
         params:
           module:
@@ -76,8 +73,6 @@ serverFiles:
             replacement: 'blackbox.monitor.svc.cluster.local:9115'
 
       - job_name: apcupsd_exporter
-        scrape_interval: 1m
-        scrape_timeout: 10s
         metrics_path: /metrics
         kubernetes_sd_configs:
           - role: pod
@@ -96,8 +91,6 @@ serverFiles:
             action: keep
 
       - job_name: nvidia_smi_exporter
-        scrape_interval: 1m
-        scrape_timeout: 10s
         metrics_path: /metrics
         kubernetes_sd_configs:
           - role: pod
@@ -116,8 +109,6 @@ serverFiles:
             action: keep
 
       - job_name: node_exporter
-        scrape_interval: 1m
-        scrape_timeout: 10s
         metrics_path: /metrics
         kubernetes_sd_configs:
           - role: node

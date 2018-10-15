@@ -8,7 +8,7 @@ spec:
   accessModes:
   - ReadWriteMany
   capacity:
-    storage: 100Gi
+    storage: 1Ti
   nfs:
     server: $IP_NAS
     path: $NAS_MONITOR_PATH/grafana_data
@@ -25,4 +25,4 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 100Gi
+      storage: 1Ti
