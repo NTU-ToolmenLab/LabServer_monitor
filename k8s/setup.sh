@@ -13,7 +13,8 @@ sed -i "s/\$IP_ROUTER/$IP_ROUTER/g" monitor.yml
 sed -i "s/\$IP_NAS/$IP_NAS/g" monitor.yml pv.yml
 sed -i "s/\$IP_HP_PRINTER/$IP_HP_PRINTER/g" monitor.yml
 sed -i "s/\$NAS_MONITOR_PATH/$NAS_MONITOR_PATH/g" pv.yml
-sed -i "s/\:443/\:$DOMAIN_PORT/g" monitor.yml grafana_data
+sed -i "s/\:443/\:$DOMAIN_PORT/g" grafana.yml
+sed -i "s/my.domain.ntu.edu.tw/$DOMAIN_NAME/g" monitor.yml grafana.yml
 
 # docker build
 # where registry-svc is registry for docker

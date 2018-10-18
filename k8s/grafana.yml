@@ -29,5 +29,16 @@ grafana.ini:
     check_for_updates: true
   server:
     root_url: https://my.domain.ntu.edu.tw:443/monitor/
-# [auth]
-# disable_login_form = true
+  auth:
+    disable_login_form: true
+  auth.generic_oauth:
+    name: Lab304
+    enabled: true
+    client_id: 
+    client_secret: 
+    api_url : https://my.domain.ntu.edu.tw:443/oauth/profile
+    auth_url: https://my.domain.ntu.edu.tw:443/oauth/authorize
+    token_url: https://my.domain.ntu.edu.tw:443/oauth/token
+    allowed_domains: my.domain.ntu.edu.tw
+    scopes: profile
+    allow_sign_up: true
