@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nvidia-smi-exporter
-        image: registry-svc.default.svc.cluster.local:5002/linnil1/nvidia_smi_exporter
+        image: registry.default.svc.cluster.local/linnil1/nvidia_smi_exporter
         ports:
         - containerPort: 9101
           protocol: TCP

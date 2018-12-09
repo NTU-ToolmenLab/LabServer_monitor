@@ -23,9 +23,6 @@ docker push registry-svc.default.svc.cluster.local:5002/linnil1/nvidia_smi_expor
 docker build docker_apcupsd_exporter -t registry-svc.default.svc.cluster.local:5002/linnil1/apcupsd_exporter
 docker push registry-svc.default.svc.cluster.local:5002/linnil1/apcupsd_exporter
 
-echo "start monitor pod"
-kubectl create -f apcupsd_exporter.yml -f blackbox.yml -f nvidia_smi_exporter.yml -f snmp_default.yml -f snmp_hp.yml -f snmp_router.yml
-
 echo "create folder"
 mkdir ../prometheus_data
 mddir ../grafana_data
@@ -33,5 +30,10 @@ sudo chown 472:472 ../grafana_data
 
 echo "start pv"
 kubectl create -f pv.yml
+
+echo "start monitor pod"
+kubectl create -f apcupsd_exporter.yml -f blackbox.yml -f nvidia_smi_exporter.yml -f snmp_default.yml -f snmp_hp.yml -f snmp_router.yml
+
+echo "start grafana and promethus"
 helm install --name lab-monitor --namespace monitor stable/prometheus --values=monitor.yml
 helm install --name monitor-grafana --namespace monitor stable/grafana --values=grafana.yml

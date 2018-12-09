@@ -4,7 +4,7 @@ ingress:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
   hosts:
-    - my.domain.ntu.edu.tw
+   - ' '
   path: /monitor/
 image:
   tag: latest
