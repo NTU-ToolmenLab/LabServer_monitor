@@ -12,8 +12,8 @@ server:
     mountPath: /prometheus_data
     subPath: prometheus_data
   global:
-    scrape_interval:     30s
-    scrape_timeout:      15s
+    scrape_interval: 30s
+    scrape_timeout: 15s
 
 serverFiles:
   prometheus.yml:
@@ -30,7 +30,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [synology]
-          target: [$IP_NAS]
+          target: [{{ IP_NAS }}]
         static_configs:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
@@ -38,7 +38,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [ddwrt]
-          target: [$IP_ROUTER]
+          target: [{{ IP_ROUTER }}]
         static_configs:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
@@ -46,7 +46,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [ddwrt]
-          target: [$IP_SWITCH]
+          target: [{{ IP_SWITCH }}]
         static_configs:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
@@ -54,7 +54,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [hp]
-          target: [$IP_HP_PRINTER]
+          target: [{{ IP_HP_PRINTER }}]
         static_configs:
           - targets: ['snmp-hp.monitor.svc.cluster.local:9116']
 

@@ -2,10 +2,10 @@
 
 Use 
 
-* Grafana (Alerting on Telegram)
+* Grafana
 * prometheus
 * node-exporter
-* nvidia-smi
+* nvidia_exporter
 * apcupsd
 * snmp-exporter
 * Use Granfana Alerting on Telegram
@@ -20,9 +20,10 @@ work with
 * docker-compose
 * kubernetes
 * traefik
-
-see https://github.com/linnil1/LabServer
-
+* My own LabServer
+  see https://github.com/linnil1/LabServer
+  Used its OAuth to login.
+  Monitor its traefik process.
 
 to monitor
 
@@ -34,131 +35,125 @@ to monitor
 * switch
 * router
 * hp printer
-* ping dns
+* ping, dns
 
-And use OAuth to login
 
-## Build this project
-clone and run setup
-
+## Download this project
 ```
-git clone --recursive https://github.com/linnil1/LabServer_monitor.git
+git clone https://github.com/linnil1/LabServer_monitor.git
 cd LabServer_monitor
 ```
-### with docker-compose
-```
-bash setup.sh
-```
 
-### with kubernetes
-```
-cd k8s
-bash setup.sh
-```
-
-## some custom data you need to set
+## Run with docker-compose
 in `docker-compose.yml`
-
 * change this password `- GF_SECURITY_ADMIN_PASSWORD=custom_password`
 * change your domain name
 * change traefik setting to what you want
 * change your internal ip of apc 192.168.1.1
 
-
-### nodeexporter on localhost
-in `prometheus.yml`
-
-change it if you use node-exporter on localhost
-
+and finally,
 ```
-  - job_name: 'node-exporter'
-    scrape_interval: 5s
-    static_configs:
-         - targets: ['your.internal.ip:9100']
+bash setup.sh
 ```
 
-### nodeexporter on localhost
-in `prometheus.yml`
+*Now, I do not have time to maintain docker-compose*
 
-change you target ip to your nas.
+*Please use kubernetes*
 
+
+## Run with kubernetes
+You should modify `k8s/setup.sh`, the header of file defined lots of variables you need to set.
+
+Then, setup and run it.
 ```
-  - job_name: 'snmp_nas'
-    scrape_interval: 15s
-    scrape_timeout: 15s
-    metrics_path: /snmp
-    params:
-      module: [synology]
-      target: [192.168.1.2]
-    static_configs:
-      - targets: ['snmpexporter:9116']
+cd k8s
+bash setup.sh
+bash run.sh
 ```
+
+## some custom data you need to set
+
+### node-exporter on localhost
+I use `node-exporter` on host, so firewall should not block port 9100.
+
 
 ### APC setup
-If you cannot use apc, maybe you did't set 
+If you cannot access apc data, maybe you did't set 
 
 `NETIP 0.0.0.0` in `/etc/apcupsd/apcupsd.conf`
 
-### snmpexporter
-To monitor Synology,
+or blocked by your firewall(port=3551).
 
-you should set up SNMP in NAS https://www.synology.com/en-uk/knowledgebase/DSM/help/DSM/AdminCenter/system_snmp
 
-And if you don't want to use [generator](https://github.com/prometheus/snmp_exporter/tree/master/generator),
+### Monitor NAS
+To monitor Synology NAS,
 
-you should enable `SNMPv2c` service and set Communitunity Name = `public`
+you should set up SNMP on NAS https://www.synology.com/en-uk/knowledgebase/DSM/help/DSM/AdminCenter/system_snmp.
+
+And if you don't want to use [generator](https://github.com/prometheus/snmp_exporter/tree/master/generator) to build your own snmp configuration,
+
+you should enable `SNMPv2c` service with default Communitunity Name = `public`.
+
+Reference 
+* https://global.download.synology.com/download/Document/MIBGuide/Synology_DiskStation_MIB_Guide.pdf
+
 
 ### Grafana
-You shoud type `mkdir grafana_data` and `sudo chown 472:472 grafana_data` first.
-
-And I set path of log on env of docker beacuse I need to override the env in the image of grafana.
-
 After start grafana,
-import dashboard by json file,
-* `grafana_myserver.json`
-* `grafana_myserver_alert.json` This has Alerting rules and alert on Telegram
+set your databse url = `http://lab-monitor-prometheus-server.monitor.svc.cluster.local`,
+and import dashboard by json file,
+* `board/grafana_myserver.json`
+* `board/grafana_myserver_alert.json`  This has Alerting rules and alert on Telegram
 
-## reference
+Install some plugin:
+* piechart https://grafana.com/plugins/grafana-piechart-panel.
+
+Reference
 * Modified from
    https://grafana.com/dashboards/5573 and https://gist.github.com/mdlayher/962aecd2858454a822bb5ad847168cb0
 * `docker-compose.yml` is modified from https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml
-* Reference of `snmp_synology` https://global.download.synology.com/download/Document/MIBGuide/Synology_DiskStation_MIB_Guide.pdf
 
-## Alert on Telegram
-goto alerting -> alerting channel
+
+### Grafana Alerting by Telegram
+Goto alerting -> alerting channel
 and create type = telegram
 
-`BOT API Token` is gotten from BotFather
+`BOT API Token` is got from BotFather.
 
-invite bot into your group.
+You can use tutorial of python bot listening to your group you created,
+then, collect `Chat ID` by someone send message.
 
-To me, I need to disable private mode (Disable it at BotFather)
+For me, I need to disable private mode (Disable it by BotFather).
 
-`Chat ID` is your bot listen on your group ID.
-You can use tutorial python bot to listen to your group,
-then, you can collect groupID by someone send message after to attach your bot in it.
+However, grafana alerting cannot work when data have variables(Grafana very big bug).
 
-However, grafana alerting cannot work at template data.
 
-## Oauth Login
-` vim grafana.ini`
-Replace `my.domain` and `444` to your domain and port
-reference
+### Oauth Login
+The oauth server configuration should look like:
+```
+client_id = ""
+client_secret = ""
+client_name = "grafana"
+client_uri = "https://my.domain.ntu.edu.tw:443/monitor/"
+grant_types = ["authorization_code"]
+redirect_uris = ["https://my.domain.ntu.edu.tw:443/monitor/login/generic_oauth"]
+response_types = ["code"]
+scope = "profile"
+token_endpoint_auth_method = "client_secret_basic"
+```
+
+Reference
 * http://docs.grafana.org/installation/configuration/
 
-**It doesn't use secrect POST** for oauth.
 
 ## snmp on router
-see http://jamyy.us.to/blog/2014/11/6863.html
+follow http://jamyy.us.to/blog/2014/11/6863.html
 
-reference 
-* https://fatmin.com/2016/02/11/asus-rt-ac66u-installing-the-ipkg-command/
-* https://fatmin.com/2013/11/13/install-and-configure-snmp-on-the-asus-rt-ac66u-router/
-* http://devopstarter.info/snmp-exporter-generator-tutorial/
-
+If you cannot enable net-snmp, you can remove and reinstall or just forced-install like
 `ipkg install openssl -force-reinstall` to solve some error.
 
-It use net-snmp and I generate snmp.yml by https://github.com/prometheus/snmp_exporter/tree/master/generator
+I generate snmp.yml by https://github.com/prometheus/snmp_exporter/tree/master/generator.
+
 You can collect mibs from [here](https://github.com/hardaker/net-snmp/tree/a7bc508a8930a484c3a666cbea4ab226d2a3aa88/mibs)
 
 I download these mibs: `IF-MIB  INET-ADDRESS-MIB.txt  IP-MIB.txt  RFC1213-MIB.txt  SNMPv2-CONF  SNMPv2-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
@@ -169,47 +164,52 @@ The result file is `snmp/router.yml`
 
 grafana board `board/router.json`
 
-## snmp on switch
+Reference 
+* https://fatmin.com/2016/02/11/asus-rt-ac66u-installing-the-ipkg-command/
+* https://fatmin.com/2013/11/13/install-and-configure-snmp-on-the-asus-rt-ac66u-router/
+* http://devopstarter.info/snmp-exporter-generator-tutorial/
+
+
+### traefik
+Configure traefik https://docs.traefik.io/configuration/metrics/.
+
+I create my own board `board/traefik.json`.
+
+Reference:
+* https://grafana.com/dashboards/2240
+* https://grafana.com/dashboards/4475
+* https://grafana.com/dashboards/5851
+
+
+## some note
+
+### snmp on switch
 My switch is ZYXEL GS1900, however mibs on http://www.circitor.fr/Mibs/Mibs.php#letterZ doesn't work at all.
 
-grafana board `board_switch.json`
 
-## traefik
-configure traefik https://docs.traefik.io/configuration/metrics/
-
-install piechart https://grafana.com/plugins/grafana-piechart-panel
-
-modify https://grafana.com/dashboards/2240 https://grafana.com/dashboards/4475 https://grafana.com/dashboards/5851
-
-my traefik container name is `traefik`
-
-grafana board `board/traefik.json`
-
-## HP printer
+### HP printer
 cd `snmp_exporter/generator`
 
-go to https://spp.itcs.hp.com/spp://spp.itcs.hp.com/spp/
+Go to https://spp.itcs.hp.com/spp://spp.itcs.hp.com/spp/
 
-and click `SDC > public > LaserJet and Digital Sender > Printer Management > MIBS > Phoenix Device MIBs > lj425` and click donwload
+and download it's mibs by `SDC > public > LaserJet and Digital Sender > Printer Management > MIBS > Phoenix Device MIBs > lj425`,
 
-and download some dependency `IF-MIB RFC1155-SMI.txt  RFC1158-MIB  RFC-1212-MIB.txt  RFC1213-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
+than get some dependency `IF-MIB RFC1155-SMI.txt  RFC1158-MIB  RFC-1212-MIB.txt  RFC1213-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
 
-put them into `mibs`
+put them all into `mibs`.
 
-then execute `docker run -it --rm -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ prom/snmp-generator`
+Execute `docker run -it --rm -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ prom/snmp-generator`
 
 remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml file).
 
 then test it `docker run -it --rm -p 9116:9116 -v $PWD/snmp.yml:/etc/snmp_exporter/snmp.yml prom/snmp-exporter`
 
-## Kubernete
-use helm to install `promethus` and `grafana`
+### Prometheus and grafana
+Using helm to install `promethus` and `grafana`.
 * https://github.com/helm/charts/tree/master/stable/prometheus
 * https://github.com/helm/charts/tree/master/stable/grafana
 
-Other things like `blackbox` `snmp_exporter` are same thing as docker-composed.
-
-`gpu` `apcupsd` are used Daemon Set across all nodes.
+`nvidia_exporter` `apcupsd_exporter` are used Daemon Set across all nodes.
 
 # LICENSE
 MIT

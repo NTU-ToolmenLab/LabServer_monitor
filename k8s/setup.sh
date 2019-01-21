@@ -1,37 +1,39 @@
-IP_SWITCH='192.168.1.1'
-IP_ROUTER='192.168.1.2'
-IP_NAS='192.168.1.3'
-IP_HP_PRINTER='192.168.1.9'
-NAS_MONITOR_PATH='\/path'
+NAS_IP='192.168.1.5'
+NAS_PATH='/volume1/'
+IP_SWITCH='192.168.1.2'
+IP_ROUTER='192.168.1.1'
+IP_NAS='192.168.1.5'
+IP_HP_PRINTER='192.168.1.123'
 DOMAIN_NAME='my.domain.ntu.edu.tw'
 DOMAIN_PORT='443'
+oauth_api='/oauth/profile'
+oauth_auth='/oauth/authorize'
+oauth_token='/oauth/token'
+oauth_id=''
+oauth_secret=''
 
-# replace word
-echo "Change domain name and port and sql password"
-sed -i "s/\$IP_SWITCH/$IP_SWITCH/g" monitor.yml
-sed -i "s/\$IP_ROUTER/$IP_ROUTER/g" monitor.yml
-sed -i "s/\$IP_NAS/$IP_NAS/g" monitor.yml pv.yml
-sed -i "s/\$IP_HP_PRINTER/$IP_HP_PRINTER/g" monitor.yml
-sed -i "s/\$NAS_MONITOR_PATH/$NAS_MONITOR_PATH/g" pv.yml
-sed -i "s/\:443/\:$DOMAIN_PORT/g" grafana.yml
+echo "Change all variables"
+sed -i "s~{{\s*NAS_IP\s*}}~$NAS_IP~g" pv.yml
+sed -i "s~{{\s*NAS_PATH\s*}}~$NAS_PATH~g" pv.yml
+sed -i "s~{{\s*IP_SWITCH\s*}}~$IP_SWITCH~g" monitor.yml
+sed -i "s~{{\s*IP_ROUTER\s*}}~$IP_ROUTER~g" monitor.yml
+sed -i "s~{{\s*IP_NAS\s*}}~$IP_NAS~g" monitor.yml
+sed -i "s~{{\s*IP_HP_PRINTER\s*}}~$IP_HP_PRINTER~g" monitor.yml
 sed -i "s/my.domain.ntu.edu.tw/$DOMAIN_NAME/g" monitor.yml grafana.yml
+sed -i "s~{{\s*oauth_api\s*}}~$oauth_api~g" grafana.yml
+sed -i "s~{{\s*oauth_auth\s*}}~$oauth_auth~g" grafana.yml
+sed -i "s~{{\s*oauth_token\s*}}~$oauth_token~g" grafana.yml
+sed -i "s~{{\s*oauth_id\s*}}~$oauth_id~g" grafana.yml
+sed -i "s~{{\s*oauth_secret\s*}}~$oauth_secret~g" grafana.yml
+sed -i "s/\:443/\:$DOMAIN_PORT/g" grafana.yml
 
 # docker build
 # where registry-svc is registry for docker
-docker build docker_apcupsd_exporter -t registry-svc.default.svc.cluster.local:5002/linnil1/apcupsd_exporter
-docker push registry-svc.default.svc.cluster.local:5002/linnil1/apcupsd_exporter
+echo "Build docker file for apc"
+docker build docker_apcupsd_exporter -t registry.default.svc.cluster.local/linnil1/apcupsd_exporter
+docker push registry.default.svc.cluster.local/linnil1/apcupsd_exporter
 
 echo "create folder"
 mkdir ../prometheus_data
 mddir ../grafana_data
 sudo chown 472:472 ../grafana_data
-
-echo "start pv"
-kubectl create -f pv.yml
-
-echo "start monitor pod"
-kubectl create -f apcupsd_exporter.yml -f blackbox.yml -f nvidia_exporter.yml -f snmp_default.yml -f snmp_hp.yml -f snmp_router.yml
-
-echo "start grafana and promethus"
-helm install --name lab-monitor --namespace monitor stable/prometheus --values=monitor.yml
-helm install --name monitor-grafana --namespace monitor stable/grafana --values=grafana.yml

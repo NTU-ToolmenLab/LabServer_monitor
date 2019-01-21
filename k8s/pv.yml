@@ -3,7 +3,6 @@ kind: Namespace
 metadata:
   name: monitor
 ---
-
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -16,9 +15,8 @@ spec:
   capacity:
     storage: 1Ti
   nfs:
-    server: $IP_NAS
-    path: $NAS_MONITOR_PATH/grafana_data
-
+    server: {{ NAS_IP }}
+    path: {{ NAS_PATH }}
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1

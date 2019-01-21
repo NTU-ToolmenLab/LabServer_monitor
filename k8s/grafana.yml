@@ -17,10 +17,12 @@ env:
   GF_PATHS_PLUGINS: /var/lib/grafana/plugins
   GF_PATHS_LOGS: /var/lib/grafana/log
   GF_PATHS_DATA: /var/lib/grafana
+plugins:
+  - grafana-piechart-panel
 
 grafana.ini:
   default:
-    instance_name: Lab304 - Grafana
+    instance_name: Toolmen - Grafana
   log:
     mode: console file
   users:
@@ -34,11 +36,11 @@ grafana.ini:
   auth.generic_oauth:
     name: Lab304
     enabled: true
-    client_id: 
-    client_secret: 
-    api_url : https://my.domain.ntu.edu.tw:443/oauth/profile
-    auth_url: https://my.domain.ntu.edu.tw:443/oauth/authorize
-    token_url: https://my.domain.ntu.edu.tw:443/oauth/token
+    client_id: {{ oauth_id }}
+    client_secret: {{ oauth_secret }}
+    api_url : https://my.domain.ntu.edu.tw:443{{ oauth_api }}
+    auth_url: https://my.domain.ntu.edu.tw:443{{ oauth_auth }}
+    token_url: https://my.domain.ntu.edu.tw:443{{ oauth_token }}
     allowed_domains: my.domain.ntu.edu.tw
     scopes: profile
     allow_sign_up: true
