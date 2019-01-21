@@ -1,3 +1,0 @@
-[submodule "nvidia_smi_exporter"]
-	path = nvidia_smi_exporter
-	url = https://github.com/kevin7674/nvidia_smi_exporter.git

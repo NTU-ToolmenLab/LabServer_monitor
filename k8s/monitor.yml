@@ -94,7 +94,7 @@ serverFiles:
             regex: "apcupsd-exporter(.*)"
             action: keep
 
-      - job_name: nvidia_smi_exporter
+      - job_name: nvidia_exporter
         metrics_path: /metrics
         kubernetes_sd_configs:
           - role: pod
@@ -106,10 +106,10 @@ serverFiles:
           - source_labels: [__address__]
             regex: "(.+):.*"
             target_label: __address__
-            replacement: ${1}:9101
+            replacement: ${1}:9445
             action: replace
           - source_labels: [__meta_kubernetes_pod_container_name]
-            regex: "nvidia-smi-exporter(.*)"
+            regex: "nvidia-exporter(.*)"
             action: keep
 
       - job_name: node_exporter

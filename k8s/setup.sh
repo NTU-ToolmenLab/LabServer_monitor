@@ -18,8 +18,6 @@ sed -i "s/my.domain.ntu.edu.tw/$DOMAIN_NAME/g" monitor.yml grafana.yml
 
 # docker build
 # where registry-svc is registry for docker
-docker build nvidia_smi_exporter -t registry-svc.default.svc.cluster.local:5002/linnil1/nvidia_smi_exporter
-docker push registry-svc.default.svc.cluster.local:5002/linnil1/nvidia_smi_exporter
 docker build docker_apcupsd_exporter -t registry-svc.default.svc.cluster.local:5002/linnil1/apcupsd_exporter
 docker push registry-svc.default.svc.cluster.local:5002/linnil1/apcupsd_exporter
 
@@ -32,7 +30,7 @@ echo "start pv"
 kubectl create -f pv.yml
 
 echo "start monitor pod"
-kubectl create -f apcupsd_exporter.yml -f blackbox.yml -f nvidia_smi_exporter.yml -f snmp_default.yml -f snmp_hp.yml -f snmp_router.yml
+kubectl create -f apcupsd_exporter.yml -f blackbox.yml -f nvidia_exporter.yml -f snmp_default.yml -f snmp_hp.yml -f snmp_router.yml
 
 echo "start grafana and promethus"
 helm install --name lab-monitor --namespace monitor stable/prometheus --values=monitor.yml

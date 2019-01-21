@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: nvidia-smi-exporter
+  name: nvidia-exporter
   namespace: monitor
 spec:
   selector:
     matchLabels:
-      name: nvidia-smi-exporter
+      name: nvidia-exporter
   template:
     metadata:
       labels:
-        name: nvidia-smi-exporter
+        name: nvidia-exporter
     spec:
       containers:
-      - name: nvidia-smi-exporter
-        image: registry.default.svc.cluster.local/linnil1/nvidia_smi_exporter
+      - name: nvidia-exporter
+        image: mindprince/nvidia_gpu_prometheus_exporter:0.1
         ports:
         - containerPort: 9101
           protocol: TCP
