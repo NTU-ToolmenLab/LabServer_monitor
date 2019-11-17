@@ -13,7 +13,7 @@ spec:
   accessModes:
   - ReadWriteMany
   capacity:
-    storage: 1Ti
+    storage: 10Ti
   nfs:
     server: {{ NAS_IP }}
     path: {{ NAS_PATH }}
@@ -29,4 +29,4 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 1Ti
+      storage: 10Ti

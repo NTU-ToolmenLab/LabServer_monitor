@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: apcupsd-exporter
-        image: registry.default.svc.cluster.local/linnil1/apcupsd_exporter
+        image: harbor.default.svc.cluster.local/linnil1/apcupsd_exporter
         command: [./main]
         args: ['-apcupsd.addr', '$(NODE_IP):3551']
         ports:
