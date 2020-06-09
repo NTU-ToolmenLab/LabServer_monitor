@@ -30,10 +30,12 @@ sed -i "s/\:443/\:$DOMAIN_PORT/g" grafana.yml
 # docker build
 # where registry-svc is registry for docker
 echo "Build docker file for apc"
-docker build docker_apcupsd_exporter -t harbor.default.svc.cluster.local/linnil1/apcupsd_exporter
+docker build -t linnil1/apcupsd_exporter -f apcupsd_docker .
+docker tag linnil1/apcupsd_exporter harbor.default.svc.cluster.local/linnil1/apcupsd_exporter
 docker push harbor.default.svc.cluster.local/linnil1/apcupsd_exporter
 
 echo "create folder"
 mkdir ../prometheus_data
 mddir ../grafana_data
 sudo chown 472:472 ../grafana_data
+sudo chown 65534:65534 prometheus_data

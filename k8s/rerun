@@ -1,4 +1,0 @@
-helm del lab-monitor --purge
-helm install --name lab-monitor --namespace monitor stable/prometheus --values=monitor.yml
-helm del monitor-grafana --purge
-helm install --name monitor-grafana --namespace monitor stable/grafana --values=grafana.yml

@@ -25,7 +25,7 @@ serverFiles:
 
       - job_name: traefik
         static_configs:
-          - targets: ['lab-traefik-dashboard.default.svc.cluster.local']
+          - targets: ['lab-traefik-prometheus.default.svc.cluster.local:9100']
 
       - job_name: snmp_nas
         metrics_path: /snmp
@@ -116,6 +116,25 @@ serverFiles:
             action: replace
           - source_labels: [__meta_kubernetes_pod_container_name]
             regex: "nvidia-exporter(.*)"
+            action: keep
+
+      - job_name: gpu-monitor
+        metrics_path: /
+        kubernetes_sd_configs:
+          - role: pod
+        scrape_interval: 5s
+        relabel_configs:
+          - separator: ;
+            regex: __meta_kubernetes_pod_(node_name)
+            replacement: $1
+            action: labelmap
+          - source_labels: [__address__]
+            regex: "(.+):.*"
+            target_label: __address__
+            replacement: ${1}:8000
+            action: replace
+          - source_labels: [__meta_kubernetes_pod_container_name]
+            regex: ".*gpu-monitor.*"
             action: keep
 
       - job_name: node_exporter

@@ -14,16 +14,13 @@ Use
 * kubernetes-metrics (k8s)
 * kubernetes-services (k8s)
 
-
 work with
-
-* docker-compose
+* docker-compose(Maybe)
 * kubernetes
 * traefik
 * My own LabServer
-  see https://github.com/linnil1/LabServer
-  Used its OAuth to login.
-  Monitor its traefik process.
+  see https://github.com/NTU-ToolmenLab/labbox
+  Used its OAuth2 to login.
 
 to monitor
 
@@ -40,7 +37,7 @@ to monitor
 
 ## Download this project
 ```
-git clone https://github.com/linnil1/LabServer_monitor.git
+git clone https://github.com/NTU-ToolmenLab/LabServer_monitor
 cd LabServer_monitor
 ```
 
@@ -179,12 +176,6 @@ Reference:
 * https://grafana.com/dashboards/2240
 * https://grafana.com/dashboards/4475
 * https://grafana.com/dashboards/5851
-
-
-## some note
-
-### snmp on switch
-My switch is ZYXEL GS1900, however mibs on http://www.circitor.fr/Mibs/Mibs.php#letterZ doesn't work at all.
 
 
 ### HP printer
