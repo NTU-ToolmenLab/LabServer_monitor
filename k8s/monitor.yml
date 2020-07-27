@@ -31,7 +31,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [synology]
-          target: [{{ IP_NAS }}]
+          target: {{ monitor.nas }}
         static_configs:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
@@ -39,7 +39,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [ddwrt]
-          target: [{{ IP_ROUTER }}]
+          target: {{ monitor.router }}
         static_configs:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
         scrape_interval: 5s
@@ -48,7 +48,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [ddwrt]
-          target: [{{ IP_SWITCH }}]
+          target: {{ monitor.switch }}
         static_configs:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
         scrape_interval: 5s
@@ -57,7 +57,7 @@ serverFiles:
         metrics_path: /snmp
         params:
           module: [hp]
-          target: [{{ IP_HP_PRINTER }}]
+          target: {{ monitor.printer }}
         static_configs:
           - targets: ['snmp-hp.monitor.svc.cluster.local:9116']
 
@@ -70,7 +70,7 @@ serverFiles:
           - targets:
             - https://google.com
             - https://www.ntu.edu.tw
-            - https://my.domain.ntu.edu.tw
+            - https://{{ domain }}
         scrape_interval: 5s
         relabel_configs:
           - source_labels: [__address__]

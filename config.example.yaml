@@ -1,0 +1,18 @@
+nfs:
+    ip: 192.168.1.1
+    path: /volume1/
+
+name: Toolmen
+domain: mydomain.ntu.edu.tw
+domain_url: mydomain.ntu.edu.tw:443
+
+grafana:
+    oauth_name: Lab304
+    oauth_id: 123
+    oauth_secret: 123
+
+monitor:
+    nas: [192.168.1.4]
+    router: [192.168.1.1]
+    switch: [192.168.1.2]
+    printer: [192.168.1.3]

@@ -15,8 +15,8 @@ spec:
   capacity:
     storage: 10Ti
   nfs:
-    server: {{ NAS_IP }}
-    path: {{ NAS_PATH }}
+    server: {{ nfs.ip }}
+    path: {{ nfs.path }}
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1

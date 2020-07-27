@@ -24,7 +24,7 @@ plugins:
 
 grafana.ini:
   default:
-    instance_name: Toolmen - Grafana
+    instance_name: {{ name }} - Grafana
   log:
     mode: console file
   users:
@@ -32,18 +32,18 @@ grafana.ini:
   analytics:
     check_for_updates: true
   server:
-    root_url: https://my.domain.ntu.edu.tw:443/monitor/
+    root_url: {{ domain }}/monitor/
   auth:
     disable_login_form: true
   auth.generic_oauth:
-    name: Lab304
+    name: {{ grafana.oauth_name }}
     enabled: true
-    client_id: {{ oauth_id }}
-    client_secret: {{ oauth_secret }}
-    api_url : https://my.domain.ntu.edu.tw:443{{ oauth_api }}
-    auth_url: https://my.domain.ntu.edu.tw:443{{ oauth_auth }}
-    token_url: https://my.domain.ntu.edu.tw:443{{ oauth_token }}
-    allowed_domains: my.domain.ntu.edu.tw
+    client_id: {{ grafana.oauth_id }}
+    client_secret: {{ grafana.oauth_secret }}
+    api_url :  {{ domain_url }}/oauth/profile
+    auth_url:  {{ domain_url }}/oauth/authorize
+    token_url: {{ domain_url }}/oauth/token
+    allowed_domains: {{ domain }}
     scopes: profile
     allow_sign_up: true
   security:
