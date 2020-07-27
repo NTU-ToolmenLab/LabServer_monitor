@@ -1,0 +1,5 @@
+[monuser]
+  password = secret
+  actions = SET
+  instcmds = ALL
+  upsmon slave

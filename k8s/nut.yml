@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nutserver
+  namespace: monitor
+spec:
+  selector:
+    matchLabels:
+      name: nutserver
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: nutserver
+    spec:
+      containers:
+      - name: nutserver
+        image: kmlucy/docker-nut
+        ports:
+        - containerPort: 3493
+          hostPort: 3493
+          protocol: TCP
+        volumeMounts:
+        - name: nutserver-config
+          mountPath: /etc/nut
+          subPath: ups
+          readOnly: true
+      volumes:
+      - name: nutserver-config
+        persistentVolumeClaim:
+          claimName: nfs-monitor
+      nodeSelector:
+        kubernetes.io/hostname: toolmen-server5

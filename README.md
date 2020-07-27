@@ -13,6 +13,7 @@ Use
 * kubernetes-node (k8s)
 * kubernetes-metrics (k8s)
 * kubernetes-services (k8s)
+* nut-ups
 
 work with
 * docker-compose(Maybe)
@@ -27,7 +28,7 @@ to monitor
 * server
 * traefik
 * gpu
-* apc
+* apc(ups)
 * nas
 * switch
 * router
@@ -194,6 +195,15 @@ Execute `docker run -it --rm -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ prom/sn
 remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml file).
 
 then test it `docker run -it --rm -p 9116:9116 -v $PWD/snmp.yml:/etc/snmp_exporter/snmp.yml prom/snmp-exporter`
+
+
+## NUT
+To share the ups status to synology NAS.
+
+Modify `ups/ups.conf` and `k8s/nut.yml` to set your server ip where ups usb connected to.
+
+Then, run it `kubectl create -f k8s/nut.yml`.
+
 
 ### Prometheus and grafana
 Using helm to install `promethus` and `grafana`.
