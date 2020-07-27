@@ -1,9 +1,9 @@
 set -xe
 
 echo "Change basic setting from config.yaml"
-j2 k8s/pv.yml      config.yaml -o k8s/pv.yml
-j2 k8s/grafana.yml config.yaml -o k8s/grafana.yml
-j2 k8s/monitor.yml config.yaml -o k8s/monitor.yml
+docker run --rm -it -v "$PWD:/app" dcagatay/j2cli k8s/pv.yml config.yaml -o k8s/pv.yml
+docker run --rm -it -v "$PWD:/app" dcagatay/j2cli k8s/pv.yml k8s/grafana.yml config.yaml -o k8s/grafana.yml
+docker run --rm -it -v "$PWD:/app" dcagatay/j2cli k8s/pv.yml k8s/monitor.yml config.yaml -o k8s/monitor.yml
 
 echo "start pv"
 kubectl create -f pv.yml

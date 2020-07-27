@@ -43,98 +43,72 @@ cd LabServer_monitor
 ```
 
 ## Run with docker-compose
-in `docker-compose.yml`
-* change this password `- GF_SECURITY_ADMIN_PASSWORD=custom_password`
-* change your domain name
-* change traefik setting to what you want
-* change your internal ip of apc 192.168.1.1
-
-and finally,
-```
-bash setup.sh
-```
-
-*Now, I do not have time to maintain docker-compose*
-
-*Please use kubernetes*
-
+`dockercompose` is not maintained now.
 
 ## Run with kubernetes
-You should modify `k8s/setup.sh`, the header of file defined lots of variables you need to set.
 
-Then, setup and run it.
-```
-cd k8s
-bash setup.sh
-bash run.sh
-```
-
-## some custom data you need to set
-
-### node-exporter on localhost
-I use `node-exporter` on host, so firewall should not block port 9100.
+### 1. Setting
+The secret data, e.g. ip, path, oauth data will store at here
 
 
-### APC setup
-If you cannot access apc data, maybe you did't set 
+Rename and change the data in `config.example.yaml` to `config.yaml`
 
-`NETIP 0.0.0.0` in `/etc/apcupsd/apcupsd.conf`
+### 2. Setup
+`./setup.sh` will
 
-or blocked by your firewall(port=3551).
+* Build the dockerfile
+* Push the file to local registry
+
+### 3. Run
+`./run.sh`
+
+Note I use [j2](https://github.com/kolypto/j2cli) to render the template.
+
+## Helm
+Using helm(A k8s package manager) to install `promethus` and `grafana`(Included in `run.sh`).
+* https://github.com/helm/charts/tree/master/stable/prometheus
+* https://github.com/helm/charts/tree/master/stable/grafana
+
+`nvidia_exporter` `apcupsd_exporter` are deployed by Daemon Set across all nodes.
 
 
-### Monitor NAS
-To monitor Synology NAS,
+## Some setup hint
 
-you should set up SNMP on NAS https://www.synology.com/en-uk/knowledgebase/DSM/help/DSM/AdminCenter/system_snmp.
+### node-exporter
+`node-exporter` is running on host. What you need to attention are:
 
-And if you don't want to use [generator](https://github.com/prometheus/snmp_exporter/tree/master/generator) to build your own snmp configuration,
+* Firewall should not block port 9100.
+* Use crontab to run it when server is on. Crontab setting: `@reboot  /opt/node_exporter`
 
-you should enable `SNMPv2c` service with default Communitunity Name = `public`.
+### UPS setup
+Our UPS in our lab is APC, so I use `apcupsd` on host to read the data sent via usb from APC.
 
-Reference 
-* https://global.download.synology.com/download/Document/MIBGuide/Synology_DiskStation_MIB_Guide.pdf
+* `NETIP 0.0.0.0` set in `/etc/apcupsd/apcupsd.conf` that allow for `apcupsd_exporter`(Inside docker) to access.
+* Do not blocked port 3551.
 
+### Monitor Synology NAS
+Set up SNMP on NAS https://www.synology.com/en-uk/knowledgebase/DSM/help/DSM/AdminCenter/system_snmp.
 
 ### Grafana
-After start grafana,
-set your databse url = `http://lab-monitor-prometheus-server.monitor.svc.cluster.local`,
-and import dashboard by json file,
-* `board/grafana_myserver.json`
-* `board/grafana_myserver_alert.json`  This has Alerting rules and alert on Telegram
+Set the configuration in Grafana web:
 
-Install some plugin:
-* piechart https://grafana.com/plugins/grafana-piechart-panel.
+* Databse: `http://lab-monitor-prometheus-server.monitor.svc.cluster.local`,
+* Dashboard:  import dashboard by json file `board/grafana_myserver.json`
+* Install some plugin: piechart: https://grafana.com/plugins/grafana-piechart-panel.
 
 Reference
-* Modified from
+* Th dashboard is modified from
    https://grafana.com/dashboards/5573 and https://gist.github.com/mdlayher/962aecd2858454a822bb5ad847168cb0
-* `docker-compose.yml` is modified from https://github.com/vegasbrianc/prometheus/blob/master/docker-compose.yml
 
-
-### Grafana Alerting by Telegram
-Goto alerting -> alerting channel
-and create type = telegram
-
-`BOT API Token` is got from BotFather.
-
-You can use tutorial of python bot listening to your group you created,
-then, collect `Chat ID` by someone send message.
-
-For me, I need to disable private mode (Disable it by BotFather).
-
-However, grafana alerting cannot work when data have variables(Grafana very big bug).
-
-
-### Oauth Login
-The oauth server configuration should look like:
+### Grafana Oauth Login
+The setting that added in oauth server:
 ```
 client_id = ""
 client_secret = ""
 client_name = "grafana"
-client_uri = "https://my.domain.ntu.edu.tw:443/monitor/"
+client_uri = "{{url}}/monitor/"
 grant_types = ["authorization_code"]
-redirect_uris = ["https://my.domain.ntu.edu.tw:443/monitor/login/generic_oauth"]
+redirect_uris = ["{{url}}/monitor/login/generic_oauth"]
 response_types = ["code"]
 scope = "profile"
 token_endpoint_auth_method = "client_secret_basic"
@@ -144,32 +118,18 @@ Reference
 * http://docs.grafana.org/installation/configuration/
 
 
-## snmp on router
-follow http://jamyy.us.to/blog/2014/11/6863.html
+## Monitor router
+Turn on SNMP for ASUS router, you can follow http://jamyy.us.to/blog/2014/11/6863.html
 
-If you cannot enable net-snmp, you can remove and reinstall or just forced-install like
-`ipkg install openssl -force-reinstall` to solve some error.
-
-I generate snmp.yml by https://github.com/prometheus/snmp_exporter/tree/master/generator.
-
-You can collect mibs from [here](https://github.com/hardaker/net-snmp/tree/a7bc508a8930a484c3a666cbea4ab226d2a3aa88/mibs)
-
-I download these mibs: `IF-MIB  INET-ADDRESS-MIB.txt  IP-MIB.txt  RFC1213-MIB.txt  SNMPv2-CONF  SNMPv2-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
-
-Generating yml file is `snmp/router_generator.yml`.
-
-The result file is `snmp/router.yml`
-
-grafana board `board/router.json`
+If you encounter erro, try: `ipkg install openssl -force-reinstall`
 
 Reference 
 * https://fatmin.com/2016/02/11/asus-rt-ac66u-installing-the-ipkg-command/
 * https://fatmin.com/2013/11/13/install-and-configure-snmp-on-the-asus-rt-ac66u-router/
-* http://devopstarter.info/snmp-exporter-generator-tutorial/
 
 
-### traefik
-Configure traefik https://docs.traefik.io/configuration/metrics/.
+### Monitor traefik
+Follow https://docs.traefik.io/configuration/metrics/.
 
 I create my own board `board/traefik.json`.
 
@@ -180,37 +140,32 @@ Reference:
 
 
 ### HP printer
-cd `snmp_exporter/generator`
+Using custom snmp matrics to get the data from printer.
 
+The custom matrics are generated by snmp generator purposed in https://github.com/prometheus/snmp_exporter/tree/master/generator.
+
+#### Download mibs
 Go to https://spp.itcs.hp.com/spp://spp.itcs.hp.com/spp/
 
-and download it's mibs by `SDC > public > LaserJet and Digital Sender > Printer Management > MIBS > Phoenix Device MIBs > lj425`,
+Download it's mibs by `SDC > public > LaserJet and Digital Sender > Printer Management > MIBS > Phoenix Device MIBs > lj425`,
 
-than get some dependency `IF-MIB RFC1155-SMI.txt  RFC1158-MIB  RFC-1212-MIB.txt  RFC1213-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
+Get some dependency `IF-MIB RFC1155-SMI.txt  RFC1158-MIB  RFC-1212-MIB.txt  RFC1213-MIB.txt  SNMPv2-SMI  SNMPv2-TC`
 
-put them all into `mibs`.
+Put them all into `mibs`.
 
-Execute `docker run -it --rm -v $PWD/mibs:/root/.snmp/mibs -v $PWD:/opt/ prom/snmp-generator`
+#### Generate
+Execute `docker run -it --rm -v $PWD/mibs:/opt/ prom/snmp-generator`
 
-remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml file).
+Manually remove `scan_calibration_download` and `device_redial` in snmp.yml(output yaml file).
 
-then test it `docker run -it --rm -p 9116:9116 -v $PWD/snmp.yml:/etc/snmp_exporter/snmp.yml prom/snmp-exporter`
+Test it `docker run -it --rm -p 9116:9116 -v $PWD/snmp.yml:/etc/snmp_exporter/snmp.yml prom/snmp-exporter`
 
-
-## NUT
-To share the ups status to synology NAS.
+## Bonus
+Share the ups status to synology NAS.
 
 Modify `ups/ups.conf` and `k8s/nut.yml` to set your server ip where ups usb connected to.
 
-Then, run it `kubectl create -f k8s/nut.yml`.
-
-
-### Prometheus and grafana
-Using helm to install `promethus` and `grafana`.
-* https://github.com/helm/charts/tree/master/stable/prometheus
-* https://github.com/helm/charts/tree/master/stable/grafana
-
-`nvidia_exporter` `apcupsd_exporter` are used Daemon Set across all nodes.
+Run `kubectl create -f k8s/nut.yml`.
 
 # LICENSE
 MIT
