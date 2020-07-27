@@ -7,7 +7,9 @@ ingress:
    - ' '
   path: /monitor/
 image:
-  tag: latest
+  tag: 7.0.5
+testFramework:
+  enabled: false
 persistence:
   enabled: true
   existingClaim: nfs-monitor
@@ -44,3 +46,6 @@ grafana.ini:
     allowed_domains: my.domain.ntu.edu.tw
     scopes: profile
     allow_sign_up: true
+  security:
+    cookie_secure: true
+    cookie_samesite: disabled
