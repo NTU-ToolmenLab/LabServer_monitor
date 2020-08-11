@@ -1,7 +1,9 @@
-FROM golang:1.10
-RUN go get github.com/mdlayher/apcupsd_exporter
-RUN go build src/github.com/mdlayher/apcupsd_exporter/cmd/apcupsd_exporter/main.go
-RUN chmod +x main
-EXPOSE 9162
+FROM golang:alpine AS build
+RUN apk add --no-cache git && \
+    go get -u github.com/mdlayher/apcupsd_exporter && \
+    go build /go/src/github.com/mdlayher/apcupsd_exporter/cmd/apcupsd_exporter/main.go 
 
-CMD ./main
+FROM golang:alpine
+COPY --from=build /go/main /apcupsd_exporter
+EXPOSE 9162
+CMD /apcupsd_exporter -apcupsd.addr $APCUPSDADDR:3551

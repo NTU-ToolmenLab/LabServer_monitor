@@ -15,13 +15,12 @@ spec:
       containers:
       - name: apcupsd-exporter
         image: harbor.default.svc.cluster.local/linnil1/apcupsd_exporter
-        command: [./main]
-        args: ['-apcupsd.addr', '$(NODE_IP):3551']
+        imagePullPolicy: Always
         ports:
         - containerPort: 9162
           protocol: TCP
         env:
-        - name: NODE_IP
+        - name: APCUPSDADDR
           valueFrom:
             fieldRef:
               fieldPath: status.hostIP
