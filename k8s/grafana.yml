@@ -32,7 +32,7 @@ grafana.ini:
   analytics:
     check_for_updates: true
   server:
-    root_url: {{ domain }}/monitor/
+    root_url: {{ domain_url }}/monitor/
   auth:
     disable_login_form: true
   auth.generic_oauth:

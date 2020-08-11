@@ -19,14 +19,17 @@ server:
 serverFiles:
   prometheus.yml:
     scrape_configs:
+      # Grafana is visualization web
       - job_name: grafana
         static_configs:
           - targets: ['monitor-grafana.monitor.svc.cluster.local']
 
+      # Traefik(A reverse proxy) created in labbox
       - job_name: traefik
         static_configs:
           - targets: ['lab-traefik-prometheus.default.svc.cluster.local:9100']
 
+      # Monitor NAS
       - job_name: snmp_nas
         metrics_path: /snmp
         params:
@@ -35,6 +38,7 @@ serverFiles:
         static_configs:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
 
+      # Monitor router
       - job_name: snmp_router
         metrics_path: /snmp
         params:
@@ -44,6 +48,7 @@ serverFiles:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
         scrape_interval: 5s
 
+      # Monitor switch
       - job_name: snmp_switch
         metrics_path: /snmp
         params:
@@ -53,6 +58,7 @@ serverFiles:
           - targets: ['snmp-default.monitor.svc.cluster.local:9116']
         scrape_interval: 5s
 
+      # Monitor printer
       - job_name: snmp_hp
         metrics_path: /snmp
         params:
@@ -80,6 +86,7 @@ serverFiles:
           - target_label: __address__
             replacement: 'blackbox.monitor.svc.cluster.local:9115'
 
+      # Monitor ups
       - job_name: apcupsd_exporter
         metrics_path: /metrics
         kubernetes_sd_configs:
@@ -99,6 +106,7 @@ serverFiles:
             regex: "apcupsd-exporter(.*)"
             action: keep
 
+      # GPU monitor
       - job_name: nvidia_exporter
         metrics_path: /metrics
         kubernetes_sd_configs:
@@ -118,6 +126,7 @@ serverFiles:
             regex: "nvidia-exporter(.*)"
             action: keep
 
+      # GPU monitor created by labbox
       - job_name: gpu-monitor
         metrics_path: /
         kubernetes_sd_configs:
@@ -137,6 +146,7 @@ serverFiles:
             regex: ".*gpu-monitor.*"
             action: keep
 
+      # Node exporter run on each host
       - job_name: node_exporter
         metrics_path: /metrics
         kubernetes_sd_configs:
@@ -153,7 +163,7 @@ serverFiles:
             replacement: ${1}:9100
             action: replace
 
-      # --- Below is default ---
+      # Monitor itself
       - job_name: prometheus
         static_configs:
           - targets:
